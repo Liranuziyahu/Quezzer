@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { Routes, Route, Link,Navigate } from "react-router-dom";
+import {Admin,Login,Exams,Candidates,Repositore,ExamByID,RepositoreByID,CandidatesByID} from './pages/index.js'
+import ProtectedRoute from './component/ProtectedRoute'
+//CSS
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <Routes>
+      <Route index element={<Navigate to="admin" replace={true}/>}></Route>
+      <Route path="login" element={<Login/>}></Route>
+      <Route element={<ProtectedRoute/>}>
+        <Route path="Admin"  element={<Admin/>}>
+          {/* Main Admin Pages*/}
+          <Route path="exams" element={<Exams/>}></Route>
+          <Route path="exams/:cid" element={<ExamByID/>}></Route>
+          <Route path="Candidates" element={<Candidates/>}></Route>
+          <Route path="Candidates/:cid" element={<CandidatesByID/>}></Route>
+          <Route path="repositore" element={<Repositore/>}></Route>
+          <Route path="repositore/:cid" element={<RepositoreByID/>}></Route>
+        </Route>
+      </Route>
+      <Route path="*" element={(()=> <h1>Page NOT FOUND - 404 :(</h1>)()}></Route> 
+       {/* this fun call iife */}
+    </Routes>
+    </>
+  
+  
   );
 }
 

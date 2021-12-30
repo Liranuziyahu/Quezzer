@@ -1,0 +1,8 @@
+export {default as Admin} from './Admin'
+export {default as Login} from './Login'
+export {default as Exams} from './Exams/Exams'
+export {default as Repositore} from './Repositore/Repositore'
+export {default as Candidates} from './Candidates/Candidates'
+export {default as ExamByID} from './Exams/ExamByID'
+export {default as RepositoreByID} from './Repositore/RepositoreByID'
+export {default as CandidatesByID} from './Candidates/CandidatesByID'

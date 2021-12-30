@@ -1,0 +1,29 @@
+{
+ "Candidates":[
+   {
+    "id": 1,
+    "name": "Liran Uziyahu",
+    "email": "Liranuzistud@gmail.com",
+    "score":"100"
+   },
+   {
+    "id": 2,
+    "name": "Liad Uziyahu",
+    "email": "Liranuzistud@gmail.com",
+    "score":"99"
+   }
+ ],
+ "users":[
+  {
+   "id": 1,
+   "name": "Liran ",
+   "email": "@gmail.com",
+   "score":"100"
+  },
+  {
+   "id": 2,
+   "name": " Uziyahu",
+   "email": "Liranuzistud@gmail.com",
+   "score":"99"
+  }]
+}
