@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import {myContext} from '../../context/Context'
+import {myContextData} from '../../context/ContextDataFromServer'
 //CSS
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 
 
 function Exams() {
-    const {state} = useContext(myContext)
+    const {state} = useContext(myContextData)
     return (
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
