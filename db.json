@@ -1,29 +1,80 @@
 {
- "Candidates":[
-   {
-    "id": 1,
-    "name": "Liran Uziyahu",
-    "email": "Liranuzistud@gmail.com",
-    "score":"100"
-   },
-   {
-    "id": 2,
-    "name": "Liad Uziyahu",
-    "email": "Liranuzistud@gmail.com",
-    "score":"99"
-   }
- ],
- "users":[
-  {
-   "id": 1,
-   "name": "Liran ",
-   "email": "@gmail.com",
-   "score":"100"
-  },
-  {
-   "id": 2,
-   "name": " Uziyahu",
-   "email": "Liranuzistud@gmail.com",
-   "score":"99"
-  }]
+  "Candidates": [
+    {
+      "id": "kyvwj840",
+      "email": "Liranuzistud@gmail.com",
+      "password": "318866175Kk",
+      "name": "Liran Uziyahu",
+      "categoria": [
+        "React",
+        "JS"
+      ],
+      "typeClient": "Admin",
+      "Grade": "Not done yet"
+    },
+    {
+      "id": "kyvwr71a",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": "Not done yet"
+    },
+    {
+      "id": "kyvwufvh",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": "Not done yet"
+    },
+    {
+      "id": "kyx1r98z",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": "Not done yet"
+    },
+    {
+      "id": "kyx1rdqs",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": "Not done yet"
+    },
+    {
+      "id": "kyx1ri89",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": "Not done yet"
+    },
+    {
+      "id": "kyx1rwb0",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": "Not done yet"
+    },
+    {
+      "id": "kyx1wlh7",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": "Not done yet"
+    }
+  ],
+  "Exams": []
 }
