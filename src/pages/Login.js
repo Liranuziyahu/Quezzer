@@ -7,6 +7,9 @@ import {myContext} from '../context/Context'
 function Login() {
  
     const {settoggleAddButton , toggleAddButton} = useContext(myContext)
+    
+    useEffect(()=>{ 
+    },[])
 
     return (
         <div>
@@ -20,7 +23,3 @@ function Login() {
 }
 
 export default Login
-
-{/* <TamplateLogin toggleAddButton = {toggleAddButton} 
-settoggleAddButton={settoggleAddButton}/>
-: <CreateCandidates/> */}

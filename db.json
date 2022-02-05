@@ -13,65 +13,14 @@
       "Grade": "Not done yet"
     },
     {
-      "id": "kyvwr71a",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": "Not done yet"
-    },
-    {
-      "id": "kyvwufvh",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": "Not done yet"
-    },
-    {
-      "id": "kyx1r98z",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": "Not done yet"
-    },
-    {
-      "id": "kyx1rdqs",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": "Not done yet"
-    },
-    {
-      "id": "kyx1ri89",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": "Not done yet"
-    },
-    {
-      "id": "kyx1rwb0",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": "Not done yet"
-    },
-    {
-      "id": "kyx1wlh7",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
+      "id": "kz8ij5o0",
+      "email": "liranuzi@walla.com",
+      "password": "318866175Kk",
+      "name": "Liran2",
+      "categoria": [
+        "React",
+        "JS"
+      ],
       "typeClient": "User",
       "Grade": "Not done yet"
     }

@@ -8,6 +8,8 @@ export const myContextData = createContext()
 const Candidates = ({children}) => {
     const [state,setState] = useState([{}])
     const [reqAdminNav,setReqAdminNav] = useState('Candidates')
+    const [dataUserLogged , setDataUserLogged] = useState()
+    
     const reqTableAdmin= (req => {return setReqAdminNav(req)})
 
     useEffect(async() => {
@@ -19,7 +21,7 @@ const Candidates = ({children}) => {
 
     return (
         <>
-            <myContextData.Provider value={{state,reqTableAdmin,setState}} >
+            <myContextData.Provider value={{state,reqTableAdmin,setState , setDataUserLogged , dataUserLogged}} >
                 {children}
             </myContextData.Provider>
         </>
