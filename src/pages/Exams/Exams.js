@@ -17,7 +17,7 @@ function Exams() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>User Name</TableCell>
+            <TableCell>Type Exams</TableCell>
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Score</TableCell>
           </TableRow>

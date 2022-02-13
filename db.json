@@ -3,7 +3,7 @@
     {
       "id": "kyvwj840",
       "email": "Liranuzistud@gmail.com",
-      "password": "318866175Kk",
+      "password": "admin",
       "name": "Liran Uziyahu",
       "categoria": [
         "React",
@@ -22,7 +22,91 @@
         "JS"
       ],
       "typeClient": "User",
-      "Grade": "Not done yet"
+      "Grade": {
+        "React": "Not start yet",
+        "JS": "Not start yet",
+        "Angular": "Not start yet"
+      }
+    },
+    {
+      "id": "kzfjuuwi",
+      "email": "Liu@gmail.com",
+      "password": "eqwe",
+      "name": "test",
+      "categoria": [
+        "React",
+        "JS"
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "React": "Not start yet",
+          "JS": "100",
+          "Angular": "Not start yet"
+        }
+      ]
+    },
+    {
+      "id": "kzigfbnt",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "React": "Not start yet",
+          "JS": "Not start yet",
+          "Angular": "Not start yet"
+        }
+      ]
+    },
+    {
+      "id": "kzigiaw2",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "React": "Not start yet",
+          "JS": "Not start yet",
+          "Angular": "Not start yet"
+        }
+      ]
+    },
+    {
+      "id": "kzjzb15v",
+      "email": "",
+      "password": "",
+      "name": "",
+      "categoria": [],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "React": "Not start yet",
+          "JS": "Not start yet",
+          "Angular": "Not start yet"
+        }
+      ]
+    },
+    {
+      "id": "kzjzeab6",
+      "email": "wwwwww@walla.com",
+      "password": "3131",
+      "name": "dasdas",
+      "categoria": [
+        "React"
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "React": "Not start yet",
+          "JS": "Not start yet",
+          "Angular": "Not start yet"
+        }
+      ]
     }
   ],
   "Exams": []

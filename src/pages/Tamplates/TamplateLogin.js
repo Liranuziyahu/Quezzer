@@ -8,18 +8,17 @@ import { useNavigate } from "react-router-dom";
 
 const TamplateLogin = ({settoggleAddButton,toggleAddButton}) => {
     const {state , setDataUserLogged } =  useContext(myContextData)
-    const {isAuth , setIsAuth} = useContext(myContext)
+    const {setIsAuth} = useContext(myContext)
     let navigate = useNavigate();
 
     const checkAuto = (autoLogin) => {
         autoLogin.preventDefault()
-        state.map((user)=>{
-            console.log("autoLogin",autoLogin)
+        state.map(async (user)=>{
             if(user.email == autoLogin.target[0].value && user.password == autoLogin.target[1].value)
             {
-                setDataUserLogged(user)
-                setIsAuth(!isAuth)
-                navigate(-1)
+                 setDataUserLogged(user)
+                 setIsAuth(true)
+                 navigate(-1)  
             }
         })}
     return (
@@ -37,15 +36,16 @@ const TamplateLogin = ({settoggleAddButton,toggleAddButton}) => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Link  to="new" onClick ={(e) =>{
-                    if(toggleAddButton==true)
-                        return settoggleAddButton(!toggleAddButton);}}>
+                <Link  to="new" >
                      You dont have account yet?
                 </Link>
+                
                 <Button variant="primary" type="submit"
                     style={{"width":"100px","marginLeft":"calc(50% - 50px)"}}>
                     Login
                 </Button>
+            
+                
             </Form>
         </div>
     )

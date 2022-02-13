@@ -12,7 +12,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TabelCandidates = () => {
     const {state} = useContext(myContextData)
-
     return (
         <TableContainer component={Paper}>  
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -27,7 +26,8 @@ const TabelCandidates = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {state.map((state) => ( 
+              {state.map((state) => {console.log(state);return( 
+
                 <TableRow
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
@@ -40,9 +40,14 @@ const TabelCandidates = () => {
                   <TableCell align="center">{state.categoria==null?null:state.categoria.map(categoria=>{
                     return  <div>{categoria}</div>
                     })}</TableCell>
-                  <TableCell align="center">{state.score}</TableCell>
+                  <TableCell align="center">
+                  <div>React:{state.Grade[0]?.React}</div>
+                  <div>Angular:{state.Grade[0]?.Angular}</div>
+                  <div>JS:{state.Grade[0]?.JS}</div>
+
+                  </TableCell>
                 </TableRow>
-              ))}
+              )})}
             </TableBody>
           </Table>
     </TableContainer>
