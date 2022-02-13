@@ -7,16 +7,13 @@ import {myContext} from '../../context/Context'
 
 const TableCerateCandidates = (props) => {
     const navigate = useNavigate();
-    const {settoggleAddButton , toggleAddButton} = useContext(myContext) //toggle of component between Login and Create new Camdidates
 
     return (
         <div style={{"width":"80%","marginLeft":"20%","marginTop":"40px"}}>
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
                 props.value.addUser(props.value.user)
-                console.log(e)
                 e.preventDefault();
                 navigate(-1)
-                settoggleAddButton(!toggleAddButton)
                 }} >
             <Form  >
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">

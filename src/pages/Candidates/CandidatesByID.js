@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {useParams} from 'react-router'
+import {myContextData} from '../../context/ContextDataFromServer'
 
-
-const CndByID = () => {
+const CandidatesByID =  () => {
     const params = useParams()
-    console.log(params)
+    const {setState,state} = useContext(myContextData)
+    console.log(state)
     return (
         <div>
             <h1>Cnd by ID :</h1>
@@ -13,4 +14,4 @@ const CndByID = () => {
     )
 }
 
-export default CndByID
+export default CandidatesByID
