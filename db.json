@@ -10,7 +10,11 @@
         "JS"
       ],
       "typeClient": "Admin",
-      "Grade": "Not done yet"
+      "Grade": {
+        "React": "Not start yet",
+        "JS": "Not start yet",
+        "Angular": "Not start yet"
+      }
     },
     {
       "id": "kz8ij5o0",
@@ -27,87 +31,38 @@
         "JS": "Not start yet",
         "Angular": "Not start yet"
       }
-    },
-    {
-      "id": "kzfjuuwi",
-      "email": "Liu@gmail.com",
-      "password": "eqwe",
-      "name": "test",
-      "categoria": [
-        "React",
-        "JS"
-      ],
-      "typeClient": "User",
-      "Grade": [
-        {
-          "React": "Not start yet",
-          "JS": "100",
-          "Angular": "Not start yet"
-        }
-      ]
-    },
-    {
-      "id": "kzigfbnt",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": [
-        {
-          "React": "Not start yet",
-          "JS": "Not start yet",
-          "Angular": "Not start yet"
-        }
-      ]
-    },
-    {
-      "id": "kzigiaw2",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": [
-        {
-          "React": "Not start yet",
-          "JS": "Not start yet",
-          "Angular": "Not start yet"
-        }
-      ]
-    },
-    {
-      "id": "kzjzb15v",
-      "email": "",
-      "password": "",
-      "name": "",
-      "categoria": [],
-      "typeClient": "User",
-      "Grade": [
-        {
-          "React": "Not start yet",
-          "JS": "Not start yet",
-          "Angular": "Not start yet"
-        }
-      ]
-    },
-    {
-      "id": "kzjzeab6",
-      "email": "wwwwww@walla.com",
-      "password": "3131",
-      "name": "dasdas",
-      "categoria": [
-        "React"
-      ],
-      "typeClient": "User",
-      "Grade": [
-        {
-          "React": "Not start yet",
-          "JS": "Not start yet",
-          "Angular": "Not start yet"
-        }
-      ]
     }
   ],
-  "Exams": []
+
+
+
+  "Exams": [
+    {
+      "JS":[{
+        "question":"What are callbacks?",
+        "1":"function that will be executed after another function gets executed",
+        "2":"Row Function",
+        "3":"Regular Function",
+        "4":"Its not exist in JS",
+        "answer":"1"
+      },
+      {
+        "question":"What are callbacks2?",
+        "1":"function that will be executed after another function gets executed",
+        "2":"Row Function",
+        "3":"Regular Function",
+        "4":"Its not exist in JS",
+        "answer":"1"
+      }
+    ],
+      "React":[{
+        "question":"What are React?",
+        "1":"function that will be executed after another function gets executed",
+        "2":"Row Function",
+        "3":"Regular Function",
+        "4":"Its not exist in JS",
+        "answer":"1"
+      }]
+    }
+  ]
 }

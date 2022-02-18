@@ -1,6 +1,7 @@
 import React ,{useContext} from 'react'
 import { Link , Outlet } from "react-router-dom";
 import {myContextData} from '../context/ContextDataFromServer'
+import Logout from '../pages/Logout'
 //CSS
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -10,10 +11,11 @@ function Admin() {
 
     return (
         <div>
+            <Logout/>
             <nav>
             <Stack spacing={1} direction="row">
             <Button onClick={()=>{ reqTableAdmin('Candidates')}} variant="outlined"  >  <Link to="candidates">Candidates</Link></Button>
-            <Button onClick={()=>{ reqTableAdmin('Exams')}} variant="outlined"><Link to='exams'>Exams</Link></Button>
+            <Button onClick={()=>{ reqTableAdmin('ExamsTable')}} variant="outlined"><Link to='exams'>Exams</Link></Button>
             <Button variant="outlined" ><Link to='repositore'>Repositories</Link></Button>
             </Stack>
             </nav>

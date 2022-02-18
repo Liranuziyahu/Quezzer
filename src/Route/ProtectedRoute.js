@@ -10,16 +10,15 @@ const ProtectedRoute = () => {
     const { dataUserLogged } = useContext(myContextData)
 
     useEffect(() => {
-      console.log("isAuth from protect" , isAuth)
-      console.log(dataUserLogged?.typeClient)
+      
     }, [isAuth])
 
     return (
         <>   
            { 
-           (isAuth && dataUserLogged?.typeClient =='Admin') ?
-            <Admin />:
-           (isAuth && dataUserLogged?.typeClient =='User') ?
+           (isAuth && dataUserLogged?.typeClient =='Admin') || (JSON.parse(localStorage?.getItem('currentUser')))?.typeClient =='Admin' ?
+           <Admin/>:
+           (isAuth && dataUserLogged?.typeClient =='User') || (JSON.parse(localStorage?.getItem('currentUser')))?.typeClient =='User'?
            <User /> : <Navigate to="/login"/>
            } 
         </>
