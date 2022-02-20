@@ -1,30 +1,28 @@
 import axios from 'axios';
 import React, { useEffect, useContext, useState } from 'react';
 import { myContextData } from '../../context/ContextDataFromServer';
+import Question from './Question';
 
 const Exams = () => {
   const userCurrent = JSON.parse(localStorage.getItem('currentUser'));
-
+  const [exmpale , setExample] = useState([])
 useEffect( async () =>{
   const data = await axios.get(`http://localhost:3000/Exams`);
-  let arr = {} 
-  userCurrent.categoria.map(categoriaT => 
-   {  
-    let obj={}
-    let catagoriaName = categoriaT
-     obj[catagoriaName] = eval(`data.data[0].${categoriaT}`)
-    return {...arr ,obj}
-   }
-    )
-    console.log("arr",arr)
-    console.log("data",data.data)
+  const cata = Object.entries(data.data[0])
+  setExample(cata)
 
 },[])
     
   return (
-    <>
-      {/* {console.log('questionsExams',questionsExams)} */}
-    </>
+    <div>
+
+      {
+         exmpale.map(ex => {return ex[1].map((question,index)=> <Question question={question} key={index}/>)})
+
+      }
+
+
+    </div>
   );
 };
 
