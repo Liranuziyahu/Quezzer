@@ -18,7 +18,7 @@ const TamplateLogin = ({settoggleAddButton,toggleAddButton}) => {
             {
                  setDataUserLogged(user)
                  setIsAuth(true)
-                 navigate(-1)
+                 navigate(`${user.typeClient}`)
                  localStorage.setItem('currentUser' , JSON.stringify(user))  
 
             }

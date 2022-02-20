@@ -1,13 +1,12 @@
-import React ,{useContext,useEffect} from 'react'
+import React , {useContext,useEffect} from 'react'
 import {Outlet, Navigate, useNavigate} from 'react-router-dom'
 import {myContext} from '../context/Context'
 import {myContextData} from '../context/ContextDataFromServer'
-import { Admin } from '../pages'
-import User from '../pages/User'
 
 const ProtectedRoute = () => {
     const {isAuth} = useContext(myContext)
     const { dataUserLogged } = useContext(myContextData)
+    const isAdmin = (isAuth && dataUserLogged?.typeClient =='Admin') || (JSON.parse(localStorage?.getItem('currentUser')))?.typeClient =='Admin' 
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -19,10 +18,8 @@ const ProtectedRoute = () => {
     return (
         <>   
            { 
-           (isAuth && dataUserLogged?.typeClient =='Admin') || (JSON.parse(localStorage?.getItem('currentUser')))?.typeClient =='Admin' ?
-           <Outlet></Outlet>:
-           (isAuth && dataUserLogged?.typeClient =='User') || (JSON.parse(localStorage?.getItem('currentUser')))?.typeClient =='User'?
-           <Outlet></Outlet>: <Navigate to="/login"/>
+           isAdmin?
+           <Outlet></Outlet>:<Navigate to="User"/>
            } 
         </>
     )
