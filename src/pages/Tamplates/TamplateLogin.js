@@ -20,6 +20,7 @@ const TamplateLogin = ({settoggleAddButton,toggleAddButton}) => {
                  setIsAuth(true)
                  navigate(-1)
                  localStorage.setItem('currentUser' , JSON.stringify(user))  
+
             }
         })}
     return (
@@ -45,7 +46,7 @@ const TamplateLogin = ({settoggleAddButton,toggleAddButton}) => {
                     style={{"width":"100px","marginLeft":"calc(50% - 50px)"}}>
                     Login
                 </Button>
-            
+             
                 
             </Form>
         </div>

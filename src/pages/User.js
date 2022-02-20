@@ -7,9 +7,9 @@ const User = () => {
   return (
   <>
 
-    <div>Hello {dataUserLogged.name} </div>
+    <div>Hello {dataUserLogged?.name} </div>
     <div>Welcome to our exams </div>
-    <div>Today you will test about {dataUserLogged.categoria.map(type=> type+" ")}.</div>
+    <div>Today you will test about {dataUserLogged?.categoria.map(type=> type+" ")}.</div>
     <Link to='test'>Start</Link>
   </>
   )
