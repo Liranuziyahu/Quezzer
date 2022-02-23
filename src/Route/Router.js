@@ -24,6 +24,7 @@ const Router = () => {
                 <Route path="repositore" element={<Repositore/>}>
                     <Route path="repositore/:cid" element={<RepositoreByID/>}/>
                 </Route>
+                <Route path="test" element={<Exams/>}/><Route/>
             </Route>
         </Route>
         <Route path="User" element={<ProtectedUserRoute/>}>

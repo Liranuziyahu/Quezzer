@@ -17,7 +17,7 @@ useEffect( async () =>{
     <div>
 
       {
-         exmpale.map(ex => {return ex[1].map((question,index)=> <Question question={question} key={index}/>)})
+         <Question question={exmpale} />
 
       }
 
