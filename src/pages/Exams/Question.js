@@ -1,34 +1,31 @@
-import React,{useEffect,useState} from 'react'
+import React from 'react'
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
-const Question = ({question}) => {
-    let [theExmControl , setTheExmControl] = useState(0);
-    let [theQuestionControl , setTheQuestionControl] =useState(0);
-    let ExamState = question.slice(theExmControl,theExmControl + 1)
-    const changeExam = () => {setTheExmControl(theExmControl + 1);setTheQuestionControl(0); return ExamState = question.slice(theExmControl,theExmControl+1);}
-    const ChangeQuestion = () =>{setTheQuestionControl(theQuestionControl + 1);console.log(ExamState[0][1][theQuestionControl])}
-    const countExmas = question.length;
-
-     useEffect(()=>{
-
-     },[theExmControl])
+const Question = ({props}) => {
   return (
-   <>
-          
-            <div>{ExamState[0]?.[1][theQuestionControl]?.question}</div>
-            {console.log(ExamState[0]?.[1][theQuestionControl])}
+      <>
+        <FormControl >
+      <FormLabel>{props.ExamState[0]?.[1][props.theQuestionControl]?.question}</FormLabel>
+      <RadioGroup
+        aria-labelledby="demo-radio-buttons-group-label"
+        defaultValue='0'
+        name="radio-buttons-group"
+      >
            {
-             (ExamState[0]?.[1][theQuestionControl]?.answers.map(answer => {
+             props.ExamState?.[0]?.[1]?.[props.theQuestionControl]?.answers.map((answer,index) => {
                 return (
-                  <div>{answer?answer:null}</div>
-
+                  <FormControlLabel value={index}  key={index} control={<Radio />} label={answer} />
                 )
-             }))
-           }
-    
-          <button onClick={() => ChangeQuestion() }>Change Question</button>
-          <button onClick={() => changeExam() }>Finish</button> 
-   </>
-    
+             })
+           } 
+      </RadioGroup>
+    </FormControl>
+    <div><button onClick={() => props.ChangeQuestion() }>Change Question</button></div>      </>
+  
   )
 }
 

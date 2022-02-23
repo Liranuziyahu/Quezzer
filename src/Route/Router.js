@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import {Admin,Login,Exams,ExamsTable,Candidates,Repositore,ExamByID,RepositoreByID,CandidatesByID,CreateCandidates} from '../pages/index'
+import {Admin,Login,DisassembleByCateegoriy,ExamsTable,Candidates,Repositore,ExamByID,RepositoreByID,CandidatesByID,CreateCandidates} from '../pages/index'
 import User from '../pages/User';
 import ProtectedRoute from '../Route/ProtectedRoute'
 import ProtectedUserRoute from './ProtectedUserRoute';
@@ -24,13 +24,13 @@ const Router = () => {
                 <Route path="repositore" element={<Repositore/>}>
                     <Route path="repositore/:cid" element={<RepositoreByID/>}/>
                 </Route>
-                <Route path="test" element={<Exams/>}/><Route/>
+                <Route path="test" element={<DisassembleByCateegoriy/>}/><Route/>
             </Route>
         </Route>
         <Route path="User" element={<ProtectedUserRoute/>}>
             <Route index element={<User/>}>
             </Route> 
-            <Route path="test" element={<Exams/>}/><Route/>
+            <Route path="test" element={<DisassembleByCateegoriy/>}/><Route/>
         </Route> 
         <Route path="*" element={(()=> <h1>Page NOT FOUND - 404 :( </h1>) ()}></Route> 
     </Routes>
