@@ -1,7 +1,7 @@
 export {default as Admin} from './Admin'
 export {default as Login} from './Login'
 export {default as Logout} from './Logout'
-export {default as Exams} from './Exams/Exams'
+export {default as DisassembleByCateegoriy} from './Exams/DisassembleByCateegoriy'
 export {default as ExamsTable} from './Exams/ExamsTable'
 export {default as ExamByID} from './Exams/ExamByID'
 export {default as Repositore} from './Repositore/Repositore'

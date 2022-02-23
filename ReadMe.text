@@ -1,0 +1,19 @@
+Hello everbody and Welcome to Queezer Interview!
+
+How the State of Exams works!?
+first its start with DisassembleByCateegoriy.js Components,
+This component disassemble the exams that user asks for test.
+Then its pass to Exam.js , it controls on the change of Questions and Exams.
+There are importent parameters that makes all that work.
+Parameters :
+
+theExmControl - change the Exam , USESTATE
+changeExam() - function that change the exam
+
+theQuestionControl - change the Question , USESTATE
+ChangeQuestion() - function that change the question
+
+ExamState - slice the current exam for test 
+amountQuestionExam - for cheack when user asnwer all the questions in a exam ,
+and create him break between exams
+

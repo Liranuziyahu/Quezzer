@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useContext, useState } from 'react';
 import { myContextData } from '../../context/ContextDataFromServer';
-import Question from './Question';
+import Exam from './Exam';
 
-const Exams = () => {
+const DisassembleByCateegoriy = () => {
   const userCurrent = JSON.parse(localStorage.getItem('currentUser'));
   const [exmpale , setExample] = useState([])
 useEffect( async () =>{
@@ -17,7 +17,7 @@ useEffect( async () =>{
     <div>
 
       {
-         <Question question={exmpale} />
+         <Exam question={exmpale} />
 
       }
 
@@ -26,7 +26,7 @@ useEffect( async () =>{
   );
 };
 
-export default Exams;
+export default DisassembleByCateegoriy;
 
 
 

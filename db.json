@@ -7,7 +7,8 @@
       "name": "Liran Uziyahu",
       "categoria": [
         "React",
-        "JS"
+        "JS",
+        "Angular"
       ],
       "typeClient": "Admin",
       "Grade": {
@@ -40,29 +41,67 @@
     {
       "JS":[{
         "question":"What are callbacks?",
-        "1":"function that will be executed after another function gets executed",
-        "2":"Row Function",
-        "3":"Regular Function",
-        "4":"Its not exist in JS",
-        "answer":"1"
+        "answers":[
+          "function that will be executed after another function gets executed",
+          "Row Function",
+          "Regular Function",
+          "Its not exist in JS"
+        ],
+        "trueAnswer":"function that will be executed after another function gets executed"
       },
       {
         "question":"What are callbacks2?",
-        "1":"function that will be executed after another function gets executed",
-        "2":"Row Function",
-        "3":"Regular Function",
-        "4":"Its not exist in JS",
-        "answer":"1"
+         "answers":[
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "trueAnswer":"Option 1"
       }
     ],
       "React":[{
         "question":"What are React?",
-        "1":"function that will be executed after another function gets executed",
-        "2":"Row Function",
-        "3":"Regular Function",
-        "4":"Its not exist in JS",
-        "answer":"1"
-      }]
+        "answers":[
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "trueAnswer":"Option 2"
+      },
+      {
+        "question":"What are React2?",
+        "answers":[
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "trueAnswer":"Option 1"
+      }
+    ],
+    "Angular":[{
+      "question":"What are Angular?",
+      "answers":[
+        "Option 1",
+        "Option 2",
+        "Option 3",
+        "Option 4"
+      ],
+      "trueAnswer":"Option 2"
+    },
+    {
+      "question":"What are Angular?",
+      "answers":[
+        "Option 1",
+        "Option 2",
+        "Option 3",
+        "Option 4"
+      ],
+      "trueAnswer":"Option 1"
+    }
+  ]
     }
   ]
 }
