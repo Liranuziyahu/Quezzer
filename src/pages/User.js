@@ -10,7 +10,7 @@ const User = () => {
     <div>Hello {dataUserLogged?.name} </div>
     <div>Welcome to our exams </div>
     <div>Today you will test about {dataUserLogged?.categoria.map(type=> type+" ")}.</div>
-    <Link to='test'>Start</Link>
+    <Link to='Questionnaire'>Start</Link>
   </>
   )
 }

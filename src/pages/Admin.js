@@ -21,6 +21,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import TopicIcon from '@mui/icons-material/Topic';
 
 const drawerWidth = 240;
 
@@ -61,6 +63,18 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     }),
   }));
 
+  const renderSwitch = (param)=>{
+    switch(param) {
+      case 'Candidates':
+        return <AssignmentIndIcon/>;
+      case 'Exams':
+        return <InboxIcon/>;
+      case 'Repositories':
+        return <TopicIcon/>;
+      default:
+        return <MailIcon/>;
+    }
+  }
   const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
@@ -100,6 +114,7 @@ function Admin() {
             <Typography variant="h6" noWrap component="div">
               Interview System
             </Typography>
+            <Logout/>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -122,10 +137,10 @@ function Admin() {
           </DrawerHeader>
           <Divider />
           <List>
-            {['Candidates', 'Exams', 'Repositories','Test'].map((text, index) => (
-              <ListItem button key={text} component={Link} to={text} onClick={()=>{ reqTableAdmin('Candidates')}}>
+            {['Candidates', 'Exams', 'Repositories','Questionnaire'].map((text, index) => (
+              <ListItem button key={index} component={Link} to={text} onClick={()=>{ reqTableAdmin('Candidates')}}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {renderSwitch(text)}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
