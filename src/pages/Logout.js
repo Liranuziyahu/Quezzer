@@ -1,4 +1,5 @@
 import React from 'react'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const Logout = () => {
 
@@ -9,7 +10,7 @@ const Logout = (()=>{
 })
 
   return (
-    <button onClick={()=>Logout()}>Logout</button>
+    <ExitToAppIcon style={{"position":"absolute" , "right":20}} onClick={()=>Logout()}></ExitToAppIcon>
   )
 }
 

@@ -4,6 +4,9 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
 
 const Question = ({props}) => {
   return (
@@ -24,7 +27,13 @@ const Question = ({props}) => {
            } 
       </RadioGroup>
     </FormControl>
-    <div><button onClick={() => props.ChangeQuestion() }>Change Question</button></div>      </>
+    <div>
+    <Button onClick={() => props.ChangeQuestion() } style={{margin:25}}variant="outlined" startIcon={<SendIcon  />}>
+      Send
+    </Button>
+    </div>
+ 
+ </>
   
   )
 }
