@@ -9,7 +9,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BtnCreateCandidates from '../Buttons/BtnCreateCandidates';
 import InputSearch from '../Buttons/InputSearch';
 import { useEffect } from 'react';
 
@@ -23,7 +22,6 @@ const TabelCandidates = () => {
     
     return (
       <>
-      <BtnCreateCandidates />
       <InputSearch setUserSearch = {setUserSearch}></InputSearch>
 
       <TableContainer component={Paper}>  
