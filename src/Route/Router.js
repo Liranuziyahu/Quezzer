@@ -1,7 +1,8 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import {Admin,Login,DisassembleByCateegoriy,ExamsTable,Candidates,Repositore,ExamByID,RepositoreByID,CandidatesByID,CreateCandidates} from '../pages/index'
+import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore,ExamByID,RepositoreByID,CandidatesByID,CreateCandidates} from '../pages/index'
 import User from '../pages/User';
+import Users from '../pages/Users/Users';
 import ProtectedRoute from '../Route/ProtectedRoute'
 import ProtectedUserRoute from './ProtectedUserRoute';
 
@@ -14,12 +15,12 @@ const Router = () => {
         <Route  path="/new" element={<CreateCandidates/>}></Route>
         <Route element={<ProtectedRoute/>}>
             <Route path="Admin" element={<Admin/>}>
-                <Route path="exams" element={<ExamsTable/>}> 
-                    <Route path="exams/:cid" element={<ExamByID/>}/>
+                <Route path="Users" element={<Users/>}> 
+                    <Route path="Users/:cid" element={<ExamByID/>}/>
                 </Route>
-                <Route path="candidates" element={<Candidates/>}>
-                    <Route path="candidates/:cid" element={<CandidatesByID/>}/>
-                    <Route path="new" element={<CreateCandidates/>}/>
+                <Route path="Candidates" element={<TabelCandidates/>}>
+                    <Route path="Candidates/:cid" element={<CandidatesByID/>}/>
+                    {/* <Route path="new" element={<CreateCandidates/>}/> */}
                 </Route>
                 <Route path="repositore" element={<Repositore/>}>
                     <Route path="repositore/:cid" element={<RepositoreByID/>}/>

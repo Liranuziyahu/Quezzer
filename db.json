@@ -6,16 +6,20 @@
       "password": "318866175",
       "name": "Liran Uziyahu",
       "categoria": [
-        "React",
-        "JS",
-        "Angular"
+        {
+          "name": "React",
+          "grade": "100"
+        },
+        {
+          "name": "JS",
+          "grade": "100"
+        },
+        {
+          "name": "Angular",
+          "grade": "95"
+        }
       ],
-      "typeClient": "Admin",
-      "Grade": {
-        "React": "Not start yet",
-        "JS": "Not start yet",
-        "Angular": "Not start yet"
-      }
+      "typeClient": "Admin"
     },
     {
       "id": "kz8ij5o0",
@@ -23,85 +27,381 @@
       "password": "318866175Kk",
       "name": "Liran2",
       "categoria": [
-        "React",
-        "JS"
+        {
+          "name": "React",
+          "grade": "80"
+        },
+        {
+          "name": "JS",
+          "grade": "90"
+        },
+        {
+          "name": "Angular",
+          "grade": "90"
+        }
       ],
-      "typeClient": "User",
-      "Grade": {
-        "React": "Not start yet",
-        "JS": "Not start yet",
-        "Angular": "Not start yet"
-      }
-    }
-  ],
-
-
-
-  "Exams": [
-    {
-      "JS":[{
-        "question":"What are callbacks?",
-        "answers":[
-          "function that will be executed after another function gets executed",
-          "Row Function",
-          "Regular Function",
-          "Its not exist in JS"
-        ],
-        "trueAnswer":"function that will be executed after another function gets executed"
-      },
-      {
-        "question":"What are callbacks2?",
-         "answers":[
-          "Option 1",
-          "Option 2",
-          "Option 3",
-          "Option 4"
-        ],
-        "trueAnswer":"Option 1"
-      }
-    ],
-      "React":[{
-        "question":"What are React?",
-        "answers":[
-          "Option 1",
-          "Option 2",
-          "Option 3",
-          "Option 4"
-        ],
-        "trueAnswer":"Option 2"
-      },
-      {
-        "question":"What are React2?",
-        "answers":[
-          "Option 1",
-          "Option 2",
-          "Option 3",
-          "Option 4"
-        ],
-        "trueAnswer":"Option 1"
-      }
-    ],
-    "Angular":[{
-      "question":"What are Angular?",
-      "answers":[
-        "Option 1",
-        "Option 2",
-        "Option 3",
-        "Option 4"
-      ],
-      "trueAnswer":"Option 2"
+      "typeClient": "User"
     },
     {
-      "question":"What are Angular?",
-      "answers":[
-        "Option 1",
-        "Option 2",
-        "Option 3",
-        "Option 4"
+      "id": "l043fkwh",
+      "email": "11@gamil.com",
+      "password": "12312",
+      "name": "Liran",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": "Not start yet"
+        }
       ],
-      "trueAnswer":"Option 1"
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l043fzfg",
+      "email": "11@gamil.com",
+      "password": "313123",
+      "name": "dasdasd",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l043gpnz",
+      "email": "Amit@gmail.com",
+      "password": "3131",
+      "name": "Liran",
+      "categoria": [
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l043ni32",
+      "email": "wwwwww@walla.com",
+      "password": "31",
+      "name": "Liran",
+      "categoria": [
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l043u074",
+      "email": "11111@gmail.com",
+      "password": "111",
+      "name": "1111",
+      "categoria": [
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l043x58r",
+      "email": "Test@gmail.com",
+      "password": "test",
+      "name": "test",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l04418yq",
+      "email": "TestW@gmail.com",
+      "password": "3",
+      "name": "322",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l04421ga",
+      "email": "1@gmail.com",
+      "password": "1",
+      "name": "1",
+      "categoria": [
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
+    },
+    {
+      "id": "l0442dua",
+      "email": "`1@gmail.com",
+      "password": "1`",
+      "name": "Liran",
+      "categoria": [
+        {
+          "name": "JS",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
     }
-  ]
+  ],
+  "Exams": [
+    {
+      "JS": [
+        {
+          "question": "What are callbacks?",
+          "answers": [
+            "function that will be executed after another function gets executed",
+            "Row Function",
+            "Regular Function",
+            "Its not exist in JS"
+          ],
+          "trueAnswer": "function that will be executed after another function gets executed"
+        },
+        {
+          "question": "What are callbacks2?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 1"
+        }
+      ],
+      "React": [
+        {
+          "question": "What are React?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 2"
+        },
+        {
+          "question": "What are React2?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 1"
+        }
+      ],
+      "Angular": [
+        {
+          "question": "What are Angular?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 2"
+        },
+        {
+          "question": "What are Angular?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 1"
+        }
+      ]
     }
   ]
 }

@@ -1,17 +1,16 @@
-import React,{useState} from 'react'
-import { Link , Outlet,Navigate} from "react-router-dom";
+import React from 'react'
+import { Link } from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
+import '../../CSS/Candidate.css'
 import Button from '@mui/material/Button';
-import TabelCandidates from '../Tamplates/TabelCandidates';
-import { useNavigate } from "react-router-dom";
 
 const BtnCreateCandidates = () => {
-    // const [toggleAddButton,settoggleAddButton] = useState(false)
-    const navigate = useNavigate();
+
 
     return (
-            <Link  to="new"> 
-              <Button  variant="outlined" size="small" >add</Button>
-            </Link>
+            <Link to="/new" > 
+        <Button  variant="outlined" size="small" style={{float:'right',marginBottom:10}}><AddIcon id="add_candidate" /></Button>   
+            </Link>  
     )
 }
 
