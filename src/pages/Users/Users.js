@@ -18,8 +18,8 @@ const Users = ({props}) => {
               <TableCell align="center">{props?.user.name}</TableCell>
               <TableCell align="center">
               <EditIcon onClick={() => {
-                 props.setUserToChange(props?.user)
-                 props.setEditCompUser(!props?.editUser)
+                  props.setUserToChange(props.user);
+                 return props.setEditCompUser(!props.editUser)
               }}>
               </EditIcon>
               
