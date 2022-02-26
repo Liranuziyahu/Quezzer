@@ -6,7 +6,8 @@ export const myContext = createContext()
 const Context = ({children}) => {
     const [toggleAddButton,settoggleAddButton] = useState(false)
     const [isAuth, setIsAuth] = useState(false)
-    let navigate = useNavigate();
+
+    
 
     useEffect(async () => {
        

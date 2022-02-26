@@ -7,13 +7,13 @@ import {myContext} from '../../context/Context'
 import { useNavigate } from "react-router-dom";
 
 const TamplateLogin = ({settoggleAddButton,toggleAddButton}) => {
-    const {state , setDataUserLogged } =  useContext(myContextData)
+    const {StateUser , setDataUserLogged } =  useContext(myContextData)
     const {setIsAuth} = useContext(myContext)
     let navigate = useNavigate();
 
     const checkAuto = (autoLogin) => {
         autoLogin.preventDefault()
-        state.map(async (user)=>{
+        StateUser.map(async (user)=>{
             if(user.email == autoLogin.target[0].value && user.password == autoLogin.target[1].value)
             {
                  setDataUserLogged(user)

@@ -3,15 +3,16 @@ import { FormControl } from '@mui/material';
 import { Form,Col,Row,Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
-import {myContext} from '../../context/Context'
+import {myContextData} from '../../context/ContextDataFromServer'
 
-const TableCerateCandidates = (props) => {
+const TableCerateCandidates = () => {
+    const {addUser,checkCategoria ,user ,setUser} = useContext(myContextData)
     const navigate = useNavigate();
 
     return (
         <div style={{"width":"80%","marginLeft":"20%","marginTop":"40px"}}>
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
-                props.value.addUser(props.value.user)
+                addUser(user)
                 e.preventDefault();
                 navigate(-1)
                 }} >
@@ -21,7 +22,7 @@ const TableCerateCandidates = (props) => {
                     Email
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>props.value.setUser({...props.value.user,['email']:e.target.value}))} type="email" placeholder="Email" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['email']:e.target.value}))} type="email" placeholder="Email" />
                     </Col>
                 </Form.Group>
 
@@ -30,7 +31,7 @@ const TableCerateCandidates = (props) => {
                     Password
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>props.value.setUser({...props.value.user,['password']:e.target.value}))} type="password" placeholder="Password" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['password']:e.target.value}))} type="password" placeholder="Password" />
                     </Col>
                 </Form.Group>
                 
@@ -39,7 +40,7 @@ const TableCerateCandidates = (props) => {
                     Full Name
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=> props.value.setUser({...props.value.user,['name']:e.target.value}))} type="text" placeholder="Full name" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['name']:e.target.value}))} type="text" placeholder="Full name" />
                     </Col>
                 </Form.Group>
 
@@ -55,21 +56,21 @@ const TableCerateCandidates = (props) => {
                         label="React"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios1"
-                        onClick = {((e)=>{props.value.checkCategoria(e.target.checked,'React')})}
+                        onClick = {((e)=>{checkCategoria(e.target.checked,'React')})}
                         />
                         <Form.Check
                         type="checkbox"
                         label="Angular"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios2"
-                        onClick ={((e)=>{props.value.checkCategoria(e.target.checked,'Angular')})}
+                        onClick ={((e)=>{checkCategoria(e.target.checked,'Angular')})}
                         />
                         <Form.Check
                         type="checkbox"
                         label="JS"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios3"
-                        onClick = {((e)=>{props.value.checkCategoria(e.target.checked,'JS')})}
+                        onClick = {((e)=>{checkCategoria(e.target.checked,'JS')})}
                         />
                     </Col>
                     </Form.Group>

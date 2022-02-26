@@ -13,7 +13,7 @@ import InputSearch from '../Buttons/InputSearch';
 import { useEffect } from 'react';
 
 const TabelCandidates = () => {
-    const {state} = useContext(myContextData)
+    const {StateUser} = useContext(myContextData)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
 
     useEffect(()=>{
@@ -41,12 +41,12 @@ const TabelCandidates = () => {
                 userSearch.search?
                    (
                
-                    state.map((candidate)=>{
+                    StateUser.map((candidate)=>{
                      if(eval(`candidate.${userSearch.catagorei}`) == userSearch.search)
                         return <Candidates candidate = {candidate}/>
                     })
                    )
-                  :state?.map((candidate) => {return( 
+                  :StateUser?.map((candidate) => {return( 
                     <Candidates candidate = {candidate}/>)})
                 
                 }
