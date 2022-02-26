@@ -21,7 +21,7 @@ const TableUsers = () => {
     { 
       editUser
       ?
-      <ChangeUserData props={{"setEditUser":setEditCompUser,"userToChange":userToChange}} /> 
+      <ChangeUserData props={{"setEditCompUser":setEditCompUser,"userToChange":userToChange}} /> 
       : 
       <TampletUsers props={{"userSearch":userSearch , "setEditCompUser":setEditCompUser 
       , "editUser":editUser , setUserToChange}} />

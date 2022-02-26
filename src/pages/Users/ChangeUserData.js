@@ -9,7 +9,7 @@ const ChangeUserData = ({props}) => {
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Change Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"onClick={()=>props.setEditUser(false)}></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"onClick={()=>props.setEditCompUser(false)}></button>
         </div>
         <div class="modal-body">
         
@@ -49,7 +49,7 @@ const ChangeUserData = ({props}) => {
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={()=>props.setEditUser(false)}>Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={()=>props.setEditCompUser(false)}>Close</button>
           <button type="button" class="btn btn-primary" onClick={()=>{props.setEditCompUser(false)}}>Save changes</button>
         </div>
       </div>  

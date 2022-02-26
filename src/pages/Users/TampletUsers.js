@@ -32,7 +32,7 @@ const TampletUsers = ({props}) => {
                 if(eval(`user.${props.userSearch.catagorei}`) == props.userSearch.search)
                     return <Users props = {{"user":user}}/>
                 }))
-            : StateUser.map((user) => <Users props={{"user": user , "setEditUser":props.setEditUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
+            : StateUser.map((user) => <Users props={{"user": user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
           }
         </TableBody>
       </Table>
