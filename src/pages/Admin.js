@@ -138,7 +138,7 @@ function Admin() {
           <Divider />
           <List>
             {['Candidates', 'Users', 'Repositories','Questionnaire'].map((text, index) => (
-              <ListItem button key={index} component={Link} to={text} onClick={()=>{ reqTableAdmin(`${text}`)}}>
+              <ListItem button key={index} component={Link} to={text} onClick={()=>{ reqTableAdmin(`Candidates`)}}>
                 <ListItemIcon>
                 {renderSwitch(text)}
                 </ListItemIcon>

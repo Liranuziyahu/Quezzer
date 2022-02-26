@@ -2,10 +2,9 @@ import React from 'react'
 import { Routes, Route } from "react-router-dom";
 import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore,ExamByID,RepositoreByID,CandidatesByID,CreateCandidates} from '../pages/index'
 import User from '../pages/User';
-import Users from '../pages/Users/Users';
 import ProtectedRoute from '../Route/ProtectedRoute'
 import ProtectedUserRoute from './ProtectedUserRoute';
-
+import TableUsers from '../pages/Users/TableUsers'
 
 const Router = () => {
     
@@ -15,7 +14,7 @@ const Router = () => {
         <Route  path="/new" element={<CreateCandidates/>}></Route>
         <Route element={<ProtectedRoute/>}>
             <Route path="Admin" element={<Admin/>}>
-                <Route path="Users" element={<Users/>}> 
+                <Route path="Users" element={<TableUsers/>}> 
                     <Route path="Users/:cid" element={<ExamByID/>}/>
                 </Route>
                 <Route path="Candidates" element={<TabelCandidates/>}>
