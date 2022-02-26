@@ -67,7 +67,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     switch(param) {
       case 'Candidates':
         return <AssignmentIndIcon/>;
-      case 'Exams':
+      case 'Users':
         return <InboxIcon/>;
       case 'Repositories':
         return <TopicIcon/>;
@@ -137,8 +137,8 @@ function Admin() {
           </DrawerHeader>
           <Divider />
           <List>
-            {['Candidates', 'Exams', 'Repositories','Questionnaire'].map((text, index) => (
-              <ListItem button key={index} component={Link} to={text} onClick={()=>{ reqTableAdmin('Candidates')}}>
+            {['Candidates', 'Users', 'Repositories','Questionnaire'].map((text, index) => (
+              <ListItem button key={index} component={Link} to={text} onClick={()=>{ reqTableAdmin(`${text}`)}}>
                 <ListItemIcon>
                 {renderSwitch(text)}
                 </ListItemIcon>
@@ -158,20 +158,3 @@ function Admin() {
 }
 
 export default Admin
-// reqTableAdmin={reqTableAdmin}
-// onClick={()=>{reqTableAdmin('Candidates')}}
-
-
-
-
-{/* <div> */}
-{/* <Logout/>
-<nav>
-<Stack spacing={1} direction="row">
-<Button onClick={()=>{ reqTableAdmin('Candidates')}} variant="outlined"  >  <Link to="candidates">Candidates</Link></Button>
-<Button onClick={()=>{ reqTableAdmin('ExamsTable')}} variant="outlined"><Link to='exams'>Exams</Link></Button>
-<Button variant="outlined" ><Link to='repositore'>Repositories</Link></Button>
-</Stack>
-</nav>
-<Outlet></Outlet>
-</div> */}

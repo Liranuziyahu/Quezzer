@@ -6,29 +6,53 @@ import TableCerateCandidates from '../Tamplates/TableCerateCandidates';
 
 const CreateCandidates = () => {
     const {setState,state} = useContext(myContextData)
-    const [user, setUser] = useState({"id":uniqid(),"email":'',"password":'',"name":'',"categoria":[],"typeClient":'User',"Grade":[{
-        "React": "Not start yet",
-        "JS": "Not start yet",
-        "Angular": "Not start yet"
-      }]})
+    const [user, setUser] = useState({"id":uniqid(),"email":'',"password":'',
+    "name":'',
+    "categoria":[],
+    "typeClient":'User',
+    "Grade":[
+        {
+            "name": "React",
+            "grade": "Dont Start yet"
+          },
+          {
+            "name": "React",
+            "grade": "Dont Start yet"
+          },
+          {
+            "name": "React",
+            "grade": "Dont Start yet"
+          },
+    ]
+})
+
+
     const addUser = (()=>{
-        console.log(user);
+        console.log("CreateCandidates");
         setState([...state,user])
-        axios.post('http://localhost:3000/Candidates',user)
-    })
+        axios.post('http://localhost:3000/Candidates',user)})
+
     
     const checkCategoria = (check , categoriaType) =>{
     if(check == true)
     {
-        return setUser({...user,['categoria']:[...user.categoria,categoriaType]})
-    }
+        return setUser({...user,['categoria']:[...user.categoria,{"name":categoriaType ,"grade":"Not start yet"}]})}
     else
     {
-        const indexCategoria = user.categoria.indexOf(categoriaType)
-        user.categoria.splice(indexCategoria,1)
-        return setUser({...user,['categoria']:user.categoria})
-    }}
+        user.categoria.map((category , index)=>{
+            if(category.name == categoriaType)
+            {
+                console.log(index)
+                user.categoria.splice(index,1)
+                return setUser({...user,['categoria']:user.categoria})
+            }
+           
+        })
+        
+    }
+}
 
+        
     return (
         <>
        <TableCerateCandidates value={{"addUser":addUser ,"user":user , "setUser":setUser , "checkCategoria":checkCategoria}}/>
