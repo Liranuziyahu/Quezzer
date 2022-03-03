@@ -72,6 +72,37 @@
           "grade": "Dont Start yet"
         }
       ]
+    },
+    {
+      "id": "l058v7ev",
+      "email": "Ohad@gmail.com",
+      "password": "1212",
+      "name": "Ohad",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": "Not start yet"
+        },
+        {
+          "name": "Angular",
+          "grade": "Not start yet"
+        }
+      ],
+      "typeClient": "User",
+      "Grade": [
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        },
+        {
+          "name": "React",
+          "grade": "Dont Start yet"
+        }
+      ]
     }
   ],
   "Exams": [

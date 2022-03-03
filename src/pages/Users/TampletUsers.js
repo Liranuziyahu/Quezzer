@@ -28,10 +28,13 @@ const TampletUsers = ({props}) => {
         <TableBody>
           {
             props.userSearch.search ?  
-            (StateUser.map((user)=>{
-                if(eval(`user.${props.userSearch.catagorei}`) == props.userSearch.search)
-                    return <Users props = {{"user":user}}/>
-                }))
+              (
+               StateUser.map((user)=>{
+               let entryString = eval(`user.${props.userSearch?.catagorei}`).toLowerCase() 
+               let currentSearchString = props.userSearch.search.toLowerCase() 
+               if(entryString.startsWith(currentSearchString))
+                  return <Users props = {{"user":user}}/>
+              }))
             : StateUser.map((user) => <Users props={{"user": user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
           }
         </TableBody>

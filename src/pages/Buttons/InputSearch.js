@@ -7,7 +7,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FilledInput from '@mui/material/FilledInput';
 
-const ariaLabel = { 'aria-label': 'description' };
 const currencies = [
   {
     value: 'id',
