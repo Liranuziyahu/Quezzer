@@ -17,7 +17,6 @@ const TabelCandidates = () => {
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
 
     useEffect(()=>{
-      console.log(userSearch)
     },[userSearch])
     
     return (
@@ -42,17 +41,18 @@ const TabelCandidates = () => {
                    (
                
                     StateUser.map((candidate)=>{
-                     if(eval(`candidate.${userSearch.catagorei}`) == userSearch.search)
+                     let entryString = eval(`candidate.${userSearch?.catagorei}`).toLowerCase() 
+                     let currentSearchString = userSearch.search.toLowerCase() 
+                     if(entryString.startsWith(currentSearchString))
                         return <Candidates candidate = {candidate}/>
                     })
                    )
-                  :StateUser?.map((candidate) => {return( 
-                    <Candidates candidate = {candidate}/>)})
+                  :StateUser?.map(candidate => <Candidates candidate = {candidate}/>)
                 
                 }
             </TableBody>
           </Table>
-    </TableContainer>
+    </TableContainer>שדשדשדתל
       </>
   
     )

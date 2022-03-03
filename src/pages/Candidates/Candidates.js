@@ -13,7 +13,7 @@ function Candidates({candidate}) {
             <TableCell align="center"> {candidate?.name}</TableCell>
             <TableCell align="center">{candidate?.email}</TableCell>
             <TableCell align="center">{candidate?.categoria==null?null:candidate?.categoria.map(categoria=>{
-                {console.log("categoria" , categoria)
+                {
                     return  <div>{categoria.name}</div>
                 }
             })}
@@ -21,7 +21,7 @@ function Candidates({candidate}) {
             <TableCell align="center">
 
             {candidate?.categoria==null?null:candidate?.categoria.map(categoria=>{
-                {console.log("categoria" , categoria)
+                {
                     return  <div>{categoria.grade}</div>
                 }
             })}
