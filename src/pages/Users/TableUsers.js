@@ -1,33 +1,47 @@
-import React ,{useContext, useEffect, useState} from 'react'
-import InputSearch from '../Buttons/InputSearch'
-//CSS
+import React , {useContext, useEffect, useState} from 'react'
+import User from './User'
+import {myContextData} from '../../context/ContextDataFromServer'
 
-import BtnCreateCandidates from '../Buttons/BtnCreateCandidates';
-import ChangeUserData from './ChangeUserData';
-import TampletUsers from './TampletUsers';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
-const TableUsers = () => {
-    const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
-    const [editUser , setEditCompUser ] =useState(false)
-    const [userToChange , setUserToChange] = useState('')
-
-    useEffect(()=>{
-    },[userSearch])
+const TableUsers = ({props}) => {
+    const {StateUser} = useContext(myContextData)
   return (
-    <>
-     <BtnCreateCandidates />
-     <InputSearch setUserSearch = {setUserSearch}></InputSearch>
+    
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">ID</TableCell>
+            <TableCell align="center">Email</TableCell>
+            <TableCell align="center">User Name</TableCell>
+            <TableCell align="center">Tools</TableCell>
 
-    { 
-      editUser
-      ?
-      <ChangeUserData props={{"setEditCompUser":setEditCompUser,"userToChange":userToChange}} /> 
-      : 
-      <TampletUsers props={{"userSearch":userSearch , "setEditCompUser":setEditCompUser 
-      , "editUser":editUser , setUserToChange}} />
-     }
-    </>
-     )
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {
+            props.userSearch.search ?  
+              (
+               StateUser.map((user)=>{
+               let entryString = eval(`user.${props.userSearch?.catagorei}`).toLowerCase() 
+               let currentSearchString = props.userSearch.search.toLowerCase() 
+               if(entryString.startsWith(currentSearchString))
+                  return <User props = {{"user":user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>
+              }))
+            : 
+            StateUser.map((user) => <User props={{"user": user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
+          }
+        </TableBody>
+      </Table>
+    </TableContainer>
+  )
 }
 
 export default TableUsers

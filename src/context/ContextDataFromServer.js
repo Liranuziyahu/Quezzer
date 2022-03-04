@@ -15,22 +15,12 @@ const Candidates = ({children}) => {
     const [user, setUser] = useState({"id":uniqid(),"email":'',"password":'',
     "name":'',
     "categoria":[],
-    "typeClient":'User',
-    "Grade":[
-        {
-            "name": "React",
-            "grade": "Dont Start yet"
-          },
-          {
-            "name": "React",
-            "grade": "Dont Start yet"
-          },
-          {
-            "name": "React",
-            "grade": "Dont Start yet"
-          },
-    ]
+    "typeClient":'User'
+
 })
+
+   
+
     
     //Function
     const reqTableAdmin= (req => {return setReqAdminNav(req)})
@@ -41,9 +31,8 @@ const Candidates = ({children}) => {
         axios.post('http://localhost:3000/Candidates',user)})
 
     const editUser = ((user)=>{
-        console.log("editCandidates");
-
-        axios.post('http://localhost:3000/Candidates',user)
+        console.log("edituser" , user);
+        axios.patch(`http://localhost:3000/Candidates/${user.id}`,user)
 
     })
 
@@ -72,7 +61,7 @@ const Candidates = ({children}) => {
 
     return (
         <>
-            <myContextData.Provider value={{StateUser,reqTableAdmin , setDataUserLogged , dataUserLogged , checkCategoria ,addUser ,user,setUser }} >
+            <myContextData.Provider value={{StateUser,reqTableAdmin , setDataUserLogged , dataUserLogged , checkCategoria ,addUser ,user,setUser ,editUser}} >
                 {children}
             </myContextData.Provider>
         </>

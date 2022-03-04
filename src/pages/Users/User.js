@@ -3,8 +3,7 @@ import React from 'react'
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import EditIcon from '@mui/icons-material/Edit';
-const Users = ({props}) => {
-  console.log("props" , props)
+const User = ({props}) => {
   return (
     <>
     
@@ -32,4 +31,4 @@ const Users = ({props}) => {
      )
 }
 
-export default Users  
+export default User  
