@@ -22,87 +22,17 @@
       "typeClient": "Admin"
     },
     {
-      "id": "kz8ij5o0",
-      "email": "liranuzi@walla.com",
-      "password": "318866175Kk",
-      "name": "Liran2",
+      "id": "l0bi3gjy",
+      "email": "5@5",
+      "password": "55555555555",
+      "name": "test",
       "categoria": [
-        {
-          "name": "React",
-          "grade": "80"
-        },
-        {
-          "name": "JS",
-          "grade": "90"
-        },
-        {
-          "name": "Angular",
-          "grade": "90"
-        }
-      ],
-      "typeClient": "User"
-    },
-    {
-      "id": "l04buppl",
-      "email": "yahu@gmail.com",
-      "password": "318866175",
-      "name": "yahu",
-      "categoria": [
-        {
-          "name": "JS",
-          "grade": "Not start yet"
-        },
         {
           "name": "React",
           "grade": "Not start yet"
         }
       ],
-      "typeClient": "User",
-      "Grade": [
-        {
-          "name": "React",
-          "grade": "Dont Start yet"
-        },
-        {
-          "name": "React",
-          "grade": "Dont Start yet"
-        },
-        {
-          "name": "React",
-          "grade": "Dont Start yet"
-        }
-      ]
-    },
-    {
-      "id": "l058v7ev",
-      "email": "Ohad@gmail.com",
-      "password": "1212",
-      "name": "Ohad",
-      "categoria": [
-        {
-          "name": "React",
-          "grade": "Not start yet"
-        },
-        {
-          "name": "Angular",
-          "grade": "Not start yet"
-        }
-      ],
-      "typeClient": "User",
-      "Grade": [
-        {
-          "name": "React",
-          "grade": "Dont Start yet"
-        },
-        {
-          "name": "React",
-          "grade": "Dont Start yet"
-        },
-        {
-          "name": "React",
-          "grade": "Dont Start yet"
-        }
-      ]
+      "typeClient": "User"
     }
   ],
   "Exams": [

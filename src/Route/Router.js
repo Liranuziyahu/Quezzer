@@ -4,7 +4,7 @@ import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore,ExamByID,
 import User from '../pages/User';
 import ProtectedRoute from '../Route/ProtectedRoute'
 import ProtectedUserRoute from './ProtectedUserRoute';
-import TableUsers from '../pages/Users/TableUsers'
+import UserPage from '../pages/Users/UserPage'
 
 const Router = () => {
     
@@ -14,7 +14,7 @@ const Router = () => {
         <Route  path="/new" element={<CreateCandidates/>}></Route>
         <Route element={<ProtectedRoute/>}>
             <Route path="Admin" element={<Admin/>}>
-                <Route path="Users" element={<TableUsers/>}> 
+                <Route path="Users" element={<UserPage/>}> 
                     <Route path="Users/:cid" element={<ExamByID/>}/>
                 </Route>
                 <Route path="Candidates" element={<TabelCandidates/>}>

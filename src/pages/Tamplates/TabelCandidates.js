@@ -39,7 +39,6 @@ const TabelCandidates = () => {
               {
                 userSearch.search?
                    (
-               
                     StateUser.map((candidate)=>{
                      let entryString = eval(`candidate.${userSearch?.catagorei}`).toLowerCase() 
                      let currentSearchString = userSearch.search.toLowerCase() 
@@ -52,7 +51,7 @@ const TabelCandidates = () => {
                 }
             </TableBody>
           </Table>
-    </TableContainer>שדשדשדתל
+    </TableContainer>
       </>
   
     )
