@@ -16,12 +16,8 @@ const Candidates = ({children}) => {
     "name":'',
     "categoria":[],
     "typeClient":'User'
-
 })
-
    
-
-    
     //Function
     const reqTableAdmin= (req => {return setReqAdminNav(req)})
 
@@ -33,24 +29,22 @@ const Candidates = ({children}) => {
     const editUser = ((user)=>{
         console.log("edituser" , user);
         axios.patch(`http://localhost:3000/Candidates/${user.id}`,user)
-
     })
 
-        const checkCategoria = (check , categoriaType) =>{
-            if(check == true)
-            {   
-                return setUser({...user,['categoria']:[...user.categoria,{"name":categoriaType ,"grade":"Not start yet"}]})}
-            else
-            {
-                user.categoria.map((category , index)=>{
-                    if(category.name == categoriaType)
-                    {
-                        console.log(index)
-                        user.categoria.splice(index,1)
-                        return setUser({...user,['categoria']:user.categoria})
-                    }
-                   
-            })}}
+    const checkCategoria = (check , categoriaType) =>{
+        if(check == true)
+        {   
+            return setUser({...user,['categoria']:[...user.categoria,{"name":categoriaType ,"grade":0}]})}
+        else
+        {
+            user.categoria.map((category , index)=>{
+                if(category.name == categoriaType)
+                {
+                    console.log(index)
+                    user.categoria.splice(index,1)
+                    return setUser({...user,['categoria']:user.categoria})
+                }
+    })}}
 
     useEffect(async() => {
         const dataArr=[]
