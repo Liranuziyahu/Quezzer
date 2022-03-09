@@ -4,6 +4,7 @@ import { Form,Col,Row,Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
 import {myContextData} from '../../context/ContextDataFromServer'
+import BackPage from '../Buttons/BackPage';
 
 const TableCerateCandidates = () => {
     const {addUser,checkCategoria ,user ,setUser} = useContext(myContextData)
@@ -16,7 +17,7 @@ const TableCerateCandidates = () => {
                 e.preventDefault();
                 navigate(-1)
                 }} >
-            <Form  >
+            <Form >
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
                     <Form.Label column sm={2}>
                     Email
@@ -79,6 +80,7 @@ const TableCerateCandidates = () => {
                 <Form.Group as={Row} className="mb-3">
                     <Col sm={{ span: 10, offset: 2 }}>
                     <Button type="submit" >Sign in</Button>
+                    <BackPage/>
                     </Col>
                 </Form.Group>
             </Form>
