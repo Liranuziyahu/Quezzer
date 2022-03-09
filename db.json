@@ -8,31 +8,14 @@
       "categoria": [
         {
           "name": "React",
-          "grade": "100"
-        },
-        {
-          "name": "JS",
-          "grade": "100"
+          "grade": 60
         },
         {
           "name": "Angular",
-          "grade": "95"
+          "grade": 70
         }
       ],
       "typeClient": "Admin"
-    },
-    {
-      "id": "l0bi3gjy",
-      "email": "5@5",
-      "password": "55555555555",
-      "name": "test",
-      "categoria": [
-        {
-          "name": "React",
-          "grade": "Not start yet"
-        }
-      ],
-      "typeClient": "User"
     }
   ],
   "Exams": [

@@ -4,12 +4,32 @@ import { myContextData } from '../../context/ContextDataFromServer';
 import Exam from './Exam';
 
 const DisassembleByCateegoriy = () => {
-  const userCurrent = JSON.parse(localStorage.getItem('currentUser'));
   const [exmpale , setExample] = useState([])
 useEffect( async () =>{
+  let fromLocal = localStorage.getItem('currentUser')  
+  let dataUser = JSON.parse(fromLocal) 
+
   const data = await axios.get(`http://localhost:3000/Exams`);
-  const cata = Object.entries(data.data[0])
-  setExample(cata)
+  const repositoryExmas = Object.entries(data.data[0])
+
+  let theCategoriaUserAsk = []
+  dataUser.categoria.map(exm => theCategoriaUserAsk.push(exm.name))
+
+
+  let theExamsUserAsk =[]
+  repositoryExmas.map((allExm)=>
+  {
+    theCategoriaUserAsk.map((examUserAsk)=>{
+      if(allExm[0] == examUserAsk)
+      theExamsUserAsk.push(allExm)
+    })
+  })
+  console.log("arrExamsUserAsk" , theExamsUserAsk)
+  console.log("theExamsUserAsk" , theExamsUserAsk)
+    
+  
+  setExample(theExamsUserAsk)
+
 
 },[])
     
