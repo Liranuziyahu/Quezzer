@@ -9,7 +9,6 @@ import {myContextData} from '../../context/ContextDataFromServer'
 
 const UserPage = () => {
     const {user} = useContext(myContextData)
-    
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
     const [editUser , setEditCompUser ] =useState(false)
     const [userToChange , setUserToChange] = useState(user)

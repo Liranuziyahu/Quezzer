@@ -24,13 +24,8 @@ useEffect( async () =>{
       theExamsUserAsk.push(allExm)
     })
   })
-  console.log("arrExamsUserAsk" , theExamsUserAsk)
-  console.log("theExamsUserAsk" , theExamsUserAsk)
-    
-  
+
   setExample(theExamsUserAsk)
-
-
 },[])
     
   return (

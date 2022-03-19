@@ -21,7 +21,7 @@ const Router = () => {
                     <Route path="Candidates/:cid" element={<CandidatesByID/>}/>
                     {/* <Route path="new" element={<CreateCandidates/>}/> */}
                 </Route>
-                <Route path="repositore" element={<Repositore/>}>
+                <Route path="Repositories" element={<Repositore/>}>
                     <Route path="repositore/:cid" element={<RepositoreByID/>}/>
                 </Route>
                 <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/><Route/>
