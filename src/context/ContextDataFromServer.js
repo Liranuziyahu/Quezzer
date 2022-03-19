@@ -24,10 +24,17 @@ const Candidates = ({children}) => {
         return setReqAdminNav(req)
     })
 
-    const addUser = ((user)=>{
+    const addUser = (async (user)=>{
         console.log("CreateCandidates" ,user);
         setStateUser([...StateUser,user])
-        axios.post('http://localhost:3000/Candidates',user)    
+       await axios.post('http://localhost:3000/Candidates',user)
+
+        setUser({"id":uniqid(),"email":'',"password":'',
+        "name":'',
+        "categoria":[],
+        "typeClient":'User'
+    })
+ 
     })
 
     const editUser = ((user)=>{
