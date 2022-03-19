@@ -63,7 +63,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     }),
   }));
 
-  const renderSwitch = (param)=>{
+  const renderSwitchIcon = (param)=>{
     switch(param) {
       case 'Candidates':
         return <AssignmentIndIcon/>;
@@ -138,10 +138,10 @@ function Admin() {
           <Divider />
           <List>
             {['Candidates', 'Users', 'Repositories','Questionnaire'].map((text, index) => (
-              <ListItem button key={index} component={Link} to={text} onClick={()=>{ reqTableAdmin(`Candidates`)}}>
+              <ListItem button key={index} component={Link} to={text}>
                 <ListItemIcon>
-                {renderSwitch(text)}
-                </ListItemIcon>
+                {renderSwitchIcon(text)}
+                </ListItemIcon>      
                 <ListItemText primary={text} />
               </ListItem>
             ))}

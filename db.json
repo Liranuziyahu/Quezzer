@@ -8,21 +8,60 @@
       "categoria": [
         {
           "name": "React",
-          "grade": 60
+          "grade": 90
         },
         {
           "name": "Angular",
-          "grade": 70
+          "grade": 100
         }
       ],
       "typeClient": "Admin"
+    },
+    {
+      "id": "l0vmquko",
+      "email": "test@gamil.com",
+      "password": "1212",
+      "name": "Liran",
+      "categoria": [
+        {
+          "name": "Angular",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "P08N8K7"
+    },
+    {
+      "id": "l0xrtib8",
+      "email": "Liranuziyahu@gmail.com",
+      "password": "1212",
+      "name": "1212",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        },
+        {
+          "name": "JS",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "HbV2rPK"
+    },
+    {
+      "id": "49bZQQ8"
     }
   ],
   "Exams": [
     {
       "JS": [
         {
-          "question": "What are callbacks?",
+          "question": "What are callbacks JS?",
           "answers": [
             "function that will be executed after another function gets executed",
             "Row Function",
