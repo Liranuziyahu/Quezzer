@@ -1,6 +1,6 @@
 import React,{useContext, useState} from 'react'
 import {myContextData} from '../../context/ContextDataFromServer'
-import Candidates from '../Candidates/Candidates'
+import Candidates from './Candidates'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';

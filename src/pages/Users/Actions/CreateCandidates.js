@@ -3,10 +3,10 @@ import { FormControl } from '@mui/material';
 import { Form,Col,Row,Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
-import {myContextData} from '../../context/ContextDataFromServer'
-import BackPage from '../Buttons/BackPage';
+import {myContextData} from '../../../context/ContextDataFromServer'
+import BackPage from '../../Buttons/BackPage';
 
-const TableCerateCandidates = () => {
+const CreateCandidates = () => {
     const {addUser,checkCategoria ,user ,setUser} = useContext(myContextData)
     const navigate = useNavigate();
 
@@ -89,4 +89,4 @@ const TableCerateCandidates = () => {
     )
 }
 
-export default TableCerateCandidates
+export default CreateCandidates

@@ -1,7 +1,7 @@
 import React ,{useContext} from 'react'
 import { Link , Outlet } from "react-router-dom";
-import {myContextData} from '../context/ContextDataFromServer'
-import Logout from '../pages/Logout'
+import {myContextData} from '../../context/ContextDataFromServer'
+import Logout from '../Logout'
 //CSS
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';

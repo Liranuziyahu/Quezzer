@@ -1,6 +1,6 @@
 import React , {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import {myContextData} from '../context/ContextDataFromServer'
+import {myContextData} from '../../context/ContextDataFromServer'
 
 const User = () => {
   const {dataUserLogged} = useContext(myContextData)

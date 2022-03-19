@@ -3,7 +3,7 @@ import InputSearch from '../Buttons/InputSearch'
 //CSS
 
 import BtnCreateCandidates from '../Buttons/BtnCreateCandidates';
-import ChangeUserData from './ChangeUserData';
+import ChangeUserData from './Actions/ChangeUserData';
 import TableUsers from './TableUsers';
 import {myContextData} from '../../context/ContextDataFromServer'
 
