@@ -1,6 +1,6 @@
 import React ,{useContext} from 'react'
 import { Form,Col,Row } from 'react-bootstrap';
-import {myContextData} from '../../context/ContextDataFromServer'
+import {myContextData} from '../../../context/ContextDataFromServer'
 import { FormControl } from '@mui/material';
 
 const ChangeUserData = ({props}) => {

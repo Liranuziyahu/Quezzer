@@ -25,11 +25,9 @@ const Candidates = ({children}) => {
     })
 
     const addUser = ((user)=>{
-        console.log("CreateCandidates");
+        console.log("CreateCandidates" ,user);
         setStateUser([...StateUser,user])
-        axios.post('http://localhost:3000/Candidates',user)
-        console.log(axios.post('http://localhost:3000/Candidates'))
-    
+        axios.post('http://localhost:3000/Candidates',user)    
     })
 
     const editUser = ((user)=>{
