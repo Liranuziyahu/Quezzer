@@ -58,11 +58,28 @@ const Candidates = ({children}) => {
     })}}
 
     const createQuestion = async (category , question ) =>{
-    //    let oldExams = await axios.get(`http://localhost:3000/Exams`)
-    //    let newExamWithQuestion = oldExams.data[0][category]
-    //    newExamWithQuestion.push(question)
-    //    oldExams.data[0][category] = newExamWithQuestion
-    //    console.log(oldExams)
+        await axios.get(`http://localhost:3000/Exams`)
+       .then(  oldExams => {
+
+        console.log("old",oldExams.data[0])
+         oldExams.data[0][category].push(question)
+        axios.post(`http://localhost:3000/Exams`,oldExams.data[0])
+        console.log("new",oldExams.data[0])
+        
+        // async function postData(url = 'http://localhost:3000/Exams', data = oldExams.data[0]) {
+        //     const response = await fetch(url, {
+        //       method: 'POST',
+        //       headers: {
+        //         'Content-Type': 'application/json'
+        //       },
+        //       body: JSON.stringify(data)
+        //     })
+        //     return response.json()
+        //   }
+        //   postData();
+       })
+
+        .catch(err => console.log("err" , err))
     }
 
     useEffect(async() => {

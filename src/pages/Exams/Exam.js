@@ -7,12 +7,11 @@ import {myContextData} from '../../context/ContextDataFromServer'
 const Exam = ({question}) => {
     const {editUser} = useContext(myContextData)
     let [theExmControl , setTheExmControl] = useState(0);
-    let [theQuestionControl , setTheQuestionControl] =useState(0);
+    let [theQuestionControl , setTheQuestionControl] = useState(0);
     let ExamState = question.slice(theExmControl,theExmControl + 1)
     let amountQuestionExam = ExamState?.[0]?.[1].length
     let fromLocal = localStorage.getItem('currentUser')  
     let dataUser = JSON.parse(fromLocal) 
-
     const ChangeQuestion = () => setTheQuestionControl(theQuestionControl + 1)
 
     const changeExam = () => {
@@ -39,8 +38,12 @@ const Exam = ({question}) => {
    <>
    {
           
-          amountQuestionExam > theQuestionControl 
-          ?<Question  props = {{ExamState ,theQuestionControl ,ChangeQuestion , CheckAnswer}}/>
+          amountQuestionExam > theQuestionControl || 0 == theQuestionControl
+          ? (
+            console.log("theQuestionControl",theQuestionControl),
+            <Question  props = {{ExamState ,theQuestionControl ,ChangeQuestion , CheckAnswer}}/>
+          )
+         
           :<ChangeExam props = {{changeExam , question,theExmControl }}/>
    }
         

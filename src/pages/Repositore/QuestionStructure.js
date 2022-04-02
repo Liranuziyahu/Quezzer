@@ -9,14 +9,14 @@ const QuestionStructure = ({props}) => {
 
     const {createQuestion} = useContext(myContextData)
 
-    const handleClick = (e , i) => {
+    const handleClick = (answerTyped , index) => {
      
       props.setquestionStructure(()=>{
         let answers = props.questionStructure.answers
-        answers[i] = e
+        answers[index] = answerTyped
        return{
         ...props.questionStructure ,
-        ['answers']:answers 
+        answers:answers 
        }
       })
         };
@@ -24,11 +24,9 @@ const QuestionStructure = ({props}) => {
   return (
     <>
     <FormControl style={{display: 'flex'}} onSubmit ={(e)=>{
-
         e.preventDefault()
         props.setquestionStructure({"question":e.target[0].value,"trueAnswer":e.target[6].value})
         createQuestion(props.category , props.questionStructure)
-
         }}>
      <Form >
             <TextField fullWidth label="Question" id="Question" placeholder="typeing..." onChange={(e)=>props.setquestionStructure({...props.questionStructure,['question']:e.target.value})}/>
