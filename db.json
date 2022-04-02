@@ -12,14 +12,79 @@
         },
         {
           "name": "Angular",
-          "grade": 100
+          "grade": 130
         }
       ],
       "typeClient": "Admin"
+    },
+    {
+      "id": "l0xut5fe",
+      "email": "User1@gmail.com",
+      "password": "121212",
+      "name": "User1",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        },
+        {
+          "name": "Angular",
+          "grade": 0
+        },
+        {
+          "name": "JS",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "l0xvg230",
+      "email": "User2@gmail.com",
+      "password": "121212",
+      "name": "User2",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "l16g10sl",
+      "email": "11@gamil.com",
+      "password": "11",
+      "name": "11",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "l16g2ycq",
+      "email": "test@gamil.com",
+      "password": "11",
+      "name": "11",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        },
+        {
+          "name": "JS",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
     }
   ],
   "Exams": [
     {
+      "id":1,
       "JS": [
         {
           "question": "What are callbacks JS?",
@@ -42,6 +107,8 @@
           "trueAnswer": "Option 1"
         }
       ],
+      
+      "id":2,
       "React": [
         {
           "question": "What are React?",
@@ -64,6 +131,7 @@
           "trueAnswer": "Option 1"
         }
       ],
+      "id":3,
       "Angular": [
         {
           "question": "What are Angular?",

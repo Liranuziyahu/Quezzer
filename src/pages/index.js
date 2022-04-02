@@ -9,7 +9,6 @@ export {default as DisassembleByCateegoriy} from './Exams/DisassembleByCateegori
 export {default as ExamsTable} from './Exams/ExamsTable'
 export {default as ExamByID} from './Exams/ExamByID'
 export {default as Repositore} from './Repositore/Repositore'
-export {default as RepositoreByID} from './Repositore/RepositoreByID'
 export {default as Candidates} from './Candidates/Candidates'
 export {default as CreateCandidates} from './Users/Actions/CreateCandidates' 
 export {default as TabelCandidates} from './Candidates/TabelCandidates'

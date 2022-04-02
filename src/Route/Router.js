@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore,ExamByID,RepositoreByID, CreateCandidates , User , ProtectedRoute , ProtectedUserRoute , UserPage} from '../pages/index'
+import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore,ExamByID, CreateCandidates , User , ProtectedRoute , ProtectedUserRoute , UserPage} from '../pages/index'
 
 
 const Router = () => {
@@ -15,11 +15,8 @@ const Router = () => {
                     <Route path="Users/:cid" element={<ExamByID/>}/>
                 </Route>
                 <Route path="Candidates" element={<TabelCandidates/>}>
-                    {/* <Route path="new" element={<CreateCandidates/>}/> */}
                 </Route>
-                <Route path="Repositories" element={<Repositore/>}>
-                    <Route path="repositore/:cid" element={<RepositoreByID/>}/>
-                </Route>
+                <Route path="Repositories" element={<Repositore/>}></Route>
                 <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/><Route/>
             </Route>
         </Route>
