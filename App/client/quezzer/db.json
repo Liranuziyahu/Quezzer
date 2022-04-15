@@ -1,0 +1,156 @@
+{
+  "Candidates": [
+    {
+      "id": "kyvwj840",
+      "email": "Liranuzistud@gmail.com",
+      "password": "318866175",
+      "name": "Liran Uziyahu",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 90
+        },
+        {
+          "name": "Angular",
+          "grade": 130
+        }
+      ],
+      "typeClient": "Admin"
+    },
+    {
+      "id": "l0xut5fe",
+      "email": "User1@gmail.com",
+      "password": "121212",
+      "name": "User1",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        },
+        {
+          "name": "Angular",
+          "grade": 0
+        },
+        {
+          "name": "JS",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "l0xvg230",
+      "email": "User2@gmail.com",
+      "password": "121212",
+      "name": "User2",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "l16g10sl",
+      "email": "11@gamil.com",
+      "password": "11",
+      "name": "11",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    },
+    {
+      "id": "l16g2ycq",
+      "email": "test@gamil.com",
+      "password": "11",
+      "name": "11",
+      "categoria": [
+        {
+          "name": "React",
+          "grade": 0
+        },
+        {
+          "name": "JS",
+          "grade": 0
+        }
+      ],
+      "typeClient": "User"
+    }
+  ],
+  "Exams": [
+    {
+      "JS": [
+        {
+          "question": "What are callbacks JS?",
+          "answers": [
+            "function that will be executed after another function gets executed",
+            "Row Function",
+            "Regular Function",
+            "Its not exist in JS"
+          ],
+          "trueAnswer": "function that will be executed after another function gets executed"
+        },
+        {
+          "question": "What are callbacks2?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 1"
+        }
+      ],
+      
+      "React": [
+        {
+          "question": "What are React?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 2"
+        },
+        {
+          "question": "What are React2?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 1"
+        }
+      ],
+      "Angular": [
+        {
+          "question": "What are Angular?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 2"
+        },
+        {
+          "question": "What are Angular?",
+          "answers": [
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+          ],
+          "trueAnswer": "Option 1"
+        }
+      ]
+    }
+  ]
+}
