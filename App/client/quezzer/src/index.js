@@ -6,11 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 import ContextDataFromServer from './context/ContextDataFromServer';
 import reportWebVitals from './reportWebVitals';
 import Context from './context/Context';
+import ContextServer from './context/'
 
 ReactDOM.render(
   <BrowserRouter>
       <Context>
         <ContextDataFromServer>
+
             <App />
         </ContextDataFromServer>
       </Context>
