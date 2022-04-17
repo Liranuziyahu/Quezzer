@@ -10,18 +10,22 @@ const Candidates = ({children}) => {
 
     //useState
     const [StateUser,setStateUser] = useState([{}])
-    const [reqAdminNav,setReqAdminNav] = useState('Candidates')
+    const [candadians,setCandadians] = useState({})
     const [dataUserLogged , setDataUserLogged] = useState()
     const [user, setUser] = useState({"id":uniqid(),"email":'',"password":'',
     "name":'',
     "categoria":[],
     "typeClient":'User'
 })
+useEffect(async() => {
+     axios.get(`http://localhost:8080/user`)
+    .then(data => setCandadians(data.data))
+},[])
  
     //Function
     const reqTableAdmin= (req => {
         
-        return setReqAdminNav(req)
+        return setCandadians(req)
     })
 
     const addUser = (async (user)=>{
@@ -58,40 +62,35 @@ const Candidates = ({children}) => {
     })}}
 
     const createQuestion = async (category , question ) =>{
-        await axios.get(`http://localhost:3000/Exams`)
-       .then(  oldExams => {
+    //     await axios.get(`http://localhost:3000/Exams`)
+    //    .then(  oldExams => {
 
-        console.log("old",oldExams.data[0])
-         oldExams.data[0][category].push(question)
-        axios.post(`http://localhost:3000/Exams`,oldExams.data[0])
-        console.log("new",oldExams.data[0])
+    //     console.log("old",oldExams.data[0])
+    //      oldExams.data[0][category].push(question)
+    //     axios.post(`http://localhost:3000/Exams`,oldExams.data[0])
+    //     console.log("new",oldExams.data[0])
         
-        // async function postData(url = 'http://localhost:3000/Exams', data = oldExams.data[0]) {
-        //     const response = await fetch(url, {
-        //       method: 'POST',
-        //       headers: {
-        //         'Content-Type': 'application/json'
-        //       },
-        //       body: JSON.stringify(data)
-        //     })
-        //     return response.json()
-        //   }
-        //   postData();
-       })
+    //     // async function postData(url = 'http://localhost:3000/Exams', data = oldExams.data[0]) {
+    //     //     const response = await fetch(url, {
+    //     //       method: 'POST',
+    //     //       headers: {
+    //     //         'Content-Type': 'application/json'
+    //     //       },
+    //     //       body: JSON.stringify(data)
+    //     //     })
+    //     //     return response.json()
+    //     //   }
+    //     //   postData();
+    //    })
 
-        .catch(err => console.log("err" , err))
+    //     .catch(err => console.log("err" , err))
     }
 
-    useEffect(async() => {
-        const dataArr=[]
-        const dataUser = await axios.get(`http://localhost:3000/${reqAdminNav}`)
-        dataUser.data.map(data => dataArr.push(data))
-        setStateUser(dataArr)
-    },[reqAdminNav])
+
 
     return (
         <>
-            <myContextData.Provider value={{StateUser,reqTableAdmin , setDataUserLogged , dataUserLogged , checkCategoria ,addUser ,user,setUser ,editUser ,createQuestion}} >
+            <myContextData.Provider value={{candadians ,StateUser,reqTableAdmin , setDataUserLogged , dataUserLogged , checkCategoria ,addUser ,user,setUser ,editUser ,createQuestion}} >
                 {children}
             </myContextData.Provider>
         </>

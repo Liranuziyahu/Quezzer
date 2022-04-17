@@ -9,19 +9,19 @@ const User = ({props}) => {
     
           {
             <TableRow
-              key={props?.user.id}
+              key={props?.user.userID}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center" component="th" scope="row">{props?.user.id}</TableCell>
-              <TableCell align="center">{props?.user.email}</TableCell>
-              <TableCell align="center">{props?.user.name}</TableCell>
+              <TableCell align="center" component="th" scope="row">{props?.user.userID}</TableCell>
+              <TableCell align="center">{props?.user.userEmail}</TableCell>
+              <TableCell align="center">{props?.user.userName}</TableCell>
+              <TableCell align="center">{props?.user.userRole == 2 ? 'User': 'Admin'}</TableCell>
               <TableCell align="center">
-              <EditIcon onClick={() => {
-                  props.setUserToChange(props.user);
-                 return props.setEditCompUser(!props.editUser)
-              }}>
-              </EditIcon>
-              
+                <EditIcon onClick={() => {
+                    props.setUserToChange(props.user);
+                  return props.setEditCompUser(!props.editUser)
+                }}>
+                </EditIcon>
               </TableCell>
 
              

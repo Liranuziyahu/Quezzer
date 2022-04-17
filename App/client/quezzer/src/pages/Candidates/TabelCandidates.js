@@ -13,7 +13,7 @@ import InputSearch from '../Buttons/InputSearch';
 import { useEffect } from 'react';
 
 const TabelCandidates = () => {
-    const {StateUser} = useContext(myContextData)
+    const {StateUser , candadians} = useContext(myContextData)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
 
     useEffect(()=>{
@@ -39,14 +39,14 @@ const TabelCandidates = () => {
               {
                 userSearch.search?
                    (
-                    StateUser.map((candidate)=>{
-                     let entryString = eval(`candidate.${userSearch?.catagorei}`).toLowerCase() 
-                     let currentSearchString = userSearch.search.toLowerCase() 
-                     if(entryString.startsWith(currentSearchString))
+                     candadians.map?.((candidate)=>{
+                     let entryString = eval(`candidate.userID`)
+                     let currentSearchString = userSearch.search
+                     if(entryString.startsWith?.(currentSearchString))
                         return <Candidates candidate = {candidate}/>
                     })
-                   )
-                  :StateUser?.map(candidate => <Candidates candidate = {candidate}/>)
+                   ):
+                   candadians.map?.(candidate => <Candidates candidate = {candidate}/>)
                 
                 }
             </TableBody>
