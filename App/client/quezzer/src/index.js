@@ -10,12 +10,13 @@ import ContextServer from './context/'
 
 ReactDOM.render(
   <BrowserRouter>
+  <ContextServer>
       <Context>
         <ContextDataFromServer>
-
             <App />
         </ContextDataFromServer>
       </Context>
+  </ContextServer>
   </BrowserRouter>,
   document.getElementById('root')
 );

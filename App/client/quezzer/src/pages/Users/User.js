@@ -23,8 +23,6 @@ const User = ({props}) => {
                 }}>
                 </EditIcon>
               </TableCell>
-
-             
             </TableRow>
           }
      </>
