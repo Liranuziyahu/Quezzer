@@ -1,7 +1,8 @@
 import React , {useContext} from 'react'
+//Component
 import User from './User'
-import {myContextData} from '../../context/ContextDataFromServer'
-
+import {ContextFromServer} from '../../context/'
+//MUI
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,7 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const TableUsers = ({props}) => {
-    const {candadians} = useContext(myContextData)
+    const {candadians} = useContext(ContextFromServer)
   return (
     
     <TableContainer component={Paper}>
