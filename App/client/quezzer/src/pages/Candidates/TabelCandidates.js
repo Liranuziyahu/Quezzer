@@ -15,7 +15,7 @@ import InputSearch from '../Buttons/InputSearch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TabelCandidates = () => {
-    const {candadians} = useContext(ContextFromServer)
+    const {candadians , exams} = useContext(ContextFromServer)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
 
     useEffect(()=>{
@@ -41,14 +41,14 @@ const TabelCandidates = () => {
               {
                 userSearch.search?
                    (
-                     candadians.map?.((candidate)=>{
-                     let entryString = eval(`candidate.userID`)
+                    exams.map?.((exam)=>{
+                     let entryString = eval(`exam.userID`)
                      let currentSearchString = userSearch.search
                      if(entryString.startsWith?.(currentSearchString))
-                        return <Candidates candidate = {candidate}/>
+                        return <Candidates exam = {exam}/>
                     })
                    ):
-                   candadians.map?.(candidate => <Candidates candidate = {candidate}/>)
+                   exams.map?.(exam => <Candidates exam = {exam}/>)
                 
                 }
             </TableBody>

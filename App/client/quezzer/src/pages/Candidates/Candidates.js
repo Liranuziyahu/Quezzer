@@ -3,30 +3,21 @@ import React from 'react'
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-function Candidates({candidate}) {
-    console.log(candidate)
+function Candidates({exam}) {
+    console.log(exam)
     return (
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell align="center" component="th" scope="row">
-            {candidate?.userID}
+            {exam?.userID}
             </TableCell>
-            <TableCell align="center"> {candidate?.userName}</TableCell>
-            <TableCell align="center">{candidate?.userEmail}</TableCell>
-            <TableCell align="center">{candidate?.categoria==null?null:candidate?.categoria.map(categoria=>{
-                {
-                    return  <div>{categoria.name}</div>
-                }
-            })}
-            </TableCell>
-            <TableCell align="center">
+            <TableCell align="center"> {exam?.userName}</TableCell>
+            <TableCell align="center">{exam?.userEmail}</TableCell>
+            <TableCell align="center">{exam?.categoryExamsName}</TableCell>
+            <TableCell align="center">{exam?.score}</TableCell>
 
-            {candidate?.categoria==null?null:candidate?.categoria.map(categoria=>{
-                {
-                    return  <div>{categoria.grade}</div>
-                }
-            })}
-            </TableCell>
+
         </TableRow>
-)}
+)
+}
 
 export default Candidates
