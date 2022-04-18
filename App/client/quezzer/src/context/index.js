@@ -10,7 +10,7 @@ const ContextServer = ({children}) => {
     useEffect(() =>{
 
       axios.get(`http://localhost:8080/user`)
-      .then(data => {setCandadians(data.data[0])})
+      .then(data => {setCandadians(data.data)})
     },[])
 
 
