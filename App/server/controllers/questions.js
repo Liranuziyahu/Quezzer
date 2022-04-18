@@ -4,6 +4,7 @@ const Op = db.Sequelize.Op;
 
 //Create Question object    
 exports.create = (req , res) =>{
+    console.log(req)
     if(!req.body.categoryExamsID){
         res.status(404).send({message:'categoryExamsID cannot be emepty'})
         return;

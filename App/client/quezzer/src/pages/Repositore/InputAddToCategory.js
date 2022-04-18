@@ -6,27 +6,22 @@ import MenuItem from '@mui/material/MenuItem';
 
 const currencies = [
     {
-      value: 'React',
-      label: 'React',
-    },
-    {
-      value: 'JS',
+      value: '1',
       label: 'JS',
     },
     {
-      value: 'Angular',
+      value: '2',
+      label: 'React',
+    },
+    {
+      value: '3',
       label: 'Angular',
     }
   ];
 
-const InputAddToCategory = ({setCategory}) => {
-      const [currency, setCurrency] = useState('JS');
-      const handleChange = (event) => {
-        setCurrency(event.target.value);
-        setCategory(event.target.value) 
+const InputAddToCategory = ({props}) => {
+  const handleChange = (event) => props.setCategory(event.target.value)
 
-      };
-    
     return (
         <>
           <div style={{display:'flex', marginBottom:20}}>
@@ -35,11 +30,11 @@ const InputAddToCategory = ({setCategory}) => {
                   id="outlined-select-currency"
                   select
                   label="Category"
-                  value={currency}
-                  onChange={handleChange}
+                  value={props.category}
+                  onChange={(event)=> handleChange(event)}
                   >
                       {currencies.map(option => 
-                          <MenuItem key={option.value} value={option.value}>
+                          <MenuItem key={option.value} value={option.label}>
                             {option.label}
                           </MenuItem>
                           )}
