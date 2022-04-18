@@ -62,28 +62,15 @@ useEffect(async() => {
     })}}
 
     const createQuestion = async (category , question ) =>{
-    //     await axios.get(`http://localhost:3000/Exams`)
-    //    .then(  oldExams => {
+        console.log(category)
+        if(category=='JS')
+            question['categoryExamsID'] = '1'
+        if(category=='React')
+            question['categoryExamsID'] = '2'
+        if(category=='Angular')
+            question['categoryExamsID'] = '3'
 
-    //     console.log("old",oldExams.data[0])
-    //      oldExams.data[0][category].push(question)
-    //     axios.post(`http://localhost:3000/Exams`,oldExams.data[0])
-    //     console.log("new",oldExams.data[0])
-        
-    //     // async function postData(url = 'http://localhost:3000/Exams', data = oldExams.data[0]) {
-    //     //     const response = await fetch(url, {
-    //     //       method: 'POST',
-    //     //       headers: {
-    //     //         'Content-Type': 'application/json'
-    //     //       },
-    //     //       body: JSON.stringify(data)
-    //     //     })
-    //     //     return response.json()
-    //     //   }
-    //     //   postData();
-    //    })
-
-    //     .catch(err => console.log("err" , err))
+        axios.post('http://localhost:8080/questions',question)
     }
 
 
