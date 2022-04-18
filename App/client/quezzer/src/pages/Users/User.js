@@ -15,7 +15,7 @@ const User = ({props}) => {
               <TableCell align="center" component="th" scope="row">{props?.user.userID}</TableCell>
               <TableCell align="center">{props?.user.userEmail}</TableCell>
               <TableCell align="center">{props?.user.userName}</TableCell>
-              <TableCell align="center">{props?.user.userRole == 2 ? 'User': 'Admin'}</TableCell>
+              <TableCell align="center">{props?.user.roleName}</TableCell>
               <TableCell align="center">
                 <EditIcon onClick={() => {
                     props.setUserToChange(props.user);

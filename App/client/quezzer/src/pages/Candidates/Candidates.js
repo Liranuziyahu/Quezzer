@@ -10,7 +10,6 @@ function Candidates({candidate}) {
             <TableCell align="center" component="th" scope="row">
             {candidate?.userID}
             </TableCell>
-            <TableCell align="center"> {candidate?.typeClient}</TableCell>
             <TableCell align="center"> {candidate?.userName}</TableCell>
             <TableCell align="center">{candidate?.userEmail}</TableCell>
             <TableCell align="center">{candidate?.categoria==null?null:candidate?.categoria.map(categoria=>{

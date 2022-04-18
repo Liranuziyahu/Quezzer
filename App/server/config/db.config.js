@@ -2,7 +2,7 @@ module.exports ={
     HOST: 'localhost',
     USER: 'root',
     PASSWORD: '318866175Kk',
-    DB: 'crm_iterview',
+    DB: 'crm_interview',
     dialect: 'mysql',
     pool:{
         max: 5,
