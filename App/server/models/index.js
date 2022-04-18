@@ -18,5 +18,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 // Tables - mySQL
 db.users = require('./user')(sequelize , Sequelize)
+db.exams = require('./exams')(sequelize , Sequelize)
 
 module.exports = db;
