@@ -15,10 +15,11 @@ import InputSearch from '../Buttons/InputSearch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TabelCandidates = () => {
-    const {StateUser , candadians} = useContext(ContextFromServer)
+    const {candadians} = useContext(ContextFromServer)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
 
     useEffect(()=>{
+      console.log(candadians)
     },[userSearch])
     
     return (
@@ -30,7 +31,6 @@ const TabelCandidates = () => {
             <TableHead>
               <TableRow>
               <TableCell align="center">User ID</TableCell>
-              <TableCell align="center">Type</TableCell>
                 <TableCell align="center">User Name</TableCell>
                 <TableCell align="center">Email</TableCell>
                 <TableCell align="center">Exam</TableCell>

@@ -38,7 +38,7 @@ const TableUsers = ({props}) => {
                   return <User props = {{"user":user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>
               }))
             : 
-            candadians.map((user) => <User props={{"user": user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
+            candadians.map?.((user) => <User props={{"user": user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
           }
         </TableBody>
       </Table>
