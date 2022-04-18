@@ -8,6 +8,7 @@ const ContextServer = ({children}) => {
   const [candadians,setCandadians] = useState({})
 
     useEffect(() =>{
+
       axios.get(`http://localhost:8080/user`)
       .then(data => {setCandadians(data.data[0])})
     },[])

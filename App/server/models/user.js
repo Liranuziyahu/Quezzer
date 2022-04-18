@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
         userPassword: {
             type: Sequelize.STRING
         },
-        userRole: {
+        roleID: {
             type: Sequelize.INTEGER
         }
     })

@@ -23,7 +23,7 @@ const Op = db.Sequelize.Op;
 
 //Retarive All USERS FROM DB
     exports.findAll = (req,res) => {
-         db.sequelize.query('SELECT userID , userName , userEmail , userPassword , role.roleName  FROM users INNER JOIN role ON users.userRole = role.roleID')
+         db.sequelize.query('SELECT userID , userName , userEmail , userPassword , role.roleName  FROM users INNER JOIN role ON users.roleID = role.roleID')
         .then( data => {res.send(data)})
         .catch(err => res.status(500).send({massage: err.message || "Some error occurred while retrieving the User."}))
     }
