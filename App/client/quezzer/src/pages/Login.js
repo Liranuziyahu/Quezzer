@@ -3,22 +3,26 @@ import {Link} from 'react-router-dom'
 import { Form,Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {myContextData} from '../context/ContextDataFromServer'
+import {ContextFromServer} from '../context/'
+
 import {myContext} from '../context/Context'
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const {StateUser , setDataUserLogged } =  useContext(myContextData)
+    const {users} =  useContext(ContextFromServer)
     const {setIsAuth} = useContext(myContext)
     let navigate = useNavigate();
 
     const checkAuto = (autoLogin) => {
         autoLogin.preventDefault()
-        StateUser.map(async (user)=>{
-            if(user.email == autoLogin.target[0].value && user.password == autoLogin.target[1].value)
+        users.map(async (user)=>{
+            if(user.userEmail == autoLogin.target[0].value && user.userPassword == autoLogin.target[1].value)
             {
+                console.log(user)
                  setDataUserLogged(user)
                  setIsAuth(true)
-                 navigate(`${user.typeClient}`)
+                 navigate(`${user.roleName}`)
                  localStorage.setItem('currentUser' , JSON.stringify(user))  
             }})}
 

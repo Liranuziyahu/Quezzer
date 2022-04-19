@@ -5,7 +5,7 @@ import axios from 'axios'
 export const ContextFromServer = createContext()
 
 const ContextServer = ({children}) => {
-  const [candadians,setCandadians] = useState({})
+  const [users,setUsers] = useState({})
   const [exams,setExams] = useState({})
 
   const [questionsJS , setQuestionsJS] = useState([])
@@ -14,7 +14,7 @@ const ContextServer = ({children}) => {
 
     useEffect(async () =>{
       await axios.get(`http://localhost:8080/user`)
-      .then(data => setCandadians(data.data))
+      .then(data => setUsers(data.data))
 
       await axios.get(`http://localhost:8080/exams`)
       .then(data => setExams(data.data))
@@ -30,7 +30,7 @@ const ContextServer = ({children}) => {
   return (
 
     <div>
-        <ContextFromServer.Provider value={{candadians ,exams , questionsJS , questionsReact , questionsAngular}}>
+        <ContextFromServer.Provider value={{users ,exams , questionsJS , questionsReact , questionsAngular}}>
           {children}
         </ContextFromServer.Provider>
         
