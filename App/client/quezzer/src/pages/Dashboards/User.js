@@ -4,12 +4,13 @@ import {myContextData} from '../../context/ContextDataFromServer'
 
 const User = () => {
   const {dataUserLogged} = useContext(myContextData)
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+
   return (
   <>
 
-    <div>Hello {dataUserLogged?.name} </div>
+    <div>Hello {currentUser.userName? currentUser.userName :dataUserLogged.userName} </div>
     <div>Welcome to our exams </div>
-    <div>Today you will test about {dataUserLogged?.categoria.map(type=> type+" ")}.</div>
     <Link to='Questionnaire'>Start</Link>
   </>
   )

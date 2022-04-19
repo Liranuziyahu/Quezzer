@@ -9,8 +9,8 @@ const Router = () => {
     <Routes>
         <Route  path="/" element={<Login/>}/>
         <Route  path="/new" element={<CreateCandidates/>}></Route>
-        {/* <Route element={<ProtectedRoute/>}> */}
-            <Route path="Admin" element={<Admin/>}>
+        <Route element={<ProtectedRoute/>}>
+            <Route path="Administrator" element={<Admin/>}>
                 <Route path="Users" element={<UserPage/>}> 
                     <Route path="Users/:cid" element={<ExamByID/>}/>
                 </Route>
@@ -19,7 +19,7 @@ const Router = () => {
                 <Route path="Repositories" element={<Repositore/>}></Route>
                 <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/><Route/>
             </Route>
-        {/* </Route> */}
+        </Route>
         <Route path="User" element={<ProtectedUserRoute/>}>
             <Route index element={<User/>}>
             </Route> 
