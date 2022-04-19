@@ -21,7 +21,7 @@ useEffect(async() => {
      axios.get(`http://localhost:8080/user`)
     .then(data => setCandadians(data.data))
 },[])
- 
+
     //Function
     const reqTableAdmin= (req => {
         
