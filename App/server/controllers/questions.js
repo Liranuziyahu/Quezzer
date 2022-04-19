@@ -25,7 +25,7 @@ exports.create = (req , res) =>{
 
 //Retarive All Questions FROM DB
 exports.findAll = (req , res) =>{
-    db.sequelize.query('SELECT * FROM questions')
+    db.sequelize.query('SELECT questionID , categoryexams.categoryExamsID , categoryexams.categoryExamsName, questionTheQuestion,questionTrueAnswer,answer1,answer2,answer3,answer4 FROM questions INNER JOIN categoryexams ON questions.categoryExamsID = categoryexams.categoryExamsID')
     .then( data => res.send(data[0]))
     .catch(err => res.status(500).send({massage: err.message || "Some error occurred while retrieving the Questions."}))
 } 
