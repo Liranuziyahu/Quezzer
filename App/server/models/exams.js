@@ -15,7 +15,7 @@ module.exports = (sequelize , Sequelize ) =>{
         score:{
             type: Sequelize.INTEGER
         }
-    });
-    
+    },{timestamps: false});
+
     return Exams
 }

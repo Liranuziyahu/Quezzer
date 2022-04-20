@@ -17,16 +17,6 @@ const Candidates = ({children}) => {
     "categoria":[],
     "typeClient":'User'
 })
-useEffect(async() => {
-     axios.get(`http://localhost:8080/user`)
-    .then(data => setCandadians(data.data))
-},[])
-
-    //Function
-    const reqTableAdmin= (req => {
-        
-        return setCandadians(req)
-    })
 
     const addUser = (async (user)=>{
         console.log("CreateCandidates" ,user);
@@ -41,12 +31,10 @@ useEffect(async() => {
  
     })
 
-    const editUser = ((user)=>{
-        console.log("edituser" , user);
-        axios.patch(`http://localhost:3000/Candidates/${user.id}`,user)
-    })
 
-    const checkCategoria = (check , categoriaType) =>{
+
+    const checkCategoria = (userID ,check , categoriaType) =>{
+        console.log("userID",userID ,check ,categoriaType)
         if(check == true)
         {   
             return setUser({...user,['categoria']:[...user.categoria,{"name":categoriaType ,"grade":0}]})}
@@ -77,7 +65,7 @@ useEffect(async() => {
 
     return (
         <>
-            <myContextData.Provider value={{candadians ,StateUser,reqTableAdmin , setDataUserLogged , dataUserLogged , checkCategoria ,addUser ,user,setUser ,editUser ,createQuestion}} >
+            <myContextData.Provider value={{candadians ,StateUser , setDataUserLogged , dataUserLogged , checkCategoria ,addUser ,user,setUser  ,createQuestion}} >
                 {children}
             </myContextData.Provider>
         </>

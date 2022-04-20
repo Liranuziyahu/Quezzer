@@ -12,7 +12,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const TableUsers = ({props}) => {
-    const {candadians} = useContext(ContextFromServer)
+    const {users} = useContext(ContextFromServer)
   return (
     
     <TableContainer component={Paper}>
@@ -31,14 +31,14 @@ const TableUsers = ({props}) => {
           {
             props.userSearch.search ?  
               (
-                candadians.map((user)=>{
+                users.map((user)=>{
                let entryString = eval(`user.${props.userSearch?.catagorei}`).toLowerCase() 
                let currentSearchString = props.userSearch.search.toLowerCase() 
                if(entryString.startsWith(currentSearchString))
                   return <User props = {{"user":user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>
               }))
             : 
-            candadians.map?.((user) => <User props={{"user": user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
+            users.map?.((user) => <User props={{"user": user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
           }
         </TableBody>
       </Table>
