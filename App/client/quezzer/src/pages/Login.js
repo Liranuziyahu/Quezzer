@@ -19,7 +19,6 @@ const Login = () => {
         users.map(async (user)=>{
             if(user.userEmail == autoLogin.target[0].value && user.userPassword == autoLogin.target[1].value)
             {
-                console.log(user)
                  setDataUserLogged(user)
                  setIsAuth(true)
                  navigate(`${user.roleName}`)
