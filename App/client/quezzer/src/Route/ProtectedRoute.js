@@ -6,7 +6,7 @@ import {myContextData} from '../context/ContextDataFromServer'
 const ProtectedRoute = () => {
     const {isAuth} = useContext(myContext)
     const { dataUserLogged } = useContext(myContextData)
-    const isAdmin = (isAuth && dataUserLogged?.roleName =='Administrator') || (JSON.parse(localStorage?.getItem('currentUser')))?.roleName =='Administator' 
+    const isAdmin = (isAuth && dataUserLogged?.roleName =='Administrator') || (JSON.parse(localStorage?.getItem('currentUser')))?.roleName =='Administrator' 
 
     useEffect(() => {
         console.log("dataUserLogged", dataUserLogged ,"isAuth" , isAuth)

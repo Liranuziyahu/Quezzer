@@ -19,7 +19,6 @@ const TabelCandidates = () => {
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
 
     useEffect(()=>{
-      console.log(candadians)
     },[userSearch])
     
     return (
