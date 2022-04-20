@@ -6,11 +6,11 @@ import {myContextData} from '../context/ContextDataFromServer'
 const ProtectedRoute = () => {
     const {isAuth} = useContext(myContext)
     const { dataUserLogged } = useContext(myContextData)
-    const isAdmin = (isAuth && dataUserLogged?.typeClient =='Administator') || (JSON.parse(localStorage?.getItem('currentUser')))?.roleName =='Administator' 
-    let navigate = useNavigate();
+    const isAdmin = (isAuth && dataUserLogged?.roleName =='Administrator') || (JSON.parse(localStorage?.getItem('currentUser')))?.roleName =='Administator' 
 
     useEffect(() => {
-  
+        console.log("dataUserLogged", dataUserLogged ,"isAuth" , isAuth)
+        console.log("isAdmin" , isAdmin)
  
 
     }, [isAuth])

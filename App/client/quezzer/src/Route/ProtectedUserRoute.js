@@ -8,8 +8,6 @@ import {myContextData} from '../context/ContextDataFromServer'
 const ProtectedUserRoute = () => {
     const {isAuth} = useContext(myContext)
     const { dataUserLogged } = useContext(myContextData)
-    console.log("dataUserLogged" , dataUserLogged)
-    console.log(isAuth)
     const isUser = (isAuth && dataUserLogged?.roleName =='User') || (JSON.parse(localStorage?.getItem('currentUser')))?.roleName =='User'
   return (
     isUser ? <Outlet></Outlet>: <Navigate to="/"/>  )
