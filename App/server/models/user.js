@@ -18,7 +18,8 @@ module.exports = (sequelize, Sequelize) => {
         roleID: {
             type: Sequelize.INTEGER
         }
-    })
+    }
+    ,{timestamps: false})
 
     return User
 }

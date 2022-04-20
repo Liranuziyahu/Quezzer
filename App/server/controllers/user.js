@@ -44,6 +44,9 @@ const Op = db.Sequelize.Op;
 //Update USER by ID
     exports.update = (req,res) => {
         const id = req.params.id
+        console.log("req.body",req.body)
+        console.log("id",id)
+
         User.update(req.body , {where: {userID:id}})
         .then( num => {
             if(num == 1)

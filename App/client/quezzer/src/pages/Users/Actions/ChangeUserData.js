@@ -1,30 +1,34 @@
 import React ,{useContext} from 'react'
 import { Form,Col,Row } from 'react-bootstrap';
-import {myContextData} from '../../../context/ContextDataFromServer'
+import {ContextFromServer} from '../../../context/index'
+
 import { FormControl } from '@mui/material';
+import axios from 'axios';
 
 const ChangeUserData = ({props}) => {
-  const {checkCategoria , editUser ,user ,setUser} = useContext(myContextData)
-  setUser(props.userToChange)
+  // setUser(props.userToChange)
+  const { editUser , checkCategoria} = useContext(ContextFromServer)
+
+
   return (
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Change Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"onClick={()=>props.setEditCompUser(false)}></button>
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">Change Details</h5>
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"onClick={()=>props.setEditCompUser(false)}></button>
         </div>
-        <div class="modal-body">
+        <div className="modal-body">
 
         
-          <FormControl onSubmit={(e)=>{
+          <FormControl onSubmit={async (e)=>{
             e.preventDefault();
-            setUser({...props.userToChange ,'email':e.target[0].value ,'password':e.target[1].value})
-            editUser({...user ,'email':e.target[0].value , 'password':e.target[1].value})   
+            editUser({...props.userToChange,'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) 
+     
             }}
             > 
             <Form>  
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" value={props.userToChange.email}/>
+              <Form.Control type="email" placeholder="Enter email" value={props.userToChange.userEmail}/>
               <Form.Label>Password address</Form.Label>
 
               <Form.Control type="password" placeholder="Enter password"
@@ -37,31 +41,31 @@ const ChangeUserData = ({props}) => {
                   <Col sm={10} style={{marginLeft:25}}>
                     <Form.Check
                     type="checkbox"
-                    label="React"
+                    label="JS"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios1"
-                    onClick = {((e)=>{checkCategoria(e.target.checked,'React')})}
+                    onClick = {((e)=>{checkCategoria(props.userToChange.userID , e.target.checked,1)})}
                     />
                     <Form.Check
                     type="checkbox"
-                    label="Angular"
+                    label="React"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios2"
-                    onClick ={((e)=>{checkCategoria(e.target.checked,'Angular')})}
+                    onClick = {((e)=>{checkCategoria(props.userToChange.userID , e.target.checked,2)})}
                     />
 
                     <Form.Check
                     type="checkbox"
-                    label="JS"
+                    label="Anular"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios3"
-                    onClick = {((e)=>{checkCategoria(e.target.checked,'JS')})}
+                    onClick = {((e)=>{checkCategoria(props.userToChange.userID , e.target.checked,3)})}
                     />
                 </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3">
                     <Col sm={{ span: 10, offset: 2 }}>
-                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                    <button type="submit" className="btn btn-primary" >Save changes</button>
 
                     </Col>
                 </Form.Group>
@@ -69,8 +73,8 @@ const ChangeUserData = ({props}) => {
           </FormControl> 
          
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={()=>props.setEditCompUser(false)}>Close</button>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={()=>props.setEditCompUser(false)}>Close</button>
         </div>
       </div>  
     </div>

@@ -2,16 +2,16 @@ module.exports = app => {
     const exams = require('./../controllers/exams')
     let router = require("express").Router();
 
-//create a new User
+//create a new Exam
     router.post("/",exams.create)
-//Retrieve all User
+//Retrieve all Exams
     router.get("/",exams.findAll)
-//Retrieve a single User with id
+//Retrieve a single Exam with id
     router.get("/:id",exams.findOne)
-// //update a User with id
+//update a Exam with id
     router.put("/:id",exams.update)
-// //Delete a User with id
+//Delete a Exam with id
     router.delete("/:id",exams.delete)
 
-    app.use('/exams',router)
+app.use('/exams',router)
 }
