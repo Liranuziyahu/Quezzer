@@ -29,6 +29,7 @@ const Op = db.Sequelize.Op;
 //Retrive Exam by ID
     exports.findOne =  (req, res) => {
         const id = req.params.id;
+        console.log(id)
         Exam.findOne({where: {examsID:id}})
         .then( data => {
             if(data)

@@ -11,7 +11,6 @@ const Context = ({children}) => {
 
     useEffect(async () => {
        
-        console.log("isAuth from Context" , isAuth)
     }, [isAuth])
 
     return (

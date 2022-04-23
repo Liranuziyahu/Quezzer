@@ -5,23 +5,26 @@ import {ContextFromServer} from '../../context/index'
 import Exam from './Exam';
 
 const DisassembleByCateegoriy = () => {
-  const [exmpale , setExample] = useState([])
-  const {questionsJS , questionsReact , questionsAngular} = useContext(ContextFromServer)
+  const {exams} = useContext(ContextFromServer)
+  const {dataUserLogged } =  useContext(myContextData)
+  const [userExam , setUserExam] = useState([])
+  
+  let dataUser = JSON.parse(localStorage.getItem('currentUser')) 
+  let currentUserTest = dataUserLogged ? dataUserLogged : dataUser
 
-useEffect( async () =>{
-  let fromLocal = localStorage.getItem('currentUser')  
-  let dataUser = JSON.parse(fromLocal) 
 
-  console.log(dataUser)
+  useEffect(()=>{
+    exams.map?.(exam =>{
+      if(exam.userID == currentUserTest.userID) setUserExam(userExam => [...userExam,exam]) 
+    })
+  },[exams])
 
-},[questionsJS])
 
   return (
     <div>
 
       {
-         <Exam question={exmpale} />
-
+        <Exam userExam={userExam} />
       }
 
 

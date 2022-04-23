@@ -6,6 +6,8 @@ module.exports = app => {
     router.post("/",exams.create)
 //Retrieve all Exams
     router.get("/",exams.findAll)
+//Retrive Exaam by ID and category
+router.post("/category",exams.findExam)
 //Retrieve a single Exam with id
     router.get("/:id",exams.findOne)
 //update a Exam with id
