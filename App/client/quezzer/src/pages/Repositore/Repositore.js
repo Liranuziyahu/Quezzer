@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import { Form } from 'react-bootstrap';
-import {myContextData} from '../../context/ContextDataFromServer'
+import {ContextFromServer} from '../../context/index'
 import InputAddToCategory from './InputAddToCategory';
 
 const Repositore = () => {
@@ -18,7 +18,7 @@ const Repositore = () => {
     })
     const [category, setCategory] = useState('JS');
 
-    const {createQuestion} = useContext(myContextData)
+    const {createQuestion} = useContext(ContextFromServer)
 
 
     return (

@@ -27,38 +27,53 @@ const ContextServer = ({children}) => {
       })
     },[])
 
-    const editUser = (user => axios.put(`http://localhost:8080/user/${user.userID}`,user))
 
     const createExam = (exam => axios.post('http://localhost:8080/exams/',exam))
 
-  
-  const checkCategoria = (userID ,check , categoriaType) =>{
-    let categoryExist = false;
-    if(check == true)
-    {
-      const examUser = exams.filter(exam => exam.userID == userID)
-      examUser.map(exam => {
-        if(exam.categoryExamsID == categoriaType )
-          return categoryExist=true
-      })
-      if(!categoryExist)
-        createExam({categoryExamsID:categoriaType , userID:userID ,score:0})
-    }
-    else 
-    {
-      axios.post(`http://localhost:8080/custom/`,{userID:userID, categoryExamsID:categoriaType})
-      .then(data => {
-        const idExamToDelete = data.data[0][0].examsID
-        axios.delete(`http://localhost:8080/exams/${idExamToDelete}`)
-      })
-      .catch(err =>console.log('Maybe not exist'))
-    }
+  //Add Question 
+  const createQuestion = async (category , question ) =>{
+    if(category=='JS')
+        question['categoryExamsID'] = '1'
+    if(category=='React')
+        question['categoryExamsID'] = '2'
+    if(category=='Angular')
+        question['categoryExamsID'] = '3'
+    axios.post('http://localhost:8080/questions',question)
+}
+
+
+//Edit User
+const editUser = (user => axios.put(`http://localhost:8080/user/${user.userID}`,user))
+//Check category , where User change category for test 
+const checkCategoria = (userID ,check , categoriaType) =>{
+  let categoryExist = false;
+  if(check == true)
+  {
+    axios.get(`http://localhost:8080/exams`)
+    .then(exams => {
+        let examsUser = exams.data.filter(exam => exam.userID == userID)
+        examsUser.map?.(exam => {
+      if(exam.categoryExamsID == categoriaType )
+        return categoryExist=true
+    })
+    if(!categoryExist) createExam({categoryExamsID:categoriaType , userID:userID ,score:0})
+    })
   }
+  else 
+  {
+    axios.post(`http://localhost:8080/exams/category/`,{userID:userID, categoryExamsID:categoriaType})
+    .then(data => {
+      const idExamToDelete = data.data[0][0].examsID
+      axios.delete(`http://localhost:8080/exams/${idExamToDelete}`)
+    })
+    .catch(err =>console.log('Maybe not exist'))
+  }
+}
 
   return (
 
     <div>
-        <ContextFromServer.Provider value={{users ,exams , questionsJS , questionsReact , questionsAngular ,editUser , checkCategoria}}>
+        <ContextFromServer.Provider value={{users ,exams , questionsJS , questionsReact , questionsAngular ,editUser , checkCategoria ,createQuestion}}>
           {children}
         </ContextFromServer.Provider>
         

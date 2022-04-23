@@ -9,9 +9,6 @@ const ProtectedRoute = () => {
     const isAdmin = (isAuth && dataUserLogged?.roleName =='Administrator') || (JSON.parse(localStorage?.getItem('currentUser')))?.roleName =='Administrator' 
 
     useEffect(() => {
-        console.log("dataUserLogged", dataUserLogged ,"isAuth" , isAuth)
-        console.log("isAdmin" , isAdmin)
- 
 
     }, [isAuth])
 
