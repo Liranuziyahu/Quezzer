@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '@mui/material/Button';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 const ChangeExam = ({props}) => {
-  let nameExam = props?.exam?.name
+  let nameExam = props?.storageQuestions[props.theExmControl+1]?.name
   return (
       <>
       {

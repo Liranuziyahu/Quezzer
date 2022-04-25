@@ -55,7 +55,7 @@ const Exam = ({userExams}) => {
       :
       (
         finishedExam(),
-        <ChangeExam props = {{ exam ,theExmControl , changeExam , storageQuestions , theExmControl}}/>
+        <ChangeExam props = {{ exam ,theExmControl , changeExam , storageQuestions}}/>
       )
 
    }
