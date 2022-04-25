@@ -70,10 +70,15 @@ const checkCategoria = (userID ,check , categoriaType) =>{
   }
 }
 
+//Exams state
+//update 
+const editExam = (exam => axios.put(`http://localhost:8080/exams/${exam.examsID}`,exam))
+
+
   return (
 
     <div>
-        <ContextFromServer.Provider value={{users ,exams , questionsJS , questionsReact , questionsAngular ,editUser , checkCategoria ,createQuestion}}>
+        <ContextFromServer.Provider value={{users ,exams , questionsJS , questionsReact , questionsAngular ,editUser , checkCategoria ,createQuestion ,editExam}}>
           {children}
         </ContextFromServer.Provider>
         

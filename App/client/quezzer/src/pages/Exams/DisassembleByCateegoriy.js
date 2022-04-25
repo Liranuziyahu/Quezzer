@@ -5,27 +5,30 @@ import {ContextFromServer} from '../../context/index'
 import Exam from './Exam';
 
 const DisassembleByCateegoriy = () => {
-  const {exams} = useContext(ContextFromServer)
   const {dataUserLogged } =  useContext(myContextData)
-  const [userExam , setUserExam] = useState([])
-  
+  const [userExams , setUserExams] = useState([])
   let dataUser = JSON.parse(localStorage.getItem('currentUser')) 
   let currentUserTest = dataUserLogged ? dataUserLogged : dataUser
 
 
-  useEffect(()=>{
-    exams.map?.(exam =>{
-      if(exam.userID == currentUserTest.userID) setUserExam(userExam => [...userExam,exam]) 
-    })
-  },[exams])
+  const [storageQuestion , setStorageQuestion] = useState([])
+
+  useEffect(async()=>{
+    await axios.get(`http://localhost:8080/exams`)
+      .then(exams =>{
+        return exams.data.map?.(exam =>{ if(exam.userID == currentUserTest?.userID)  return exam })
+      })
+      .then(exams => {
+        exams.map((exam) =>{ if(exam != undefined) setUserExams(userExams => [...userExams,exam]) })
+      })
+  },[])
 
 
   return (
     <div>
-
       {
-        <Exam userExam={userExam} />
-      }
+      <Exam userExams={userExams} />
+     }
 
 
     </div>
