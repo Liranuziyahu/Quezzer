@@ -69,6 +69,22 @@ exports.delete = (req, res) => {
         if(num == 1)
             res.send({message:`Exam ${id} DELETED`})
         else
+        res.status(404).send({message:`Cannot Delete Exam with ${id}. Maybe Exam cannot found.`})
+    })
+    .catch(err => {
+        res.status(500).send({message:err.message})
+    })
+}
+
+//Delete all Exam aspecified by UserID
+exports.deleteAll = (req, res) => {
+    const id = req.params.id;
+    console.log(id)
+    Exam.destroy({where: {userID:id}})
+    .then(num => {
+        if(num > 0)
+            res.send({message:`Exams of ${id} DELETED`})
+        else
         res.status(404).send({message:`Cannot Delete Exam with ${id}. Maybe user cannot found.`})
     })
     .catch(err => {

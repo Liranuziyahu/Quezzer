@@ -60,6 +60,7 @@ const Op = db.Sequelize.Op;
 //Delete a USER aspecified by ID
     exports.delete = (req, res) => {
         const id = req.params.id;
+        console.log(id)
         User.destroy({where: {userID:id}})
         .then(num => {
             if(num == 1)
