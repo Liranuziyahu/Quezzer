@@ -7,7 +7,9 @@ module.exports = app => {
 //Retrieve all Exams
     router.get("/",exams.findAll)
 //Retrive Exaam by ID and category
-router.post("/category",exams.findExam)
+    router.post("/category",exams.findExam)
+//Delete All Exams by UserID
+    router.delete("/deleteAll/:id",exams.deleteAll)
 //Retrieve a single Exam with id
     router.get("/:id",exams.findOne)
 //update a Exam with id
