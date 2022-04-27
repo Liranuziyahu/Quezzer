@@ -8,32 +8,27 @@ export const myContextData = createContext()
 
 const Candidates = ({children}) => {
 
+    const userModle = {"userName":'',"userEmail":'',"userPassword":'',"roleName":'2'}
     //useState
-    const [StateUser,setStateUser] = useState([{}])
     const [candadians,setCandadians] = useState({})
     const [dataUserLogged , setDataUserLogged] = useState()
-    const [user, setUser] = useState({"id":uniqid(),"email":'',"password":'',
-    "name":'',
-    "categoria":[],
-    "typeClient":'User'
-})
+    const [user, setUser] = useState(userModle)
 
-    const addUser = (async (user)=>{
-        setStateUser([...StateUser,user])
-       await axios.post('http://localhost:3000/Candidates',user)
-
-        setUser({"id":uniqid(),"email":'',"password":'',
-        "name":'',
-        "categoria":[],
-        "typeClient":'User'
-    })
- 
+    const addUser = (async (user , categorys)=>{
+        await axios.post('http://localhost:8080/user',user)
+        .then(res => {
+            categorys.map?.(async category => {
+                const exam = {"categoryExamsID":category,"userID":res.data.userID}
+                await axios.post('http://localhost:8080/exams',exam)
+            })})
+        .catch(err => console.log(err))
+        setUser(userModle)
     })
 
 
     return (
         <>
-            <myContextData.Provider value={{candadians ,StateUser , setDataUserLogged , dataUserLogged  ,addUser ,user,setUser  }} >
+            <myContextData.Provider value={{candadians , setDataUserLogged , dataUserLogged  ,addUser ,user,setUser  }} >
                 {children}
             </myContextData.Provider>
         </>

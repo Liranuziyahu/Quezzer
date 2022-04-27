@@ -11,9 +11,8 @@ const Op = db.Sequelize.Op;
             const exam = {
                 categoryExamsID: req.body.categoryExamsID ,
                 userID:req.body.userID,
-                score:req.body.score
+                score:0
             }
-            console.log(exam)
             Exam.create(exam)
             .then(data => res.send(data))
             .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the Exam."}))

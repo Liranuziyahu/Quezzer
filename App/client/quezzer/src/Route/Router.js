@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore, CreateCandidates , User , ProtectedRoute , ProtectedUserRoute , UserPage} from '../pages/index'
+import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore, CreateUser , User , ProtectedRoute , ProtectedUserRoute , UserPage} from '../pages/index'
 
 
 const Router = () => {
@@ -8,7 +8,7 @@ const Router = () => {
     return (
     <Routes>
         <Route  path="/" element={<Login/>}/>
-        <Route  path="/new" element={<CreateCandidates/>}></Route>
+        <Route  path="/new" element={<CreateUser/>}></Route>
         <Route element={<ProtectedRoute/>}>
             <Route path="Administrator" element={<Admin/>}>
                 <Route path="Users" element={<UserPage/>}> 

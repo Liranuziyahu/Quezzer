@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext , useState} from 'react'
 import { FormControl } from '@mui/material';
 import { Form,Col,Row,Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,16 +6,28 @@ import { useNavigate } from "react-router-dom";
 import {myContextData} from '../../../context/ContextDataFromServer'
 import BackPage from '../../Buttons/BackPage';
 
-const CreateCandidates = () => {
-    const {addUser,checkCategoria ,user ,setUser} = useContext(myContextData)
+const CreateUser = () => {
+    const {addUser ,user ,setUser} = useContext(myContextData)
+    const [categoryExam , setCategoryExam] = useState([])
     const navigate = useNavigate();
 
+    const checkCategoria = (boolen , type) =>{
+        if(boolen)
+        {
+            let catboolen = false
+            categoryExam.map?.(exam =>{if(exam == type) return catboolen == true})
+            if(!catboolen) setCategoryExam(categoryExam => [...categoryExam ,type])
+        }
+        else{
+            categoryExam.splice(type)
+        }
+    }
     return (
         <div style={{"width":"80%","marginLeft":"20%","marginTop":"40px"}}>
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
-                addUser(user)
+                addUser(user , categoryExam)
                 e.preventDefault();
-                navigate(-1)
+                // navigate(-1)
                 }} >
             <Form >
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
@@ -23,7 +35,7 @@ const CreateCandidates = () => {
                     Email
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['email']:e.target.value}))} type="email" placeholder="Email" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['userEmail']:e.target.value}))} type="email" placeholder="Email" />
                     </Col>
                 </Form.Group>
 
@@ -32,7 +44,7 @@ const CreateCandidates = () => {
                     Password
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['password']:e.target.value}))} type="password" placeholder="Password" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['userPassword']:e.target.value}))} type="password" placeholder="Password" />
                     </Col>
                 </Form.Group>
                 
@@ -41,7 +53,7 @@ const CreateCandidates = () => {
                     Full Name
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['name']:e.target.value}))} type="text" placeholder="Full name" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['userName']:e.target.value}))} type="text" placeholder="Full name" />
                     </Col>
                 </Form.Group>
 
@@ -49,7 +61,7 @@ const CreateCandidates = () => {
                 <fieldset>
                     <Form.Group as={Row} className="mb-3">
                     <Form.Label as="legend" column sm={2}>
-                        Categoria
+                        Category
                     </Form.Label>
                     <Col sm={10}>
                         <Form.Check
@@ -57,21 +69,21 @@ const CreateCandidates = () => {
                         label="React"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios1"
-                        onClick = {((e)=>{checkCategoria(e.target.checked,'React')})}
+                        onClick = {((e)=>{checkCategoria(e.target.checked,'2')})}
                         />
                         <Form.Check
                         type="checkbox"
                         label="Angular"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios2"
-                        onClick ={((e)=>{checkCategoria(e.target.checked,'Angular')})}
+                        onClick ={((e)=>{checkCategoria(e.target.checked,'3')})}
                         />
                         <Form.Check
                         type="checkbox"
                         label="JS"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios3"
-                        onClick = {((e)=>{checkCategoria(e.target.checked,'JS')})}
+                        onClick = {((e)=>{checkCategoria(e.target.checked,'1')})}
                         />
                     </Col>
                     </Form.Group>
@@ -89,4 +101,4 @@ const CreateCandidates = () => {
     )
 }
 
-export default CreateCandidates
+export default CreateUser
