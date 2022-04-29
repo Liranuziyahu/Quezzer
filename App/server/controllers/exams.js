@@ -28,7 +28,6 @@ const Op = db.Sequelize.Op;
 //Retrive Exam by ID
     exports.findOne =  (req, res) => {
         const id = req.params.id;
-        console.log(id)
         Exam.findOne({where: {examsID:id}})
         .then( data => {
             if(data)
@@ -78,7 +77,6 @@ exports.delete = (req, res) => {
 //Delete all Exam aspecified by UserID
 exports.deleteAll = (req, res) => {
     const id = req.params.id;
-    console.log(id)
     Exam.destroy({where: {userID:id}})
     .then(num => {
         if(num > 0)
