@@ -1,15 +1,29 @@
-import React ,{useContext} from 'react'
+import React ,{useContext , useState} from 'react'
 import { Form,Col,Row } from 'react-bootstrap';
 import {ContextFromServer} from '../../../context/index'
-
 import { FormControl } from '@mui/material';
-import axios from 'axios';
 
 const ChangeUserData = ({props}) => {
   // setUser(props.userToChange)
-  const { editUser , checkCategoria} = useContext(ContextFromServer)
-
-
+  const { editUser , updateExams ,createExam , setUpdateContext , updateContext} = useContext(ContextFromServer)
+  const [arrExam , setArrExam] = useState([])
+//Check category , where User change category for test 
+const checkCategory = async (userID ,check , categoriaType) =>{
+  let categoryExist = false;
+  if(check == true)
+  {
+    arrExam.map(exam =>{
+      if(exam.categoryExamsID == categoriaType )
+        return categoryExist = true
+    })
+    if(!categoryExist) setArrExam([...arrExam ,{categoryExamsID:categoriaType , userID:userID ,score:0} ])
+  }
+  else 
+  {
+    let exams = arrExam.filter(categoryExamsID => categoryExamsID.categoryExamsID != categoriaType)
+    setArrExam(exams)
+  }
+}
   return (
     <div className="modal-dialog">
       <div className="modal-content">
@@ -20,10 +34,12 @@ const ChangeUserData = ({props}) => {
         <div className="modal-body">
 
         
-          <FormControl onSubmit={async (e)=>{
+          <FormControl onSubmit={async(e)=>{
             e.preventDefault();
-            editUser({...props.userToChange,'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) 
-     
+            editUser({...props.userToChange, 'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) //change userEmail and Password
+            updateExams(props.userToChange , arrExam)                                                          //change Exams
+            props.setEditCompUser(false)                                                                       //Close Component Page
+            setUpdateContext(!updateContext)                                                                   //Update Context for new data's DB
             }}
             > 
             <Form>  
@@ -44,14 +60,14 @@ const ChangeUserData = ({props}) => {
                     label="JS"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios1"
-                    onClick = {((e)=>{checkCategoria(props.userToChange.userID , e.target.checked,1)})}
+                    onClick = {((e)=>{checkCategory(props.userToChange.userID , e.target.checked,1)})} /*JS*/
                     />
                     <Form.Check
                     type="checkbox"
                     label="React"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios2"
-                    onClick = {((e)=>{checkCategoria(props.userToChange.userID , e.target.checked,2)})}
+                    onClick = {((e)=>{checkCategory(props.userToChange.userID , e.target.checked,2)})}/*React*/
                     />
 
                     <Form.Check
@@ -59,7 +75,7 @@ const ChangeUserData = ({props}) => {
                     label="Anular"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios3"
-                    onClick = {((e)=>{checkCategoria(props.userToChange.userID , e.target.checked,3)})}
+                    onClick = {((e)=>{checkCategory(props.userToChange.userID , e.target.checked,3)})}/*Angular*/
                     />
                 </Col>
                 </Form.Group>
