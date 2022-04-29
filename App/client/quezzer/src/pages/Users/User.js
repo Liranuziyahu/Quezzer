@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{useEffect , useContext , useState} from 'react'
 import axios from 'axios'
+import {ContextFromServer} from '../../context'
+
 //CSS
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -9,10 +11,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const User = ({props}) => {
+  const {updateContext , setUpdateContext} = useContext(ContextFromServer)
 
-  const DeleteUser = (userID) => {
+  const DeleteUser = async userID => {
     axios.delete(`http://localhost:8080/exams/deleteAll/${userID}`)
-    .then(res => axios.delete(`http://localhost:8080/user/${userID}`))
+    await axios.delete(`http://localhost:8080/user/${userID}`)
+    setUpdateContext(!updateContext)
   }
   
   return (
