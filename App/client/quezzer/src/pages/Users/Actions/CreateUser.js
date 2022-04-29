@@ -2,14 +2,13 @@ import React,{useContext , useState} from 'react'
 import { FormControl } from '@mui/material';
 import { Form,Col,Row,Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate } from "react-router-dom";
 import {myContextData} from '../../../context/ContextDataFromServer'
+import {ContextFromServer} from '../../../context'
 import BackPage from '../../Buttons/BackPage';
 
 const CreateUser = () => {
-    const {addUser ,user ,setUser} = useContext(myContextData)
+    const {addUser ,user ,setUser} = useContext(ContextFromServer)
     const [categoryExam , setCategoryExam] = useState([])
-    const navigate = useNavigate();
 
     const checkCategoria = (boolen , type) =>{
         if(boolen)
@@ -27,7 +26,7 @@ const CreateUser = () => {
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
                 addUser(user , categoryExam)
                 e.preventDefault();
-                // navigate(-1)
+                
                 }} >
             <Form >
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">

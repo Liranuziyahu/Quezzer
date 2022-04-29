@@ -15,12 +15,9 @@ import InputSearch from '../Buttons/InputSearch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TabelCandidates = () => {
-    const {candadians , exams} = useContext(ContextFromServer)
+    const {exams} = useContext(ContextFromServer)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
-
-    useEffect(()=>{
-    },[userSearch])
-    
+   
     return (
       <>
       <InputSearch setUserSearch = {setUserSearch}></InputSearch>

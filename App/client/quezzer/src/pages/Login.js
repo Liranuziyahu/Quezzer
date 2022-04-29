@@ -10,13 +10,13 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const {StateUser , setDataUserLogged } =  useContext(myContextData)
-    const {users} =  useContext(ContextFromServer)
+    const {allUsers} =  useContext(ContextFromServer)
     const {setIsAuth} = useContext(myContext)
     let navigate = useNavigate();
 
     const checkAuto = (autoLogin) => {
         autoLogin.preventDefault()
-        users.map(async (user)=>{
+        allUsers.map(async (user)=>{
             if(user.userEmail == autoLogin.target[0].value && user.userPassword == autoLogin.target[1].value)
             {
                  setDataUserLogged(user)
