@@ -18,15 +18,18 @@ const CreateUser = () => {
             if(!catboolen) setCategoryExam(categoryExam => [...categoryExam ,type])
         }
         else{
-            categoryExam.splice(type)
+           let sliceArr = categoryExam.filter(exam => exam != type)
+           setCategoryExam(sliceArr)
         }
     }
     return (
         <div style={{"width":"80%","marginLeft":"20%","marginTop":"40px"}}>
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
-                addUser(user , categoryExam)
-                e.preventDefault();
-                
+                 e.preventDefault();
+                 if(categoryExam.length != 0)
+                    addUser(user , categoryExam)
+                else
+                    alert('Choose Category to Test')
                 }} >
             <Form >
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
@@ -43,16 +46,16 @@ const CreateUser = () => {
                     Password
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['userPassword']:e.target.value}))} type="password" placeholder="Password" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['userPassword']:e.target.value}))} type="password" placeholder="Password" required/>
                     </Col>
                 </Form.Group>
                 
-                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalName">
+                    <Form.Group as={Row} className="mb-3" controlId="formHorizontalName" >
                     <Form.Label column sm={2}>
                     Full Name
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['userName']:e.target.value}))} type="text" placeholder="Full name" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['userName']:e.target.value}))} type="text" placeholder="Full name" required/>
                     </Col>
                 </Form.Group>
 
