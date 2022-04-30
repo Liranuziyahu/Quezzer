@@ -12,7 +12,8 @@ import { Form } from 'react-bootstrap';
 const Question = ({props}) => {
 
   function RepeatAnswer(i){
-      return <FormControlLabel value={eval(`props.question?.answer${i}`)} key={i} control={<Radio required={true} />} label={eval(`props.question?.answer${i}`)} />
+      return <FormControlLabel value={eval(`props.question?.answer${i}`)} 
+      key={i} control={<Radio required={true} />} label={eval(`props.question?.answer${i}`)} />
   }
 
   const CheckTheRadio = (event) =>{
@@ -33,7 +34,6 @@ const Question = ({props}) => {
       <FormControl onSubmit = {(e) => {
         e.preventDefault();
         let userAnswer = CheckTheRadio(e?.target)
-        console.log(props.question)
         CheckAnswer(props.question , userAnswer)
         return props.ChangeQuestion()
         }}>
@@ -59,50 +59,3 @@ const Question = ({props}) => {
 }
 
 export default Question
-
-
-
-// const Question = ({question}) => {
-//   console.log("question",question);
-//   // const CheckTheRadio = (event) =>{
-//   //   for(let i=0; i<=3;i++)
-//   //   {
-//   //     if(event[i].checked)
-//   //       return event[i].value
-//   //   }
-//   // }
-
-//   return (
-//     <>
-//       {/* <FormControl onSubmit = {(e) => {
-//         e.preventDefault();
-//         let userAnswer = CheckTheRadio(e?.target)
-//         console.log("userAnswer" , userAnswer)
-//         props.CheckAnswer({"userAnswer":userAnswer ,"numberQuestion": props.theQuestionControl ,"TrueAnswer":props.ExamState?.[0]?.[1]?.[props.theQuestionControl].trueAnswer,"type":props.ExamState?.[0][0]});
-//         return props.ChangeQuestion()
-//         }}>
-
-//         <Form>
-//           <FormLabel>{props.ExamState[0]?.[1][props.theQuestionControl]?.question}</FormLabel>
-//           <RadioGroup
-//             aria-labelledby="demo-radio-buttons-group-label"
-//             defaultValue='0'
-//             name="radio-buttons-group"
-//           >
-//             {
-//               props.ExamState?.[0]?.[1]?.[props.theQuestionControl]?.answers.map((answer,index) => {
-//                   return (
-//                     <FormControlLabel value={answer}  key={index}  control={<Radio required={true} />} label={answer} />
-//                   )
-//               })
-//             } 
-//           </RadioGroup>
-//           <Button type="submit" style={{margin:25}} variant="outlined" startIcon={<SendIcon  />}>Send</Button>
-//         </Form>
-//     </FormControl> */}
-//   </>
-  
-//   )
-// }
-
-// export default Question
