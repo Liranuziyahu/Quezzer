@@ -16,7 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TabelCandidates = () => {
     const {exams} = useContext(ContextFromServer)
-    const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
+    const [userSearch ,setUserSearch] = useState({search:"" , catagorey:""})
    
     return (
       <>
@@ -38,14 +38,12 @@ const TabelCandidates = () => {
                 userSearch.search?
                    (
                     exams.map?.((exam)=>{
-                     let entryString = eval(`exam.userID`)
-                     let currentSearchString = userSearch.search
-                     if(entryString.startsWith?.(currentSearchString))
+                     let entryCategory = eval(`exam.${userSearch.catagorey}`).toString().toLowerCase()
+                     if(entryCategory.startsWith?.(userSearch.search))
                         return <Candidates exam = {exam}/>
                     })
                    ):
                    exams.map?.(exam => <Candidates exam = {exam}/>)
-                
                 }
             </TableBody>
           </Table>

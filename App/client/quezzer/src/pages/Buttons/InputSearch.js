@@ -8,26 +8,26 @@ import FilledInput from '@mui/material/FilledInput';
 
 const currencies = [
   {
-    value: 'id',
+    value: 'userID',
     label: 'ID',
   },
   {
-    value: 'name',
+    value: 'userName',
     label: 'User Name',
   },
   {
-    value: 'email',
+    value: 'userEmail',
     label: 'Email',
   }
 ];
 
 export default function SelectTextFields({setUserSearch}) {
-  const [currency, setCurrency] = useState('id');
 
+  const [currency, setCurrency] = useState('id');
   const handleChange = (event) => {
     setCurrency(event.target.value);
+    console.log(event.target.value)
   };
-
 
   return (
       <div style={{display:'flex', marginBottom:20}}>
@@ -48,7 +48,7 @@ export default function SelectTextFields({setUserSearch}) {
             </Box>
             <FormControl variant="filled" style={{marginTop:'7px'}}>
                 <InputLabel htmlFor="component-filled">{currency}</InputLabel>
-                <FilledInput id="component-filled" onChange={(e)=> setUserSearch({"search":e.target.value ,"catagorei":currency})}  />
+                <FilledInput id="component-filled" onChange={(e)=> setUserSearch({"search":e.target.value ,"catagorey":currency})}  />
             </FormControl>         
     </div>
   );
