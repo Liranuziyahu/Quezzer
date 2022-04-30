@@ -9,7 +9,7 @@ import {myContextData} from '../../context/ContextDataFromServer'
 
 const UserPage = () => {
     const {user} = useContext(myContextData)
-    const [userSearch ,setUserSearch] = useState({search:"" , catagorei:""})
+    const [userSearch ,setUserSearch] = useState({search:"" , category:""})
     const [editUser , setEditCompUser ] =useState(false)
     const [userToChange , setUserToChange] = useState(user)
 
@@ -19,15 +19,13 @@ const UserPage = () => {
     <>
      <BtnCreateCandidates />
      <InputSearch setUserSearch = {setUserSearch}></InputSearch>
-
     { 
       editUser
       ?
       <ChangeUserData props={{"setEditCompUser":setEditCompUser,"userToChange":userToChange ,"setUserToChange":setUserToChange}} /> 
       : 
-      <TableUsers props={{"userSearch":userSearch , "setEditCompUser":setEditCompUser 
-      , "editUser":editUser , setUserToChange}} />
-     }
+      <TableUsers props={{"userSearch":userSearch , "setEditCompUser":setEditCompUser , "editUser":editUser , setUserToChange}} />
+    }
     </>
      )
 }
