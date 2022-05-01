@@ -10,10 +10,14 @@ import { Form } from 'react-bootstrap';
 
 
 const Question = ({props}) => {
+  const styleP = {
+    fontSize: '400px',
+    color:'red'
+  }
 
   function RepeatAnswer(i){
       return <FormControlLabel value={eval(`props.question?.answer${i}`)} 
-      key={i} control={<Radio required={true} />} label={eval(`props.question?.answer${i}`)} />
+      key={i} control={<Radio required={true} />} label={eval(`props.question?.answer${i}`)}/>
   }
 
   const CheckTheRadio = (event) =>{
@@ -30,8 +34,8 @@ const Question = ({props}) => {
   }
   
   return (
-    <>
-      <FormControl onSubmit = {(e) => {
+    <div style={{margin:'180px 10px'}}>
+    <FormControl onSubmit = {(e) => {
         e.preventDefault();
         let userAnswer = CheckTheRadio(e?.target)
         CheckAnswer(props.question , userAnswer)
@@ -53,7 +57,7 @@ const Question = ({props}) => {
           <Button type="submit" style={{margin:25}} variant="outlined" startIcon={<SendIcon  />}>Send</Button>
         </Form>
     </FormControl>
-  </>
+  </div>
   
   )
 }

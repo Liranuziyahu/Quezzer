@@ -7,21 +7,9 @@ import {ContextFromServer} from '../../../context'
 import BackPage from '../../Buttons/BackPage';
 
 const CreateUser = () => {
-    const {addUser ,user ,setUser} = useContext(ContextFromServer)
-    const [categoryExam , setCategoryExam] = useState([])
+    const {addUser ,user ,setUser , checkCategory , categoryExam} = useContext(ContextFromServer)
 
-    const checkCategoria = (boolen , type) =>{
-        if(boolen)
-        {
-            let catboolen = false
-            categoryExam.map?.(exam =>{if(exam == type) return catboolen == true})
-            if(!catboolen) setCategoryExam(categoryExam => [...categoryExam ,type])
-        }
-        else{
-           let sliceArr = categoryExam.filter(exam => exam != type)
-           setCategoryExam(sliceArr)
-        }
-    }
+   
     return (
         <div style={{"width":"80%","marginLeft":"20%","marginTop":"40px"}}>
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
@@ -71,21 +59,21 @@ const CreateUser = () => {
                         label="React"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios1"
-                        onClick = {((e)=>{checkCategoria(e.target.checked,'2')})}
+                        onClick = {((e)=>{checkCategory(e.target.checked,'2')})}
                         />
                         <Form.Check
                         type="checkbox"
                         label="Angular"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios2"
-                        onClick ={((e)=>{checkCategoria(e.target.checked,'3')})}
+                        onClick ={((e)=>{checkCategory(e.target.checked,'3')})}
                         />
                         <Form.Check
                         type="checkbox"
                         label="JS"
                         name="formHorizontalRadios"
                         id="formHorizontalRadios3"
-                        onClick = {((e)=>{checkCategoria(e.target.checked,'1')})}
+                        onClick = {((e)=>{checkCategory(e.target.checked,'1')})}
                         />
                     </Col>
                     </Form.Group>

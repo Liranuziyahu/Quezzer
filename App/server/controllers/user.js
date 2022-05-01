@@ -4,7 +4,6 @@ const Op = db.Sequelize.Op;
 
 //Create USER
     exports.create = (req ,res) => {
-        console.log(req.body)
         if(!req.body.userName)
         {
             res.status(400).send({message:"userName Cannot Be Empty"})
@@ -24,7 +23,7 @@ const Op = db.Sequelize.Op;
 //Retarive All USERS FROM DB
     exports.findAll = (req,res) => {
          db.sequelize.query('SELECT userID , userName , userEmail , userPassword , role.roleName  FROM users INNER JOIN role ON users.roleID = role.roleID')
-        .then( data => {console.log(data[0]);res.send(data[0])})
+        .then( data => res.send(data[0]))
         .catch(err => res.status(500).send({massage: err.message || "Some error occurred while retrieving the User."}))
     }
 
@@ -44,9 +43,6 @@ const Op = db.Sequelize.Op;
 //Update USER by ID
     exports.update = (req,res) => {
         const id = req.params.id
-        console.log("req.body",req.body)
-        console.log("id",id)
-
         User.update(req.body , {where: {userID:id}})
         .then( num => {
             if(num == 1)
@@ -60,7 +56,6 @@ const Op = db.Sequelize.Op;
 //Delete a USER aspecified by ID
     exports.delete = (req, res) => {
         const id = req.params.id;
-        console.log(id)
         User.destroy({where: {userID:id}})
         .then(num => {
             if(num == 1)

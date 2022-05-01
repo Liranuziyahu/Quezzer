@@ -15,8 +15,11 @@ import InputSearch from '../Buttons/InputSearch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TabelCandidates = () => {
-    const {exams} = useContext(ContextFromServer)
+    const {exams , updateContext} = useContext(ContextFromServer)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorey:""})
+    useEffect(()=>{
+      console.log('change' , exams)
+    },[exams])
    
     return (
       <>
@@ -39,7 +42,7 @@ const TabelCandidates = () => {
                    (
                     exams.map?.((exam)=>{
                      let entryCategory = eval(`exam.${userSearch.catagorey}`).toString().toLowerCase()
-                     if(entryCategory.startsWith?.(userSearch.search))
+                     if(entryCategory.includes?.(userSearch.search))
                         return <Candidates exam = {exam}/>
                     })
                    ):

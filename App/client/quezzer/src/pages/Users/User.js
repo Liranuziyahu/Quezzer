@@ -14,9 +14,9 @@ const User = ({props}) => {
   const {updateContext , setUpdateContext} = useContext(ContextFromServer)
 
   const DeleteUser = async userID => {
-    axios.delete(`http://localhost:8080/exams/deleteAll/${userID}`)
+    await axios.delete(`http://localhost:8080/exams/deleteAll/${userID}`)
     await axios.delete(`http://localhost:8080/user/${userID}`)
-    setUpdateContext(!updateContext)
+    .then(res => setUpdateContext(!updateContext))
   }
   
   return (
