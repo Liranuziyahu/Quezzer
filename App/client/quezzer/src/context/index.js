@@ -14,6 +14,22 @@ const ContextServer = ({children}) => {
   const [questionsAngular , setQuestionsAngular] = useState([])
   const userModle = {"userName":'',"userEmail":'',"userPassword":'',"roleName":'2'}
   const [user, setUser] = useState(userModle)
+
+  const [categoryExam , setCategoryExam] = useState([])
+
+  const checkCategory = (boolen , type) =>{
+    if(boolen)
+    {
+        let catboolen = false
+        categoryExam.map?.(exam =>{if(exam == type) return catboolen == true})
+        if(!catboolen) setCategoryExam(categoryExam => [...categoryExam ,type])
+    }
+    else{
+       let sliceArr = categoryExam.filter(exam => exam != type)
+       setCategoryExam(sliceArr)
+    }
+}
+
   const navigate = useNavigate();
 
   useEffect(async () =>{
@@ -42,14 +58,14 @@ const ContextServer = ({children}) => {
 //User// 
   //Create
   const addUser = (async (user , categorys)=>{
+    console.log("user" , user)
+    console.log("categorys" , categorys)
+    
     await axios.post('http://localhost:8080/user',user)
-    .then(res => {
-        categorys.map?.(async category => {
-            const exam = {"categoryExamsID":category,"userID":res.data.userID}
-            await axios.post('http://localhost:8080/exams',exam)
-        })})
+    .then(res => {axios.post('http://localhost:8080/exams',{userID:res.data.userID, categorys:categorys})})
     .catch(err => console.log(err))
     setUser(userModle)
+    setCategoryExam([])
     setUpdateContext(!updateContext)
     navigate(-1)  
   })
@@ -64,15 +80,19 @@ const ContextServer = ({children}) => {
   const editExam = (async exam => await axios.put(`http://localhost:8080/exams/${exam.examsID}`,exam))
 
   //Detele All Exems by UserID
-  const updateExams = ( async (exam , arrExam) => {
-    await axios.delete(`http://localhost:8080/exams/deleteAll/${exam.userID}`)
-     arrExam.map( async exam => await axios.post('http://localhost:8080/exams/',exam))
+  const updateExams = ( async (exam , categorys) => {
+      await axios.delete(`http://localhost:8080/exams/deleteAll/${exam.userID}`)
+      .then(async res => {
+          console.log("HERE")
+        await axios.post('http://localhost:8080/exams/',{userID:exam.userID, categorys:categorys})
+      })
+      setCategoryExam([])
   }) 
 
   return (
 
     <div>
-        <ContextFromServer.Provider value={{user , setUser ,addUser,allUsers,setAllUsers ,setUpdateContext,updateContext,exams , questionsJS , questionsReact , questionsAngular ,editUser ,createQuestion ,editExam , createExam , updateExams}}>
+        <ContextFromServer.Provider value={{user , setUser ,addUser,allUsers,setAllUsers ,setUpdateContext,updateContext,exams , questionsJS , questionsReact , questionsAngular ,editUser ,createQuestion ,editExam , createExam , updateExams , checkCategory , categoryExam}}>
           {children}
         </ContextFromServer.Provider>
         

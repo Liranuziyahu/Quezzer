@@ -19,7 +19,7 @@ exports.create = (req , res) =>{
             answer4:req.body.answer4 
         }
         Question.create(question)
-        .then(data => {console.log("data",data), res.send(data)})
+        .then(data => {res.send(data)})
         .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the Question."}))
 }
 

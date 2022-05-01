@@ -4,18 +4,21 @@ const Op = db.Sequelize.Op;
 
 //Create Exam object    
     exports.create = (req , res) =>{
-        if(!req.body.userID){
-            res.status(404).send({message:'userID cannot be emepty'})
+        if(!req.body?.userID){
+            res.status(404).send({message:'user ID cannot be emepty'})
             return;
         }
-            const exam = {
-                categoryExamsID: req.body.categoryExamsID ,
-                userID:req.body.userID,
-                score:0
-            }
+            req.body.categorys?.map( examID =>{
+                const exam = {
+                    categoryExamsID: examID ,
+                    userID:req.body.userID,
+                    score:0
+                }
+            console.log("EXAM POST" , exam);
             Exam.create(exam)
             .then(data => res.send(data))
             .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the Exam."}))
+       })
     }
 
 //Retarive All Exams FROM DB
@@ -40,7 +43,6 @@ const Op = db.Sequelize.Op;
 
 //Retrive Exam by userID and CategoryID
     exports.findExam = (req ,res) =>{
-        console.log(req.body)
         db.sequelize.query(`SELECT * FROM exams WHERE userID = ${req.body.userID} and categoryExamsID = ${req.body.categoryExamsID}`)
         .then( data => res.send(data))
         .catch(err => res.status(500).send({massage: err.message || "Some error occurred while retrieving the Exams."}))
@@ -61,7 +63,6 @@ exports.update = (req,res) => {
 //Delete a Exam aspecified by ID
 exports.delete = (req, res) => {
     const id = req.params.id;
-    console.log(id)
     Exam.destroy({where: {examsID:id}})
     .then(num => {
         if(num == 1)
@@ -80,9 +81,9 @@ exports.deleteAll = (req, res) => {
     Exam.destroy({where: {userID:id}})
     .then(num => {
         if(num > 0)
-            res.send({message:`Exams of ${id} DELETED`})
+            res.status(200).send({message:`Exams of ${id} DELETED`})
         else
-        res.status(404).send({message:`Cannot Delete Exam with ${id}. Maybe user cannot found.`})
+            res.status(200)
     })
     .catch(err => {
         res.status(500).send({message:err.message})

@@ -5,25 +5,9 @@ import { FormControl } from '@mui/material';
 
 const ChangeUserData = ({props}) => {
   // setUser(props.userToChange)
-  const { editUser , updateExams ,createExam , setUpdateContext , updateContext} = useContext(ContextFromServer)
-  const [arrExam , setArrExam] = useState([])
+  const { editUser , updateExams  , setUpdateContext , updateContext ,checkCategory,categoryExam } = useContext(ContextFromServer)
 //Check category , where User change category for test 
-const checkCategory = async (userID ,check , categoriaType) =>{
-  let categoryExist = false;
-  if(check == true)
-  {
-    arrExam.map(exam =>{
-      if(exam.categoryExamsID == categoriaType )
-        return categoryExist = true
-    })
-    if(!categoryExist) setArrExam([...arrExam ,{categoryExamsID:categoriaType , userID:userID ,score:0} ])
-  }
-  else 
-  {
-    let exams = arrExam.filter(categoryExamsID => categoryExamsID.categoryExamsID != categoriaType)
-    setArrExam(exams)
-  }
-}
+
   return (
     <div className="modal-dialog">
       <div className="modal-content">
@@ -36,10 +20,14 @@ const checkCategory = async (userID ,check , categoriaType) =>{
         
           <FormControl onSubmit={async(e)=>{
             e.preventDefault();
-            editUser({...props.userToChange, 'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) //change userEmail and Password
-            updateExams(props.userToChange , arrExam)                                                          //change Exams
-            props.setEditCompUser(false)                                                                       //Close Component Page
-            setUpdateContext(!updateContext)                                                                   //Update Context for new data's DB
+            if(categoryExam.length != 0)
+            {
+              editUser({...props.userToChange, 'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) //change userEmail and Password
+              updateExams(props.userToChange , categoryExam)                                                     //change Exams
+              props.setEditCompUser(false)                                                                       //Close Component Page
+              setUpdateContext(!updateContext)                                                                   //Update Context for new data's DB
+            }else
+            alert('Choose Category to Test')                                                                     
             }}
             > 
             <Form>  
@@ -60,14 +48,14 @@ const checkCategory = async (userID ,check , categoriaType) =>{
                     label="JS"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios1"
-                    onClick = {((e)=>{checkCategory(props.userToChange.userID , e.target.checked,1)})} /*JS*/
+                    onClick = {((e)=>{checkCategory(e.target.checked,'1')})} /*JS*/
                     />
                     <Form.Check
                     type="checkbox"
                     label="React"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios2"
-                    onClick = {((e)=>{checkCategory(props.userToChange.userID , e.target.checked,2)})}/*React*/
+                    onClick = {((e)=>{checkCategory(e.target.checked,'2')})}/*React*/
                     />
 
                     <Form.Check
@@ -75,7 +63,7 @@ const checkCategory = async (userID ,check , categoriaType) =>{
                     label="Anular"
                     name="formHorizontalRadios"
                     id="formHorizontalRadios3"
-                    onClick = {((e)=>{checkCategory(props.userToChange.userID , e.target.checked,3)})}/*Angular*/
+                    onClick = {((e)=>{checkCategory(e.target.checked,'3')})}/*Angular*/
                     />
                 </Col>
                 </Form.Group>
