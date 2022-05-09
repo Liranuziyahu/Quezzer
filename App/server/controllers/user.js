@@ -1,28 +1,37 @@
 const db = require('./../models')
 const User = db.users
 const Op = db.Sequelize.Op;
+const bcrypt = require('bcrypt');
 
 //Create USER
-    exports.create = (req ,res) => {
+    exports.create = async (req ,res) => {
         if(!req.body.userName)
         {
             res.status(400).send({message:"userName Cannot Be Empty"})
             return;
         }
+        const hashedPassword = await bcrypt.hash(req.body.userPassword, 2)
+        try{
             const user = {
                 userName:req.body.userName,
                 userEmail:req.body.userEmail,
-                userPassword:req.body.userPassword,
+                userPassword: hashedPassword,
                 roleID:req.body.roleID
             }
             User.create(user)
             .then(data => res.send(data))
             .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the User."}))
+        }
+        catch(err){
+            console.error(error);
+            res.status(500).send();
+        }
+           
     }
 
 //Retarive All USERS FROM DB
     exports.findAll = (req,res) => {
-         db.sequelize.query('SELECT userID , userName , userEmail , userPassword , role.roleName  FROM users INNER JOIN role ON users.roleID = role.roleID')
+         db.sequelize.query('SELECT userID , userName , userEmail , userPassword , role.roleName FROM users INNER JOIN role ON users.roleID = role.roleID')
         .then( data => res.send(data[0]))
         .catch(err => res.status(500).send({massage: err.message || "Some error occurred while retrieving the User."}))
     }
@@ -67,3 +76,14 @@ const Op = db.Sequelize.Op;
             res.status(500).send({message:err.message})
         })
     }
+//Login
+    exports.login = async (req , res) =>{
+        console.log('Start HERE' , req.body.email)
+        const user = await User.findOne({where: {userEmail:req.body.email}})
+        try{
+            let match = await bcrypt.compare(req.body.password, user.userPassword)
+            if(match) res.status(200).send(user)
+            else res.status(200).send(false)
+        }
+        catch{err => console.log(err)}
+     }

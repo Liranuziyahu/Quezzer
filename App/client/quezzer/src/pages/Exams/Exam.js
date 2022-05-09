@@ -1,9 +1,7 @@
 import React,{useState ,useContext ,useEffect} from 'react'
 import ChangeExam from './ChangeExam';
 import Question from './Question';
-import {myContextData} from '../../context/ContextDataFromServer'
 import {ContextFromServer} from '../../context/index'
-import axios from 'axios';
 
 
 const Exam = ({userExams}) => {
@@ -57,7 +55,6 @@ const Exam = ({userExams}) => {
         finishedExam(),
         <ChangeExam props = {{ exam ,theExmControl , changeExam , storageQuestions , theExmControl}}/>
       )
-
    }
         
    </>

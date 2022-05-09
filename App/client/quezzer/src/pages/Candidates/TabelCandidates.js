@@ -1,5 +1,4 @@
 import React,{useContext, useState} from 'react'
-import { useEffect } from 'react';
 //Component
 import {ContextFromServer} from '../../context/'
 import Candidates from './Candidates'
@@ -12,20 +11,18 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import InputSearch from '../Buttons/InputSearch';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const TabelCandidates = () => {
-    const {exams , updateContext} = useContext(ContextFromServer)
+    const {exams} = useContext(ContextFromServer)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorey:""})
-    useEffect(()=>{
-      console.log('change' , exams)
-    },[exams])
-   
+
+    exams?.sort?.((exam1 , exam2)=>{
+      return exam1.userID - exam2.userID
+    })
     return (
       <>
-      <InputSearch setUserSearch = {setUserSearch}></InputSearch>
-
-      <TableContainer component={Paper}>  
+        <InputSearch setUserSearch = {setUserSearch}></InputSearch>
+        <TableContainer component={Paper}>  
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -39,21 +36,19 @@ const TabelCandidates = () => {
             <TableBody>
               {
                 userSearch.search?
-                   (
+                  (
                     exams.map?.((exam)=>{
-                     let entryCategory = eval(`exam.${userSearch.catagorey}`).toString().toLowerCase()
-                     if(entryCategory.includes?.(userSearch.search))
+                    let entryCategory = eval(`exam.${userSearch?.catagorey}`)?.toString()?.toLowerCase()
+                    if(entryCategory?.includes?.(userSearch.search?.toString()?.toLowerCase()))
                         return <Candidates exam = {exam}/>
                     })
-                   ):
-                   exams.map?.(exam => <Candidates exam = {exam}/>)
+                  ):
+                  exams.map?.(exam => <Candidates exam = {exam}/>)
                 }
             </TableBody>
           </Table>
-    </TableContainer>
-      </>
-  
-    )
+      </TableContainer>
+    </>
+  )
 }
-
 export default TabelCandidates
