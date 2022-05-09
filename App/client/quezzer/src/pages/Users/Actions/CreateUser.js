@@ -1,15 +1,15 @@
-import React,{useContext , useState} from 'react'
+import React,{useContext} from 'react'
 import { FormControl } from '@mui/material';
 import { Form,Col,Row,Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {myContextData} from '../../../context/ContextDataFromServer'
 import {ContextFromServer} from '../../../context'
+import {myContextData} from '../../../context/ContextDataFromServer'
+
 import BackPage from '../../Buttons/BackPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CreateUser = () => {
     const {addUser ,user ,setUser , checkCategory , categoryExam} = useContext(ContextFromServer)
-
-   
+    const {dataUserLogged} = useContext(myContextData)
     return (
         <div style={{"width":"80%","marginLeft":"20%","marginTop":"40px"}}>
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
@@ -34,7 +34,7 @@ const CreateUser = () => {
                     Password
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['userPassword']:e.target.value}))} type="password" placeholder="Password" required/>
+                    <Form.Control onChange = {((e)=>setUser({...user,['userPassword']:e.target.value }))} type="password" placeholder="Password" required/>
                     </Col>
                 </Form.Group>
                 
@@ -78,8 +78,21 @@ const CreateUser = () => {
                     </Col>
                     </Form.Group>
                 </fieldset>
-               
-                <Form.Group as={Row} className="mb-3">
+                {
+                    dataUserLogged?.roleID == 1 || (JSON.parse(localStorage?.getItem('currentUser')))?.roleID  == 1 ?(
+                        <div>
+                            <label>Administrator</label>
+                            <input type="checkbox" onChange={(e)=>{
+                                if(e.target.checked)
+                                    setUser({...user,['roleID']:'1'})
+                                else
+                                    setUser({...user,['roleID']:'2'})
+                            }} />
+                        </div>
+                    ):null
+                
+                }
+                    <Form.Group as={Row} className="mb-3">
                     <Col sm={{ span: 10, offset: 2 }}>
                     <Button type="submit" >Sign in</Button>
                     <BackPage/>

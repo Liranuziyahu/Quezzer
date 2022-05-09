@@ -76,16 +76,17 @@ const ContextServer = ({children}) => {
   //Create
   const createExam = (async exam => await axios.post('http://localhost:8080/exams/',exam))
 
-  //Update 
+  //Update specific exam - for change score
   const editExam = (async exam => await axios.put(`http://localhost:8080/exams/${exam.examsID}`,exam))
 
-  //Detele All Exems by UserID
+  //Update Exams User ask to test
   const updateExams = ( async (exam , categorys) => {
       await axios.delete(`http://localhost:8080/exams/deleteAll/${exam.userID}`)
       .then(async res => {
           console.log("HERE")
         await axios.post('http://localhost:8080/exams/',{userID:exam.userID, categorys:categorys})
       })
+      .then(() => setUpdateContext(!updateContext))    //Update Context for new data's DB
       setCategoryExam([])
   }) 
 

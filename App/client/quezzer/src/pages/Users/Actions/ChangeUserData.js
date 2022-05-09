@@ -15,9 +15,7 @@ const ChangeUserData = ({props}) => {
           <h5 className="modal-title" id="exampleModalLabel">Change Details</h5>
           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"onClick={()=>props.setEditCompUser(false)}></button>
         </div>
-        <div className="modal-body">
-
-        
+        <div className="modal-body">        
           <FormControl onSubmit={async(e)=>{
             e.preventDefault();
             if(categoryExam.length != 0)
@@ -25,7 +23,6 @@ const ChangeUserData = ({props}) => {
               editUser({...props.userToChange, 'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) //change userEmail and Password
               updateExams(props.userToChange , categoryExam)                                                     //change Exams
               props.setEditCompUser(false)                                                                       //Close Component Page
-              setUpdateContext(!updateContext)                                                                   //Update Context for new data's DB
             }else
             alert('Choose Category to Test')                                                                     
             }}

@@ -13,9 +13,6 @@ function Candidates({exam}) {
             <TableCell align="center">{exam?.userEmail}</TableCell>
             <TableCell align="center">{exam?.categoryExamsName}</TableCell>
             <TableCell align="center">{exam?.score}</TableCell>
-
         </TableRow>
-)
-}
-
+)}
 export default Candidates

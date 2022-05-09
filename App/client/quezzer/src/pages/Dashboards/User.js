@@ -8,7 +8,7 @@ const User = () => {
   
   return (
   <div style={{display: 'flex',flexDirection: 'column',alignItems: 'center',marginTop:250,fontSize:20}}>
-    <div>Hello {currentUser.userName? currentUser.userName :dataUserLogged.userName} </div>
+    <div>Hello {currentUser.userName? currentUser.userName : dataUserLogged.userName} </div>
     <div>Welcome to our exam</div>
     <div>When you are ready you can <Link to='Questionnaire'>Start</Link></div>
   </div>

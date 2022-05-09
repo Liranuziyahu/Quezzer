@@ -5,13 +5,11 @@ import '../../CSS/Candidate.css'
 import Button from '@mui/material/Button';
 
 const BtnCreateCandidates = () => {
-
-
     return (
-            <Link to="/new" > 
-        <Button  variant="outlined" size="small" style={{float:'right',marginBottom:10}}><AddIcon id="add_candidate" /></Button>   
-            </Link>  
-    )
-}
-
+        <Link to="/new" > 
+            <Button  variant="outlined" size="small" style={{float:'right',marginBottom:10}}>
+                <AddIcon/>
+            </Button>   
+        </Link>  
+    )}
 export default BtnCreateCandidates

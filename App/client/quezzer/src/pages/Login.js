@@ -1,29 +1,35 @@
-import React ,{useContext , useEffect} from 'react'
+import React ,{useContext, useState} from 'react'
+import axios from 'axios';
 import {Link} from 'react-router-dom'
-import { Form,Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {useNavigate} from "react-router-dom";
 import {myContextData} from '../context/ContextDataFromServer'
-import {ContextFromServer} from '../context/'
-
-import {myContext} from '../context/Context'
-import { useNavigate } from "react-router-dom";
+//CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form,Button } from 'react-bootstrap';
 
 const Login = () => {
-    const {StateUser , setDataUserLogged } =  useContext(myContextData)
-    const {allUsers} =  useContext(ContextFromServer)
-    const {setIsAuth} = useContext(myContext)
+    const {setDataUserLogged ,setIsAuth} =  useContext(myContextData)
+    const [loginMessage , setLoginMessage] = useState('')
     let navigate = useNavigate();
 
     const checkAuto = (autoLogin) => {
         autoLogin.preventDefault()
-        allUsers.map(async (user)=>{
-            if(user.userEmail == autoLogin.target[0].value && user.userPassword == autoLogin.target[1].value)
-            {
-                 setDataUserLogged(user)
-                 setIsAuth(true)
-                 navigate(`${user.roleName}`)
-                 localStorage.setItem('currentUser' , JSON.stringify(user))  
-            }})}
+        axios.post('http://localhost:8080/user/login',{email:autoLogin.target[0].value , password:autoLogin.target[1].value})
+        .then(user => {
+            if(!user.data)
+           {
+            setLoginMessage('Password Worng')
+           }
+           else {
+            setDataUserLogged(user.data)
+            setIsAuth(true)
+            let path = user.data.roleID == 1 ? 'Administrator':'User'
+            localStorage.setItem('currentUser' , JSON.stringify(user.data)) 
+            navigate(`${path}`)
+           }
+        })
+        .catch(err =>console.log('Email or password not true'))
+    }
 
     return (
         <div > 
@@ -40,6 +46,7 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
+                <div style={{color:"red" , fontWeight:"700"}}>{loginMessage}</div>
                 <Link  to="new" >
                      You dont have account yet?
                 </Link>
@@ -53,3 +60,5 @@ const Login = () => {
 }
 
 export default Login
+
+     

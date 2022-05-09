@@ -1,8 +1,7 @@
-import React ,{useContext} from 'react'
+import React from 'react'
 import { Link , Outlet } from "react-router-dom";
-import {myContextData} from '../../context/ContextDataFromServer'
 import Logout from '../Logout'
-//CSS
+//MUI
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -85,7 +84,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }));
 
 function Admin() {
-      const {reqTableAdmin} = useContext(myContextData)
       const theme = useTheme();
       const [open, setOpen] = React.useState(false);
     
