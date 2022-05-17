@@ -23,7 +23,7 @@ const currencies = [
 
 export default function SelectTextFields({setUserSearch}) {
 
-  const [currency, setCurrency] = useState('id');
+  const [currency, setCurrency] = useState('userID');
   const handleChange = event => setCurrency(event.target.value);
 
   return (

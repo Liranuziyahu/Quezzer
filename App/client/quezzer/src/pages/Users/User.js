@@ -11,11 +11,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const User = ({props}) => {
-  const {updateContext , setUpdateContext} = useContext(ContextFromServer)
+  const {updateContext , setUpdateContext ,DeleteAnswersByID , DeleteAllExams ,deleteUser} = useContext(ContextFromServer)
 
   const DeleteUser = async userID => {
-    await axios.delete(`http://localhost:8080/exams/deleteAll/${userID}`)
-    await axios.delete(`http://localhost:8080/user/${userID}`)
+    await DeleteAnswersByID(userID)
+    await DeleteAllExams(userID)
+    await deleteUser(userID)
     .then(res => setUpdateContext(!updateContext))
   }
   

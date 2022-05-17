@@ -20,5 +20,6 @@ db.sequelize = sequelize;
 db.users = require('./user')(sequelize , Sequelize)
 db.exams = require('./exams')(sequelize , Sequelize)
 db.questions = require('./questions')(sequelize , Sequelize)
+db.user_answers = require('./user_answers')(sequelize , Sequelize)
 
 module.exports = db;

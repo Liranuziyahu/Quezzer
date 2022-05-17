@@ -5,32 +5,41 @@ import {ContextFromServer} from '../../context/index'
 
 
 const Exam = ({userExams}) => {
-  const {questionsJS , questionsReact , questionsAngular , editExam} = useContext(ContextFromServer)
+  const {questionsJS , questionsReact , questionsAngular , editExam , CreateAnswersExam} = useContext(ContextFromServer)
   const [theExmControl , setTheExmControl] = useState(0);
 
   //question state
-  const [storageQuestions , setStorageQuestions] = useState([])
   const [theQuestionControl , setTheQuestionControl] = useState(0);
+  const [storageQuestions , setStorageQuestions] = useState([])
   const [question , setQuestion] = useState([storageQuestions[theExmControl]?.questions[theQuestionControl]]);
-  const ChangeQuestion = () => setTheQuestionControl(theQuestionControl + 1)
-
   const [exam , setExam] = useState([storageQuestions[theExmControl]]);
+  const [storageAnswers , setStorageAnswers] = useState([])
+
+  const ChangeQuestion = () => setTheQuestionControl(theQuestionControl + 1)
 
   const changeExam = () => {
       setTheExmControl(theExmControl + 1)
       setTheQuestionControl(0)
     }
+
   const finishedExam = () => {
+    CreateAnswersExam(storageAnswers)
+    setStorageAnswers([])
     userExams.map(exam => {
       if(exam.categoryExamsName == storageQuestions?.[theExmControl].name )
       {
-        const examDone = {"examsID":exam.examsID ,"categoryExamsID": exam.categoryExamsID , "userID":exam.userID , "score":storageQuestions?.[theExmControl].score}
+        const examDone = {
+         "examsID":exam.examsID ,
+         "categoryExamsID": exam.categoryExamsID ,
+         "userID":exam.userID ,
+         "score":storageQuestions?.[theExmControl].score,
+         "done":true}
         editExam(examDone)
       }})}
 
   const storageQuestionArray = (userExams , questionsJS ,questionsReact , questionsAngular) =>{
     userExams?.map(exm=>{
-      if(exm.categoryExamsName == 'JS') return setStorageQuestions( storageQuestions => [...storageQuestions,{name:'JS' ,questions:questionsJS ,score:0}])
+      if(exm.categoryExamsName == 'JS') return setStorageQuestions( storageQuestions => [...storageQuestions,{examID:exm.examsID, name:'JS' ,questions:questionsJS ,score:0}])
       if(exm.categoryExamsName == 'React') return setStorageQuestions( storageQuestions => [...storageQuestions,{name:'React' ,questions:questionsReact , score:0}])
       if(exm.categoryExamsName == 'Angular') return setStorageQuestions( storageQuestions => [...storageQuestions,{name:"Angular" ,questions:questionsAngular ,score:0}])
     })}
@@ -47,13 +56,13 @@ const Exam = ({userExams}) => {
     
   return (
    <>
+   {console.log(storageQuestions)}
    {
-     (storageQuestions?.[theExmControl]?.questions?.length != theQuestionControl)?
-      <Question  props = {{question:question,exam:exam , ChangeQuestion}}/>
+     (storageQuestions?.[theExmControl]?.questions?.length != theQuestionControl && storageQuestions.length != 0 )?
+      <Question  props = {{question:question,exam:exam , ChangeQuestion , setStorageAnswers ,userExams: userExams[theExmControl]}}/>
       :
       (
-        finishedExam(),
-        <ChangeExam props = {{ exam ,theExmControl , changeExam , storageQuestions , theExmControl}}/>
+        <ChangeExam props = {{ exam ,theExmControl , changeExam , storageQuestions , theExmControl , finishedExam}}/>
       )
    }
         

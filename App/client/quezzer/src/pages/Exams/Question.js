@@ -39,6 +39,7 @@ const Question = ({props}) => {
         e.preventDefault();
         let userAnswer = CheckTheRadio(e?.target)
         CheckAnswer(props.question , userAnswer)
+        props.setStorageAnswers(storageAnswers => [...storageAnswers , {examsID:props.userExams?.examsID,questionID:props.question.questionID,userAnswer: userAnswer}])
         return props.ChangeQuestion()
         }}>
 

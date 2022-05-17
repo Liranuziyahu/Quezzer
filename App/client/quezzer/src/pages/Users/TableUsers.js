@@ -33,14 +33,13 @@ const TableUsers = ({props}) => {
           {
             props.userSearch.search ?  
               (
-                allUsers.map((user)=>{
+                allUsers.map((user , index)=>{
                   let entryCategory = eval(`user?.${props.userSearch?.catagorey}`)?.toString().toLowerCase()
                   if(entryCategory?.includes(props.userSearch?.search?.toString().toLowerCase()))
-                    return <User props = {{"user":user , "setEditCompUser":props.setEditCompUser ,
-                            "editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>
+                      return <User key ={index} props = {{"user":user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>
               }))
             :
-          allUsers.map?.((user) => <User props={{"user": user , "setEditCompUser":props.setEditCompUser 
+          allUsers.map?.((user) => <User key={user.userID} props={{"user": user , "setEditCompUser":props.setEditCompUser 
                                   ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>)
           }
         </TableBody>

@@ -37,13 +37,13 @@ const TabelCandidates = () => {
               {
                 userSearch.search?
                   (
-                    exams.map?.((exam)=>{
+                    exams.map?.((exam ,index)=>{
                     let entryCategory = eval(`exam.${userSearch?.catagorey}`)?.toString()?.toLowerCase()
                     if(entryCategory?.includes?.(userSearch.search?.toString()?.toLowerCase()))
-                        return <Candidates exam = {exam}/>
+                        return <Candidates key={index} exam = {exam}/>
                     })
                   ):
-                  exams.map?.(exam => <Candidates exam = {exam}/>)
+                  exams.map?.((exam,index) => <Candidates  key = {index} exam = {exam}/>)
                 }
             </TableBody>
           </Table>
