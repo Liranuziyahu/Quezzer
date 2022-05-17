@@ -27,5 +27,6 @@ app.get('/' , (req,res) => res.json({message:"Welcome to mk application."}))
 require('./routes/user.js')(app)
 require('./routes/exam.js')(app)
 require('./routes/question.js')(app)
+require('./routes/user_answers.js')(app)
 
 app.listen(PORT, () => console.log(`Listen on PORT ${PORT}`))

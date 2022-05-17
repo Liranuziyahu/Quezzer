@@ -1,7 +1,10 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import Button from '@mui/material/Button';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 const ChangeExam = ({props}) => {
+  useEffect(() =>{
+    props.finishedExam()
+  },[])
   let nameExam = props?.storageQuestions?.[props.theExmControl+1]?.name
   const styleCenter ={
     width:700,
@@ -11,7 +14,7 @@ const ChangeExam = ({props}) => {
   return (
   <>
     {
-      props.storageQuestions.length != props.theExmControl + 1 ? 
+      (props.storageQuestions.length != props.theExmControl + 1 && props.storageQuestions.length != 0)? 
       (
         <>
           <div style = {styleCenter}>

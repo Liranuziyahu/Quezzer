@@ -14,6 +14,9 @@ module.exports = (sequelize , Sequelize ) =>{
         },
         score:{
             type: Sequelize.INTEGER
+        },
+        done:{
+            type:Sequelize.BOOLEAN
         }
     },{timestamps: false});
 

@@ -5,7 +5,7 @@ import TableRow from '@mui/material/TableRow';
 
 function Candidates({exam}) {
     return (
-        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} onClick={()=>console.log("Gee")}>
             <TableCell align="center" component="th" scope="row">
             {exam?.userID}
             </TableCell>
