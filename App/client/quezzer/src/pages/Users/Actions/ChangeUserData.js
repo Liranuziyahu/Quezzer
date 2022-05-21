@@ -20,9 +20,12 @@ const ChangeUserData = ({props}) => {
             e.preventDefault();
             if(categoryExam.length != 0)
             {
-              editUser({...props.userToChange, 'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) //change userEmail and Password
-              updateExams(props.userToChange , categoryExam)                                                     //change Exams
-              props.setEditCompUser(false)                                                                       //Close Component Page
+             editUser({...props.userToChange, 'userEmail':e.target[0].value ,'userPassword':e.target[1].value}) //change userEmail and Password
+              .then(res => {
+                updateExams(props.userToChange , categoryExam)  //change Exams
+                props.setEditCompUser(false)                   //Close Component Page
+              })
+              .catch(err => alert('Enter Password'))                                                          
             }else
             alert('Choose Category to Test')                                                                     
             }}

@@ -44,12 +44,15 @@ const ContextServer = ({children}) => {
   //Create
   const addUser = (async (user , categorys)=>{
     await axios.post('http://localhost:8080/user',user)
-    .then(res => {axios.post('http://localhost:8080/exams',{userID:res.data.userID, categorys:categorys})})
-    .catch(err => console.log(err))
-    setUser(userModle)
-    setCategoryExam([])
-    setUpdateContext(!updateContext)
-    navigate(-1)  
+    .then(res => {
+      axios.post('http://localhost:8080/exams',{userID:res.data.userID, categorys:categorys})
+      setUser(userModle)
+      setCategoryExam([])
+      setUpdateContext(!updateContext)
+      navigate(-1)  
+    })
+    .catch(err => alert('Enter a password'))
+   
   })
   //Edit
   const editUser = (user => axios.put(`http://localhost:8080/user/${user.userID}`,user))
