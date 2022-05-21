@@ -15,7 +15,6 @@ import InputSearch from '../Buttons/InputSearch';
 const TabelCandidates = () => {
     const {exams} = useContext(ContextFromServer)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorey:""})
-
     exams?.sort?.((exam1 , exam2)=>{
       return exam1.userID - exam2.userID
     })
@@ -29,21 +28,22 @@ const TabelCandidates = () => {
               <TableCell align="center">User ID</TableCell>
                 <TableCell align="center">User Name</TableCell>
                 <TableCell align="center">Email</TableCell>
-                <TableCell align="center">Exam</TableCell>
+                <TableCell align="center">Type</TableCell>
                 <TableCell align="center">Score</TableCell>
+                <TableCell align="center">Exam</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {
                 userSearch.search?
                   (
-                    exams.map?.((exam ,index)=>{
+                    exams?.map?.((exam ,index)=>{
                     let entryCategory = eval(`exam.${userSearch?.catagorey}`)?.toString()?.toLowerCase()
                     if(entryCategory?.includes?.(userSearch.search?.toString()?.toLowerCase()))
                         return <Candidates key={index} exam = {exam}/>
                     })
                   ):
-                  exams.map?.((exam,index) => <Candidates  key = {index} exam = {exam}/>)
+                  exams?.map?.((exam,index) => <Candidates  key = {index} exam = {exam}/>)
                 }
             </TableBody>
           </Table>

@@ -83,6 +83,11 @@ const ContextServer = ({children}) => {
   const DeleteAnswersByID = ( async id =>{
     await axios.delete(`http://localhost:8080/answer/${id}`)
   })
+  //Get by ID
+  const AnswersByExamID = (async examID =>{
+    return  axios.get(`http://localhost:8080/answer/${examID}`)
+    .then(res=>  res.data)
+  })
 
 /////////Function/////////
   const checkCategory = (boolen , type) =>{
@@ -100,7 +105,7 @@ const ContextServer = ({children}) => {
 
   return (
     <div>
-        <ContextFromServer.Provider value={{user , setUser ,addUser,deleteUser,allUsers,setAllUsers ,setUpdateContext,updateContext,exams , questionsJS , questionsReact , questionsAngular ,editUser ,createQuestion ,editExam , createExam , updateExams , checkCategory , categoryExam ,CreateAnswersExam,DeleteAllExams,DeleteAnswersByID}}>
+        <ContextFromServer.Provider value={{user , setUser ,addUser,deleteUser,allUsers,setAllUsers ,setUpdateContext,updateContext,exams , questionsJS , questionsReact , questionsAngular ,editUser ,createQuestion ,editExam , createExam , updateExams , checkCategory , categoryExam ,CreateAnswersExam,DeleteAllExams,DeleteAnswersByID,AnswersByExamID}}>
           {children}
         </ContextFromServer.Provider>
     </div>

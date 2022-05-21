@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore, CreateUser , User , ProtectedRoute , ProtectedUserRoute , UserPage} from '../pages/index'
+import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore, CreateUser , User , ProtectedRoute , ProtectedUserRoute , UserPage , PageExam} from '../pages/index'
 
 
 const Router = () => {
@@ -11,18 +11,16 @@ const Router = () => {
         <Route  path="/new" element={<CreateUser/>}></Route>
         <Route element={<ProtectedRoute/>}>
             <Route path="Administrator" element={<Admin/>}>
-                <Route path="Users" element={<UserPage/>}> 
-                </Route>
-                <Route path="Candidates" element={<TabelCandidates/>}>
-                </Route>
-                <Route path="Repositories" element={<Repositore/>}></Route>
-                <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/><Route/>
+                <Route path="Users" element={<UserPage/>}/>
+                <Route path="Candidates" element={<TabelCandidates/>}/>
+                <Route path="Candidates/:id" element={<PageExam />} />
+                <Route path="Repositories" element={<Repositore/>}/>    
+                <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/>
             </Route>
         </Route>
         <Route path="User" element={<ProtectedUserRoute/>}>
-            <Route index element={<User/>}>
-            </Route> 
-            <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/><Route/>
+            <Route index element={<User/>}/>
+            <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/>
         </Route> 
         <Route path="*" element={(()=> <h1>Page NOT FOUND - 404 :( </h1>) ()}></Route> 
     </Routes>

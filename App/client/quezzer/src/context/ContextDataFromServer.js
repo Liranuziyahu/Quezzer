@@ -13,11 +13,11 @@ const Candidates = ({children}) => {
     const [dataUserLogged , setDataUserLogged] = useState()
     const [toggleAddButton,settoggleAddButton] = useState(false)
     const [isAuth, setIsAuth] = useState(false)
-    
+    const [pageExam , setPageExam] = useState(false)
 
     return (
         <>
-        <myContextData.Provider value={{candadians , setDataUserLogged , dataUserLogged , toggleAddButton ,settoggleAddButton,isAuth , setIsAuth}} >
+        <myContextData.Provider value={{candadians , setDataUserLogged , dataUserLogged , toggleAddButton ,settoggleAddButton,isAuth , setIsAuth , setPageExam,pageExam}} >
         {children}
         </myContextData.Provider>
         </>

@@ -56,7 +56,6 @@ const Exam = ({userExams}) => {
     
   return (
    <>
-   {console.log(storageQuestions)}
    {
      (storageQuestions?.[theExmControl]?.questions?.length != theQuestionControl && storageQuestions.length != 0 )?
       <Question  props = {{question:question,exam:exam , ChangeQuestion , setStorageAnswers ,userExams: userExams[theExmControl]}}/>

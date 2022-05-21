@@ -25,7 +25,7 @@ const CreateUser = () => {
                     Email
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['userEmail']:e.target.value}))} type="email" placeholder="Email" />
+                    <Form.Control onChange = {((e)=>setUser({...user,['userEmail']:e.target.value}))} type="email" placeholder="Email" required/>
                     </Col>
                 </Form.Group>
 
@@ -79,22 +79,24 @@ const CreateUser = () => {
                     </Form.Group>
                 </fieldset>
                 {
-                    dataUserLogged?.roleID == 1 || (JSON.parse(localStorage?.getItem('currentUser')))?.roleID  == 1 ?(
-                        <div>
-                            <label>Administrator</label>
-                            <input type="checkbox" onChange={(e)=>{
+                    dataUserLogged?.roleID == 1 || (JSON.parse(localStorage?.getItem('currentUser')))?.roleID  == 1 
+                    ?(
+                        <Form.Check
+                            type="checkbox"
+                            label="Administrator"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios5"
+                            onChange={(e)=>{
                                 if(e.target.checked)
                                     setUser({...user,['roleID']:'1'})
                                 else
                                     setUser({...user,['roleID']:'2'})
-                            }} />
-                        </div>
-                    ):null
-                
+                            }}
+                        />):null
                 }
-                    <Form.Group as={Row} className="mb-3">
+                    <Form.Group as={Row} className="mb-3" style={{marginTop:20}}>
                     <Col sm={{ span: 10, offset: 2 }}>
-                    <Button type="submit" >Sign in</Button>
+                    <Button type="submit" >Sign up</Button>
                     <BackPage/>
                     </Col>
                 </Form.Group>

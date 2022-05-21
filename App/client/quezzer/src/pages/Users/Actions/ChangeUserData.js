@@ -29,7 +29,7 @@ const ChangeUserData = ({props}) => {
             > 
             <Form>  
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" value={props.userToChange.userEmail}/>
+              <Form.Control type="email" placeholder="Enter email" readOnly value={props.userToChange?.userEmail}/>
               <Form.Label>Password address</Form.Label>
 
               <Form.Control type="password" placeholder="Enter password"
