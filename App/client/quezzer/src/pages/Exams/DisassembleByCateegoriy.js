@@ -11,7 +11,7 @@ const DisassembleByCateegoriy = () => {
 
   useEffect(async()=>{
     await axios.get(`http://localhost:8080/exams`)
-      .then(exams => exams.data.map?.(exam =>{ console.log(exam); if(exam.userID == currentUserTest?.userID && exam.done == 0 )  return exam }) )
+      .then(exams => exams.data.map?.(exam =>{ if(exam.userID == currentUserTest?.userID && exam.done == 0 )  return exam }) )
       .then(exams => { exams.map((exam) =>{ if(exam != undefined) setUserExams(userExams => [...userExams,exam]) }) })
   },[])
 

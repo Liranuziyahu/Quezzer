@@ -11,5 +11,5 @@ export {default as Repositore} from './Repositore/Repositore'
 export {default as Candidates} from './Candidates/Candidates'
 export {default as CreateUser} from './Users/Actions/CreateUser' 
 export {default as TabelCandidates} from './Candidates/TabelCandidates'
-
+export {default as PageExam} from './Candidates/ExamPage'
 
