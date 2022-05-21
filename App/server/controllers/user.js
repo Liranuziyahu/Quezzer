@@ -9,21 +9,27 @@ const bcrypt = require('bcrypt');
             res.status(400).send({message:"userName Cannot Be Empty"})
             return;
         }
-        const hashedPassword = await bcrypt.hash(req.body.userPassword, 2)
-        try{
-            const user = {
-                userName:req.body.userName,
-                userEmail:req.body.userEmail,
-                userPassword: hashedPassword,
-                roleID:req.body.roleID
+        if(req.body.userPassword.trim() != '')  
+        {
+            const hashedPassword = await bcrypt.hash(req.body.userPassword, 2)
+            try{
+                const user = {
+                    userName:req.body.userName,
+                    userEmail:req.body.userEmail,
+                    userPassword: hashedPassword,
+                    roleID:req.body.roleID
+                }
+                User.create(user)
+                .then(data => res.send(data))
+                .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the User."}))
             }
-            User.create(user)
-            .then(data => res.send(data))
-            .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the User."}))
+            catch(err){
+                console.error(error);
+                res.status(500).send();
+            }
         }
-        catch(err){
-            console.error(error);
-            res.status(500).send();
+        else{
+            res.status(400).send({message:"Enter a password"})
         }
            
     }
@@ -49,16 +55,34 @@ const bcrypt = require('bcrypt');
     }
 
 //Update USER by ID
-    exports.update = (req,res) => {
+    exports.update = async (req,res) => {
+        console.log(req.body)
         const id = req.params.id
-        User.update(req.body , {where: {userID:id}})
-        .then( num => {
-            if(num == 1)
-                res.send({message:`User with id ${id} UPDATE`})
-            else
-                res.send({message:`Cannot update User with id ${id} , maybe it not found`})
-        })
-        .catch(err => res.status(500).send({message:err.message}))
+        console.log("req.body.userPassword",req.body.userPassword.trim())
+        if(req.body.userPassword.trim() != '')  
+       { 
+           const hashedPassword = await bcrypt.hash(req.body.userPassword, 2)
+            try{
+                const user =  {
+                    userName:req.body.userName ,
+                    userEmail:req.body.roleEmail ,
+                    userPassword:hashedPassword,
+                    roleName:req.body.roleName 
+                }
+                User.update(user, {where: {userID:id}})
+                .then( num => {
+                    if(num == 1)
+                        res.send({message:`User with id ${id} UPDATE`})
+                    else
+                        res.send({message:`Cannot update User with id ${id} , maybe it not found`})
+                })
+                .catch(err => res.status(500).send({message:err.message}))
+            } 
+            catch{
+                res.status(500).send({message:err.message});
+            }  
+        } 
+        else{res.status(400).send({message:"Not Enter Password"})}  
     }
 
 //Delete a USER aspecified by ID
