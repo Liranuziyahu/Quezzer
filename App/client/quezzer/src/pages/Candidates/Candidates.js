@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import {myContextData} from '../../context/ContextDataFromServer'
-import PageExam from './ExamPage'
+import FileOpenIcon from '@mui/icons-material/FileOpen';
 
 function Candidates({exam}) {
     const {setPageExam , pageExam} = useContext(myContextData)
@@ -18,7 +18,7 @@ function Candidates({exam}) {
             <TableCell align="center">{exam?.userEmail}</TableCell>
             <TableCell align="center">{exam?.categoryExamsName}</TableCell>
             <TableCell align="center">{exam?.score}</TableCell>
-            <TableCell align="center"> <Link to ={`${exam?.examsID}`} >Exam</Link></TableCell>
+            <TableCell align="center"> <Link to ={`${exam?.examsID}`}  state={{ data: exam }}><FileOpenIcon color="action"/></Link></TableCell>
         </TableRow>
         
 )}

@@ -136,7 +136,7 @@ function Admin() {
           <Divider />
           <List>
             {['Candidates', 'Users', 'Repositories','Questionnaire'].map((text, index) => (
-              <ListItem button key={index} component={Link} to={text}>
+              <ListItem button key={index} component={Link} to={text} >
                 <ListItemIcon>
                 {renderSwitchIcon(text)}
                 </ListItemIcon>      
