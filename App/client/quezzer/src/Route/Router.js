@@ -4,7 +4,7 @@ import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore, CreateUs
 
 
 const Router = () => {
-    
+
     return (
     <Routes>
         <Route  path="/" element={<Login/>}/>
