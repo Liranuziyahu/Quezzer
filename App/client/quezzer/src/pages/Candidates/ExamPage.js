@@ -1,5 +1,5 @@
 import React,{useEffect , useContext , useState} from 'react'
-import { useParams } from "react-router-dom";
+import { useParams , useLocation } from "react-router-dom";
 import {ContextFromServer} from './../../context'
 
 const ExamPage = () => {
@@ -7,6 +7,23 @@ const ExamPage = () => {
   const {AnswersByExamID ,exams} = useContext(ContextFromServer)
   const [exam, setExam] = useState()
   const [user , setUser] = useState()
+  const location = useLocation()
+  const { data } = location?.state
+
+  const score = {
+    float: 'right',
+    marginRight:50,
+    fontSize:70,
+    width:200,
+    height:200,
+    color:'red',
+    border:'3px solid red',
+    borderRadius:'50%',
+    textAlign:'center',
+    textJustify:'center',
+    transform: 'rotate(0.96turn)',
+    padding:'40px',
+  }
 
   useEffect(async ()=>{
    let answers = await AnswersByExamID(params.id)
@@ -19,7 +36,9 @@ const ExamPage = () => {
       {
       exam?.message ? exam?.message 
       :
-     ( 
+     [
+        <div style={score}>{data.score}</div>,
+
         exam?.map(answer => (
         <div key={answer.questionID} style={{marginBottom:20}}>
           <div>{answer.questionTheQuestion}</div>
@@ -27,10 +46,9 @@ const ExamPage = () => {
           <div style={answer.questionTrueAnswer == answer.answer2 ? {color:'green'}: (answer.answer2 == answer.userAnswer && answer.userAnswer != answer.questionTrueAnswer )?{color:'red'}:null}>2. {answer.answer2}</div>
           <div style={answer.questionTrueAnswer == answer.answer3 ? {color:'green'}: (answer.answer3 == answer.userAnswer && answer.userAnswer != answer.questionTrueAnswer )?{color:'red'}:null}>3. {answer.answer3}</div>
           <div style={answer.questionTrueAnswer == answer.answer4 ? {color:'green'}: (answer.answer4 == answer.userAnswer && answer.userAnswer != answer.questionTrueAnswer )?{color:'red'}:null}>4. {answer.answer4}</div>
-        </div>)
-      
-        ))
-    }
+        </div>))  
+      ]    
+      }
     </>
   )
 }

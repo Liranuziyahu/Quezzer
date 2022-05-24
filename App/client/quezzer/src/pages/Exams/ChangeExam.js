@@ -24,7 +24,7 @@ const ChangeExam = ({props}) => {
             </Button>
           </div>
         </>
-      ): <h1 style={styleCenter}>Thank you very much for participating</h1>  
+      ): <h1 style={{textAlign:'center',transform:'translateY(250%)'}}>Thank you very much for participating</h1>  
     } 
   </>
 )}

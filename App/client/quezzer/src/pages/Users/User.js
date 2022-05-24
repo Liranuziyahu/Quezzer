@@ -1,7 +1,7 @@
 import React,{useEffect , useContext , useState} from 'react'
 import axios from 'axios'
 import {ContextFromServer} from '../../context'
-
+import AlertDialog from './Actions/AlertDialog'
 //CSS
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -33,13 +33,10 @@ const User = ({props}) => {
               <TableCell align="center">{props?.user.userName}</TableCell>
               <TableCell align="center">{props?.user.roleName}</TableCell>
               <TableCell align="center">
-                <EditIcon onClick={() => {
-                    props.setUserToChange(props.user);
-                  return props.setEditCompUser(!props.editUser)
-                }}>
-                </EditIcon>
-                <DeleteIcon onClick = {()=>DeleteUser(props?.user.userID)}/>
+                <EditIcon onClick={() => {props.setUserToChange(props.user); return props.setEditCompUser(!props.editUser)}}/>
+                <AlertDialog props={{DeleteUser ,"user": props?.user }}/>
               </TableCell>
+              
             </TableRow>
           }
      </>
