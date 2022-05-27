@@ -22,6 +22,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import TopicIcon from '@mui/icons-material/Topic';
+import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
 
 const drawerWidth = 240;
 
@@ -113,6 +114,9 @@ function Admin() {
               Interview System
             </Typography>
             <Logout/>
+              <Link to='/Administrator'>
+                <AssessmentOutlinedIcon style={{position:"absolute" , right:50, color:'white' ,top:20 }}/>
+              </Link>
           </Toolbar>
         </AppBar>
         <Drawer

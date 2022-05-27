@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore, CreateUser , User , ProtectedRoute , ProtectedUserRoute , UserPage , PageExam} from '../pages/index'
+import {Admin,Login,DisassembleByCateegoriy,TabelCandidates,Repositore, CreateUser , User , ProtectedRoute , ProtectedUserRoute , UserPage , PageExam , DiagramDishboard} from '../pages/index'
 
 
 const Router = () => {
@@ -16,6 +16,7 @@ const Router = () => {
                 <Route path="Candidates/:id" element={<PageExam />} />
                 <Route path="Repositories" element={<Repositore/>}/>    
                 <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/>
+                <Route path="" element={<DiagramDishboard/>}/>
             </Route>
         </Route>
         <Route path="User" element={<ProtectedUserRoute/>}>

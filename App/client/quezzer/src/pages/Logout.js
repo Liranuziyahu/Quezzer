@@ -10,7 +10,7 @@ const Logout = (()=>{
 })
 
   return (
-    <ExitToAppIcon style={{"position":"absolute" , "right":20}} onClick={()=>Logout()}></ExitToAppIcon>
+    <ExitToAppIcon style={{position:"absolute" , right:20 ,top:20 }} onClick={()=>Logout()}></ExitToAppIcon>
   )
 }
 
