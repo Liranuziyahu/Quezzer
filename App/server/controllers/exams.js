@@ -83,7 +83,7 @@ exports.deleteAll = (req, res) => {
         if(num > 0)
             res.status(200).send({message:`Exams of ${id} DELETED`})
         else
-            res.status(200)
+            res.status(204).send()
     })
     .catch(err => {
         res.status(500).send({message:err.message})

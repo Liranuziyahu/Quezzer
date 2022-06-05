@@ -42,17 +42,22 @@ const ContextServer = ({children}) => {
 
 /////////User/////////
   //Create
-  const addUser = (async (user , categorys)=>{
+  const createUser = (async (user , categorys)=>{
+
     await axios.post('http://localhost:8080/user',user)
     .then(res => {
-      axios.post('http://localhost:8080/exams',{userID:res.data.userID, categorys:categorys})
-      setUser(userModle)
-      setCategoryExam([])
-      setUpdateContext(!updateContext)
-      navigate(-1)  
+      if(res.data.message!= undefined) 
+        alert(res.data.message)
+      else
+      {
+        axios.post('http://localhost:8080/exams',{userID:res.data.userID, categorys:categorys})
+        setUser(userModle)
+        setCategoryExam([])
+        setUpdateContext(!updateContext)
+        navigate(-1)  
+      }
     })
-    .catch(err => alert('Enter a password'))
-   
+    .catch(err => err)
   })
   //Edit
   const editUser = (user => axios.put(`http://localhost:8080/user/${user.userID}`,user))
@@ -65,7 +70,10 @@ const ContextServer = ({children}) => {
   //Update specific exam - for change score
   const editExam = (async exam => await axios.put(`http://localhost:8080/exams/${exam.examsID}`,exam))
   //Delete All Exams 
-  const DeleteAllExams = (async userID => await axios.delete(`http://localhost:8080/exams/deleteAll/${userID}`))
+  const DeleteAllExams = (async userID => {
+    await DeleteAnswersByID(userID)  
+    await axios.delete(`http://localhost:8080/exams/deleteAll/${userID}`)
+  })
   //Update Exams User ask to test
   const updateExams = ( async (exam , categorys) => {
       await DeleteAnswersByID(exam.userID)
@@ -108,7 +116,7 @@ const ContextServer = ({children}) => {
 
   return (
     <div>
-        <ContextFromServer.Provider value={{user , setUser ,addUser,deleteUser,allUsers,setAllUsers ,setUpdateContext,updateContext,exams , questionsJS , questionsReact , questionsAngular ,editUser ,createQuestion ,editExam , createExam , updateExams , checkCategory , categoryExam ,CreateAnswersExam,DeleteAllExams,DeleteAnswersByID,AnswersByExamID}}>
+        <ContextFromServer.Provider value={{user , setUser ,createUser,deleteUser,allUsers,setAllUsers ,setUpdateContext,updateContext,exams , questionsJS , questionsReact , questionsAngular ,editUser ,createQuestion ,editExam , createExam , updateExams , checkCategory , categoryExam ,CreateAnswersExam,DeleteAllExams,DeleteAnswersByID,AnswersByExamID}}>
           {children}
         </ContextFromServer.Provider>
     </div>
