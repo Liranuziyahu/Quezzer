@@ -23,8 +23,10 @@ import MailIcon from '@mui/icons-material/Mail';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import TopicIcon from '@mui/icons-material/Topic';
 import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
+import { purple } from '@mui/material/colors';
 
 const drawerWidth = 240;
+
 
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -138,7 +140,7 @@ function Admin() {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List>
+          <List  >
             {['Candidates', 'Users', 'Repositories','Questionnaire'].map((text, index) => (
               <ListItem button key={index} component={Link} to={text} >
                 <ListItemIcon>

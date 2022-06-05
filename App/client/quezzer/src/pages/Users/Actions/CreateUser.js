@@ -8,14 +8,14 @@ import BackPage from '../../Buttons/BackPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CreateUser = () => {
-    const {addUser ,user ,setUser , checkCategory , categoryExam} = useContext(ContextFromServer)
+    const {createUser ,user ,setUser , checkCategory , categoryExam} = useContext(ContextFromServer)
     const {dataUserLogged} = useContext(myContextData)
     return (
         <div style={{"width":"80%","marginLeft":"20%","marginTop":"40px"}}>
              <FormControl  style={{"width":"50%", "marginLeft":"10%"}} onSubmit = {(e)=> {
                  e.preventDefault();
                  if(categoryExam.length != 0)
-                    addUser(user , categoryExam)
+                 createUser(user , categoryExam)
                 else
                     alert('Choose Category to Test')
                 }} >
@@ -25,7 +25,7 @@ const CreateUser = () => {
                     Email
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['userEmail']:e.target.value}))} type="email" placeholder="Email" required/>
+                    <Form.Control onChange = {((e)=>setUser({...user,['userEmail']:e.target.value}))} type="email" placeholder="Email" />
                     </Col>
                 </Form.Group>
 
@@ -43,7 +43,7 @@ const CreateUser = () => {
                     Full Name
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control onChange = {((e)=>setUser({...user,['userName']:e.target.value}))} type="text" placeholder="Full name" required/>
+                    <Form.Control onChange = {((e)=>setUser({...user,['userName']:e.target.value}))} type="text" placeholder="Full name" />
                     </Col>
                 </Form.Group>
 

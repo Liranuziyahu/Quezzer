@@ -1,6 +1,8 @@
 import React,{useEffect , useContext , useState} from 'react'
 import { useParams , useLocation } from "react-router-dom";
 import {ContextFromServer} from './../../context'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const ExamPage = () => {
   const params = useParams();
@@ -24,17 +26,30 @@ const ExamPage = () => {
     transform: 'rotate(0.96turn)',
     padding:'40px',
   }
+  const reload = {
+   position: 'absolute',
+   top:'calc(50% - 32px)',
+   left:'calc(50% - 32px)'
+  }
 
   useEffect(async ()=>{
    let answers = await AnswersByExamID(params.id)
    setExam(answers)
   },[exams])
 
-
+  console.log(exam)
   return (
     <>
+
       {
-      exam?.message ? exam?.message 
+     exam == undefined 
+     ? 
+      <Box style={reload} sx={{ display: 'flex' }}>
+        <CircularProgress size="4rem"/>
+     </Box> 
+    :
+    exam?.message ? 
+    <div> {exam?.message} </div>
       :
      [
         <div style={score}>{data.score}</div>,

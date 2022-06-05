@@ -2,6 +2,8 @@ import React,{useState ,useContext ,useEffect} from 'react'
 import ChangeExam from './ChangeExam';
 import Question from './Question';
 import {ContextFromServer} from '../../context/index'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 const Exam = ({userExams}) => {
@@ -15,14 +17,22 @@ const Exam = ({userExams}) => {
   const [exam , setExam] = useState([storageQuestions[theExmControl]]);
   const [storageAnswers , setStorageAnswers] = useState([])
 
+  const reload = {
+    position: 'absolute',
+    top:'calc(50% - 32px)',
+    left:'calc(50% - 32px)'
+   }
+
   const ChangeQuestion = () => setTheQuestionControl(theQuestionControl + 1)
 
   const changeExam = () => {
       setTheExmControl(theExmControl + 1)
       setTheQuestionControl(0)
-    }
+  }
 
   const finishedExam = () => {
+    console.log('here')
+
     CreateAnswersExam(storageAnswers)
     setStorageAnswers([])
     userExams.map(exam => {
@@ -33,15 +43,17 @@ const Exam = ({userExams}) => {
          "categoryExamsID": exam.categoryExamsID ,
          "userID":exam.userID ,
          "score":storageQuestions?.[theExmControl].score,
-         "done":true}
+         "done":true
+        }
         editExam(examDone)
-      }})}
+    }})
+  }
 
   const storageQuestionArray = (userExams , questionsJS ,questionsReact , questionsAngular) =>{
     userExams?.map(exm=>{
-      if(exm.categoryExamsName == 'JS') return setStorageQuestions( storageQuestions => [...storageQuestions,{examID:exm.examsID, name:'JS' ,questions:questionsJS ,score:0}])
-      if(exm.categoryExamsName == 'React') return setStorageQuestions( storageQuestions => [...storageQuestions,{name:'React' ,questions:questionsReact , score:0}])
-      if(exm.categoryExamsName == 'Angular') return setStorageQuestions( storageQuestions => [...storageQuestions,{name:"Angular" ,questions:questionsAngular ,score:0}])
+      if(exm.categoryExamsName == 'JS') return setStorageQuestions( storageQuestions => [...storageQuestions,{examID:exm.examsID, name:'JS' ,questions:questionsJS ,score:0 }])
+      if(exm.categoryExamsName == 'React') return setStorageQuestions( storageQuestions => [...storageQuestions,{examID:exm.examsID,name:'React' ,questions:questionsReact , score:0 }])
+      if(exm.categoryExamsName == 'Angular') return setStorageQuestions( storageQuestions => [...storageQuestions,{examID:exm.examsID,name:"Angular" ,questions:questionsAngular ,score:0 }])
     })}
 
   useEffect(()=>{

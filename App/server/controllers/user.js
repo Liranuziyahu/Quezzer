@@ -4,34 +4,44 @@ const bcrypt = require('bcrypt');
 
 //Create USER
     exports.create = async (req ,res) => {
-        if(!req.body.userName)
-        {
-            res.status(400).send({message:"userName Cannot Be Empty"})
-            return;
-        }
-        if(req.body.userPassword.trim() != '')  
-        {
-            const hashedPassword = await bcrypt.hash(req.body.userPassword, 2)
-            try{
-                const user = {
-                    userName:req.body.userName,
-                    userEmail:req.body.userEmail,
-                    userPassword: hashedPassword,
-                    roleID:req.body.roleID
+        let existEmail = await User.findOne({where: {userEmail:req.body.userEmail}})
+        try{
+            if(req.body.userName.trim() == '' || req.body.userEmail.trim() == '')
+            {
+                res.status(200).send({message:"Email or User Name Cannot Be Empty"})
+                return;
+            }
+            else if(existEmail != null)
+            {
+                res.status(200).send({message:"This Email have been used"})
+            }
+            else
+            {
+                if(req.body.userPassword.trim() != '')  
+                {
+                    const hashedPassword = await bcrypt.hash(req.body.userPassword, 2)
+                    try{
+                        const user = {
+                            userName:req.body.userName,
+                            userEmail:req.body.userEmail,
+                            userPassword: hashedPassword,
+                            roleID:req.body.roleID
+                        }
+                        User.create(user)
+                        .then(data => res.send(data))
+                        .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the User."}))
+                    }
+                    catch(err){
+                        console.error(error);
+                        res.status(500).send();
+                    }
                 }
-                User.create(user)
-                .then(data => res.send(data))
-                .catch(err => res.status(500).send({message:err.message || "Some error occurred while creating the User."}))
+                else{
+                    res.status(200).send({message:"Enter a password"})
+                }
             }
-            catch(err){
-                console.error(error);
-                res.status(500).send();
-            }
-        }
-        else{
-            res.status(400).send({message:"Enter a password"})
-        }
-           
+        }  
+        catch{err} 
     }
 
 //Retarive All USERS FROM DB
@@ -51,14 +61,28 @@ const bcrypt = require('bcrypt');
             else
                 res.status(404).send({message:`Can not find Tutorial where id = ${id}`})
         })
-        .catch(err => res.status(500).send({message:`Error retrieving Tutorial with id = ${id}`}))
+        .catch(err => res.status(500).send(true))
+    }
+
+//Retrive if the Email exists
+    exports.findEmail = (req , res) =>{
+        console.log("HERE1")
+        const email = req.body.userEmail
+        User.findOne({where:{userEmail: email}})
+        .then(data => {
+            if(data)
+                return res.status(200).send(data)
+            else  
+                return res.status(200).send(data)
+        })
+        .catch(err =>res.status(500).send(console.log(err)))
     }
 
 //Update USER by ID
     exports.update = async (req,res) => {
         console.log(req.body)
         const id = req.params.id
-        console.log("req.body.userPassword",req.body.userPassword.trim())
+
         if(req.body.userPassword.trim() != '')  
        { 
            const hashedPassword = await bcrypt.hash(req.body.userPassword, 2)

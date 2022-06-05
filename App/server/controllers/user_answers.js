@@ -48,7 +48,7 @@ const UserAnswer = db.user_answers
             data[0].map(answer => {
                 UserAnswer.destroy({where:{examsID:answer.examsID}})
                 try{num = num + 1}
-                catch{console.log(err)}
+                catch{console.log("EROR:",err)}
             })
         })
         .then(() => {
