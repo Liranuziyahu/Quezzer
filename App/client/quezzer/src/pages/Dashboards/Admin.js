@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useRef} from 'react'
 import { Link , Outlet } from "react-router-dom";
 import Logout from '../Logout'
 //MUI
@@ -98,6 +98,18 @@ function Admin() {
         setOpen(false);
       };
 
+      const focuseLink = (index)=>{
+        let linksList = Object.values(ListControl.current.children)
+        linksList.map((link,i) => {
+          if(i == index)
+           link.style.backgroundColor='rgba(0, 0, 0, 0.07)';
+          else
+          link.style.backgroundColor = ''
+        })
+     }
+
+     const ListControl = useRef(null);
+
     return (
         <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -116,7 +128,7 @@ function Admin() {
               Interview System
             </Typography>
             <Logout/>
-              <Link to='/Administrator'>
+              <Link to='/Administrator' onClick={()=> focuseLink()}>
                 <AssessmentOutlinedIcon style={{position:"absolute" , right:50, color:'white' ,top:20 }}/>
               </Link>
           </Toolbar>
@@ -140,9 +152,9 @@ function Admin() {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <List  >
+          <List ref={ListControl}>
             {['Candidates', 'Users', 'Repositories','Questionnaire'].map((text, index) => (
-              <ListItem button key={index} component={Link} to={text} >
+              <ListItem button key={index}  component={Link} to={text} onClick={()=> focuseLink(index)} > 
                 <ListItemIcon>
                 {renderSwitchIcon(text)}
                 </ListItemIcon>      
