@@ -24,10 +24,13 @@ const ChangeExam = ({props}) => {
    useEffect(() =>{ if(props.storageQuestions.length != 0) props.finishedExam()},[])
 
    setTimeout(() =>{
-    refLoader.current.style.display='none'
-    refTitleDone.current.style.display=''
+     if(refLoader.current!=null || refLoader.current!= undefined)
+      {
+        refLoader.current.style.display='none'
+        refTitleDone.current.style.display=''
+      }
    },1000)
-
+   
   return (
   <>
 
