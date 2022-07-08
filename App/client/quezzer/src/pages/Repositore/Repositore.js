@@ -29,7 +29,7 @@ const Repositore = () => {
                 createQuestion(category , questionStructure)
                 }}>
             <Form >
-                    <TextField fullWidth label="Question" id="Question" placeholder="typeing..." onChange={(e)=>setquestionStructure({...questionStructure,['questionTheQuestion']:e.target.value})}/>
+                    <TextField  multiline rows={3} fullWidth label="Question" id="Question" placeholder="typeing..." onChange={(e)=>setquestionStructure({...questionStructure,['questionTheQuestion']:e.target.value})}/>
                     <div style={{display: 'flex',marginTop:20,justifyContent:'space-between'}}>
                         <TextField
                         id="standard-textarea"

@@ -33,7 +33,7 @@ exports.findAll = (req , res) =>{
 //Retrive Question by ID
 exports.findOne =  (req, res) => {
     const id = req.params.id;
-    User.findOne({where: {questionID:id}})
+    Question.findOne({where: {questionID:id}})
     .then( data => {
         if(data)
             res.send(data)
@@ -46,7 +46,7 @@ exports.findOne =  (req, res) => {
 //Update Question by ID
 exports.update = (req,res) => {
     const id = req.params.id
-    User.update(req.body , {where: {questionID:id}})
+    Question.update(req.body , {where: {questionID:id}})
     .then( num => {
         if(num == 1)
             res.send({message:`Question with id ${id} UPDATE`})
@@ -59,7 +59,7 @@ exports.update = (req,res) => {
 //Delete a Question aspecified by ID
 exports.delete = (req, res) => {
     const id = req.params.id;
-    User.destroy({where: {questionID:id}})
+    Question.destroy({where: {questionID:id}})
     .then(num => {
         if(num == 1)
             res.send({message:`Question ${id} DELETED`})
