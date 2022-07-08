@@ -17,6 +17,9 @@ module.exports = (sequelize , Sequelize ) =>{
         },
         done:{
             type:Sequelize.BOOLEAN
+        },
+        sent:{
+            type:Sequelize.BOOLEAN
         }
     },{timestamps: false});
 

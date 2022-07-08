@@ -13,7 +13,8 @@ const Op = db.Sequelize.Op;
                     categoryExamsID: examID ,
                     userID:req.body.userID,
                     score:0,
-                    done:false
+                    done:false,
+                    sent:false
                 }
             Exam.create(exam)
             .then(data => res.send(data))
@@ -23,7 +24,7 @@ const Op = db.Sequelize.Op;
 
 //Retarive All Exams FROM DB
     exports.findAll = (req , res) =>{
-        db.sequelize.query('SELECT examsID , users.userID , users.userName , users.userEmail ,score ,done ,categoryexams.categoryExamsID, categoryexams.categoryExamsName  FROM exams INNER JOIN categoryexams ON exams.categoryExamsID = categoryexams.categoryExamsID INNER JOIN users ON exams.userID = users.userID')
+        db.sequelize.query('SELECT examsID , users.userID , users.userName , users.userEmail ,score ,done, sent ,categoryexams.categoryExamsID, categoryexams.categoryExamsName  FROM exams INNER JOIN categoryexams ON exams.categoryExamsID = categoryexams.categoryExamsID INNER JOIN users ON exams.userID = users.userID')
         .then( data => res.send(data[0]))
         .catch(err => res.status(500).send({massage: err.message || "Some error occurred while retrieving the Exams."}))
     } 
@@ -43,6 +44,7 @@ const Op = db.Sequelize.Op;
 
 //Retrive Exam by userID and CategoryID
     exports.findExam = (req ,res) =>{
+        console.log(req)
         db.sequelize.query(`SELECT * FROM exams WHERE userID = ${req.body.userID} and categoryExamsID = ${req.body.categoryExamsID}`)
         .then( data => res.send(data))
         .catch(err => res.status(500).send({massage: err.message || "Some error occurred while retrieving the Exams."}))

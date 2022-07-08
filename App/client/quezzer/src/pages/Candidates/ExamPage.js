@@ -36,8 +36,6 @@ const ExamPage = () => {
    let answers = await AnswersByExamID(params.id)
    setExam(answers)
   },[exams])
-
-  console.log(exam)
   return (
     <>
 
