@@ -9,7 +9,6 @@ import Box from '@mui/material/Box';
 const Exam = ({userExams}) => {
   const {questionsJS , questionsReact , questionsAngular , editExam , CreateAnswersExam} = useContext(ContextFromServer)
   const [theExmControl , setTheExmControl] = useState(0);
-
   //question state
   const [theQuestionControl , setTheQuestionControl] = useState(0);
   const [storageQuestions , setStorageQuestions] = useState([])
@@ -83,37 +82,3 @@ const Exam = ({userExams}) => {
 }
 
 export default Exam
-
-
-
-    // const {editUser} = useContext(myContextData)
-    // let [theQuestionControl , setTheQuestionControl] = useState(0);
-    // let ExamState = question.slice(theExmControl,theExmControl + 1)
-    // let amountQuestionExam = ExamState?.[0]?.[1].length
-    // let fromLocal = localStorage.getItem('currentUser')  
-    // let dataUser = JSON.parse(fromLocal) 
-    // const ChangeQuestion = () => setTheQuestionControl(theQuestionControl + 1)
-
-
-    // const CheckAnswer = (object) =>{
-     
-    //     dataUser.categoria.map((exam , index)=>{
-    //     if(object.type == exam.name )
-    //         if(object.userAnswer == object.TrueAnswer)
-    //            {
-    //             dataUser.categoria[index].grade = dataUser.categoria[index].grade + 10
-    //             editUser(dataUser)
-    //             localStorage.setItem('currentUser' , JSON.stringify(dataUser))
-    //            }
-    //     })
-    //   } 
-
-
-
-
-         // amountQuestionExam > theQuestionControl || 0 == theQuestionControl
-          // ? (
-          //   <Question  props = {{ExamState ,theQuestionControl ,ChangeQuestion , CheckAnswer}}/>
-          // )
-         
-          // :<ChangeExam props = {{changeExam , question,theExmControl }}/>

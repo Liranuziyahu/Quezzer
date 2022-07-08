@@ -44,7 +44,7 @@ const Question = ({props}) => {
           }}>
 
           <Form>
-            <FormLabel>{props.question?.questionTheQuestion}</FormLabel>
+            <FormLabel style={{whiteSpace: 'pre-line','lineHeight': 3, 'marginBottom':10}} >{props.question?.questionTheQuestion}</FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue='0'
