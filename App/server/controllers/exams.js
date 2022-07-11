@@ -2,6 +2,15 @@ const db = require('./../models')
 const Exam = db.exams
 const Op = db.Sequelize.Op;
 
+//for send Email
+const fs = require('fs');
+const { promisify } = require('util');
+const readFile = promisify(fs.readFile);
+const handlebars = require('handlebars');
+
+nodemailer = require('nodemailer'),
+
+
 //Create Exam object    
     exports.create = (req , res) =>{
         if(!req.body?.userID){
@@ -91,3 +100,67 @@ exports.deleteAll = (req, res) => {
         res.status(500).send({message:err.message})
     })
 }
+
+exports.SendExam = async (req , res) =>{
+
+    // fs.writeFile(`./views/exam.ejs`,"Thanks you",(err) => {
+    //     if (err)
+    //       console.log(err);
+    //     else {
+    //       console.log("File written successfully\n");
+    //       console.log("The written has the following contents:");
+    //       console.log(fs.readFileSync("./views/exam.ejs", "utf8"));
+    //     }})
+
+
+
+
+
+    let transporter =  nodemailer.createTransport({
+        pool: true,
+        host: 'smtp.gmail.com',
+        port:465,
+        secure: true, 
+        auth: {
+          user: 'liranuzistud@gmail.com',
+          pass:'hxeygyqnwfohbrsa'                   //This is the token from google access from https://myaccount.google.com/apppasswords?rapt=AEjHL4Nb54F7EHHwDyQ-vdIqdjHYQDIoLSbR0wWCyDy3-hjdk0xLeDyIc7dYi0Bd4jOCHkmM2zIu3yguF-XQKvvkDhjh9jfDYA
+          },                                        //name : אימייל ב-מחשב Windows שלי 
+          tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+          },
+      })
+    //   const source = fs.readFileSync('./views/exam.ejs', 'utf-8').toString();
+    //   const template = handlebars.compile(source);
+    //   const replacements = {
+    //     title: "Work!"
+    //   };
+    //   const htmlToSend = template(replacements);
+
+      let mailOptions = {
+        to: req.body.to,
+        subject: 'Exam From Interview',
+        html: fs.readFileSync('./views/exam.ejs', 'utf-8')
+        // template: htmlToSend,
+        // context: {                  // <=
+        //     title: 'Work',
+        //   }
+        }
+
+            console.log(mailOptions)
+            transporter.sendMail(mailOptions,  function(error, info){
+                if(!mailOptions.to.trim())
+                res.status(404).send({message:'You Must Enter email to send'})
+      
+                if (error) 
+                  res.status(500).send({message:{error}})
+                else 
+                  res.status(200).send({message:"send"})
+                })
+
+ 
+
+      
+           
+      
+      }
