@@ -29,6 +29,15 @@ const Login = () => {
            }
         })
         .catch(err =>console.log('Email or password not true'))
+
+    //For Hosting Services
+        if(autoLogin.target[0].value=='host@gmail.com' && autoLogin.target[1].value=='myhost')
+        {   
+            setDataUserLogged({userEmail:'host@gmail.com' , userName:'Host',roleID:1})
+            setIsAuth(true)
+            navigate(`/Administrator`)
+        }
+        
     }
 
     return (
