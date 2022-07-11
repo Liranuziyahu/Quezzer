@@ -10,6 +10,8 @@ module.exports = app => {
     router.post("/category",exams.findExam)
 //Delete All Exams by UserID
     router.delete("/deleteAll/:id",exams.deleteAll)
+//Send Exam to Email
+    router.post('/send-exam', exams.SendExam)
 //Retrieve a single Exam with id
     router.get("/:id",exams.findOne)
 //update a Exam with id
