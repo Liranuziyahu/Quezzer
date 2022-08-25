@@ -1,12 +1,11 @@
 import React , {useEffect , useRef} from 'react'
 import Button from '@mui/material/Button';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { makeStyles } from '@material-ui/core/styles';
+import IsReload from '../Reload/IsReload'
 
 const ChangeExam = ({props}) => {
 
-  const refLoader = useRef();
   const refTitleDone = useRef();
 
   let nameExam = props?.storageQuestions?.[props.theExmControl+1]?.name
@@ -15,18 +14,13 @@ const ChangeExam = ({props}) => {
     position:'absolute',
     top:'35%',left:'calc(50% - 350px)'
   }
-  const reload = {
-    position: 'absolute',
-    top:'calc(50% - 32px)',
-    left:'calc(50% - 32px)'
-   }
+  const classes = useStyle();
 
    useEffect(() =>{ if(props.storageQuestions.length != 0) props.finishedExam()},[])
 
    setTimeout(() =>{
-     if(refLoader.current!=null || refLoader.current!= undefined)
+     if(refTitleDone.current!=null)
       {
-        refLoader.current.style.display='none'
         refTitleDone.current.style.display=''
       }
    },1000)
@@ -46,15 +40,17 @@ const ChangeExam = ({props}) => {
         </div>
       :
       <>
-      <Box style={reload} sx={{ display: 'flex' }} ref={refLoader}>
-         <CircularProgress size="4rem"/>
-       </Box>
-       <h1 ref={refTitleDone} style={{display:'none',textAlign:'center',transform:'translateY(250%)'}}>Thank you very much for participating</h1>  
+        <IsReload />
+       <h1 ref={refTitleDone} className={classes.reload}>Thank you very much for participating</h1>  
       </>
-        
- 
- 
     } 
   </>
 )}
+
+
+const useStyle = makeStyles(theme =>({
+  reload:{
+    height:'100vh',display: 'flex',justifyContent: 'center',alignItems: 'center'
+  }
+}))
 export default ChangeExam

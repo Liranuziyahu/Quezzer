@@ -16,7 +16,7 @@ const DisassembleByCateegoriy = () => {
   },[])
 
   return (
-    <div> {<Exam userExams={userExams} />} </div>
+    <> {<Exam userExams={userExams} />} </>
   );
 };
 

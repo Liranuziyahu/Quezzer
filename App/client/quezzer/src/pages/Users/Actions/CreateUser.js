@@ -3,6 +3,7 @@ import { FormControl } from '@mui/material';
 import { Form,Col,Row,Button } from 'react-bootstrap';
 import {ContextFromServer} from '../../../context'
 import {myContextData} from '../../../context/ContextDataFromServer'
+import Stack from '@mui/material/Stack';
 
 import BackPage from '../../Buttons/BackPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -94,11 +95,11 @@ const CreateUser = () => {
                             }}
                         />):null
                 }
-                    <Form.Group as={Row} className="mb-3" style={{marginTop:20}}>
-                    <Col sm={{ span: 10, offset: 2 }}>
-                    <Button type="submit" >Sign up</Button>
-                    <BackPage/>
-                    </Col>
+                    <Form.Group as={Row} className="mb-3"  style={{marginTop:20}}>
+                    <Stack  direction="row" spacing={2}>
+                        <Button type="submit" >Sign up</Button>
+                        <BackPage/>
+                    </Stack >
                 </Form.Group>
             </Form>
         </FormControl>

@@ -26,11 +26,11 @@ function Candidates({exam}) {
             <TableCell align="center" component="th" scope="row">
             {exam?.userID}
             </TableCell>
-            <TableCell align="center"> {exam?.userName}</TableCell>
-            <TableCell align="center">{exam?.userEmail}</TableCell>
-            <TableCell align="center">{exam?.categoryExamsName}</TableCell>
-            <TableCell align="center">{exam?.score}</TableCell>
-            <TableCell align="center" >
+            <TableCell align="center" sx={{maxWidth:10}}> {exam?.userName}</TableCell>
+            <TableCell align="center" sx={{maxWidth:10}}>{exam?.userEmail}</TableCell>
+            <TableCell align="center" sx={{maxWidth:10}}>{exam?.categoryExamsName}</TableCell>
+            <TableCell align="center" sx={{maxWidth:10}}>{exam?.score}</TableCell>
+            <TableCell align="center" sx={{maxWidth:10}} >
                  <Link to ={`${exam?.examsID}`}  state={{ data: exam }}><FileOpenIcon color="action"/></Link>
                  {
                     exam?.sent == 0 ? <EmailIcon onClick={() => senderMail(exam.examsID)} color="action"/> : <MarkEmailReadIcon color="action"/>
