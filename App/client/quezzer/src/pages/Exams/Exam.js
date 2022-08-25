@@ -30,8 +30,6 @@ const Exam = ({userExams}) => {
   }
 
   const finishedExam = () => {
-    console.log('here')
-
     CreateAnswersExam(storageAnswers)
     setStorageAnswers([])
     userExams.map(exam => {

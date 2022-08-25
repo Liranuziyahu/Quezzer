@@ -1,10 +1,11 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 const BackPage = () => {
     const navigate = useNavigate();
-
-  return (<KeyboardBackspaceIcon onClick={()=>navigate(-1)}></KeyboardBackspaceIcon>)
+    
+  return (<Button variant="contained" color="error" onClick={()=>navigate(-1)} startIcon={<ArrowBackIcon/>}>Back</Button>)
 }
 export default BackPage

@@ -27,11 +27,11 @@ const User = ({props}) => {
               key={props?.user.userID}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center" component="th" scope="row">{props?.user.userID}</TableCell>
-              <TableCell align="center">{props?.user.userEmail}</TableCell>
-              <TableCell align="center">{props?.user.userName}</TableCell>
-              <TableCell align="center">{props?.user.roleName}</TableCell>
-              <TableCell align="center">
+              <TableCell sx={{maxWidth:10}} align="center" component="th" scope="row">{props?.user.userID}</TableCell>
+              <TableCell sx={{maxWidth:10}} align="center">{props?.user.userEmail}</TableCell>
+              <TableCell sx={{maxWidth:10}} align="center">{props?.user.userName}</TableCell>
+              <TableCell sx={{maxWidth:10}} align="center">{props?.user.roleName}</TableCell>
+              <TableCell sx={{maxWidth:10}} align="center">
                 <EditIcon onClick={() => {props.setUserToChange(props.user); return props.setEditCompUser(!props.editUser)}}/>
                 <AlertDialog props={{DeleteUser ,"user": props?.user }}/>
               </TableCell>
