@@ -1,4 +1,4 @@
-import React , {useContext , useEffect} from 'react'
+import React , {useContext , useState} from 'react'
 import axios from 'axios'
 //Component
 import User from './User'
@@ -41,19 +41,20 @@ const TableUsers = ({props}) => {
                   allUsers.map((user , index)=>{
                     let entryCategory = eval(`user?.${props.userSearch?.catagorey}`)?.toString().toLowerCase()
                     if(entryCategory?.includes(props.userSearch?.search?.toString().toLowerCase()))
-                        return <User key ={index} props = {{"user":user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>
+                      return <User key ={index} props = {{"user":user , "setEditCompUser":props.setEditCompUser ,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>
                   })
                 )
-              : allUsers.length > 0 ?
-                  allUsers.slice(5 * page - 5, 5 * page).map?.((user) => <User key={user.userID}
+              : allUsers.length != undefined ?
+              allUsers.slice(5 * page - 5, 5 * page).map?.((user) => <User key={user.userID}
                   props={{"user": user , "setEditCompUser":props.setEditCompUser,"editUser":props.editUser ,"setUserToChange":props.setUserToChange}}/>) : null
             }
           </TableBody>
         </Table>
       </TableContainer>
-      
       <Stack direction="row" spacing={2} sx={{marginTop:2 , justifyContent: 'center'}}>
-            <Pagination count={allUsers.length > 0 ? allUsers.length /5 % 1 == 0 ? allUsers.length / 5 : Number.parseInt(allUsers.length / 5) + 1 : 0}
+            <Pagination 
+            count = {
+              allUsers.length > 0 ? allUsers.length /5 % 1 == 0 ? allUsers.length / 5 : Number.parseInt(allUsers.length / 5) + 1 : 0}
               onChange={handleChange}
             />
       </Stack>

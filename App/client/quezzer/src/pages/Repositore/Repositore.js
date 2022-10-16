@@ -5,8 +5,26 @@ import FormControl from '@mui/material/FormControl';
 import { Form } from 'react-bootstrap';
 import {ContextFromServer} from '../../context/index'
 import InputAddToCategory from './InputAddToCategory';
+import { useTheme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
+
+
 
 const Repositore = () => {
+
+  const theme = useTheme();
+  const useStyles = makeStyles( () => ({
+    list: {
+        display:'flex',
+        marginTop:20,
+        justifyContent:'space-between',
+        [theme.breakpoints.down('lg')]: {
+          flexDirection: 'column'
+        }
+    },
+  }));
+  const styles= useStyles()
+
     const [questionStructure , setquestionStructure ] = useState({
         "categoryExamsID":'',
         "questionTheQuestion": "",
@@ -17,12 +35,11 @@ const Repositore = () => {
         "answer4": "" ,
     })
     const [category, setCategory] = useState('JS');
-
     const {createQuestion} = useContext(ContextFromServer)
 
 
     return (
-        <>
+        <div >
             <InputAddToCategory props={{setCategory ,category}}/>
             <FormControl style={{display: 'flex'}} onSubmit ={(e)=>{
                 e.preventDefault()
@@ -30,7 +47,7 @@ const Repositore = () => {
                 }}>
             <Form >
                     <TextField  multiline rows={3} fullWidth label="Question" id="Question" placeholder="typeing..." onChange={(e)=>setquestionStructure({...questionStructure,['questionTheQuestion']:e.target.value})}/>
-                    <div style={{display: 'flex',marginTop:20,justifyContent:'space-between'}}>
+                    <div className={styles.list}>
                         <TextField
                         id="standard-textarea"
                         label="Answer 1"
@@ -69,8 +86,13 @@ const Repositore = () => {
                     <Button type="submit" style={{marginTop:50}}> Create a Question </Button>
                 </Form >
             </FormControl>
-        </>
+        </div>
+     
     )
+
 }
+ 
+
+
 export default Repositore
     

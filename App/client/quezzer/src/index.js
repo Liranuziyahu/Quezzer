@@ -11,7 +11,7 @@ ReactDOM.render(
   <BrowserRouter>
   <ContextServer>
         <ContextDataFromServer>
-            <App />
+                  <App />
         </ContextDataFromServer>
   </ContextServer>
   </BrowserRouter>,
