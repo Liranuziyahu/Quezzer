@@ -20,7 +20,6 @@ const TabelCandidates = () => {
     exams?.sort?.((exam1 , exam2)=>{
       return exam1.userID - exam2.userID
     })
-
     const [page, setPage] = React.useState(1);
     const handleChange = (event, value) => {
       setPage(value);
@@ -49,15 +48,15 @@ const TabelCandidates = () => {
                     if(entryCategory?.includes?.(userSearch.search?.toString()?.toLowerCase()))
                         return <Candidates key={index} exam = {exam}/>
                     })
-                  ):
-                  exams?.slice(5 * page - 5, 5 * page)?.map?.((exam,index) => <Candidates  key = {index} exam = {exam}/>)
+                  ): exams?.length != undefined ?
+                  exams?.slice(5 * page - 5, 5 * page)?.map?.((exam,index) => <Candidates  key = {index} exam = {exam}/>) : null
                 }
             </TableBody>
           </Table>
       </TableContainer>
             
       <Stack direction="row" spacing={2} sx={{marginTop:2 , justifyContent: 'center'}}>
-            <Pagination count={exams.length > 0 ? exams.length /5 % 1 == 0 ? exams.length / 5 : Number.parseInt(exams.length / 5) + 1 : 0}
+            <Pagination count={exams?.length > 0 ? exams?.length /5 % 1 == 0 ? exams?.length / 5 : Number.parseInt(exams?.length / 5) + 1 : 0}
               onChange={handleChange}
             />
       </Stack>
