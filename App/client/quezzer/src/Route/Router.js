@@ -11,12 +11,12 @@ const Router = () => {
         <Route  path="/new" element={<CreateUser/>}></Route>
         <Route element={<ProtectedRoute/>}>
             <Route path="Administrator" element={<Admin/>}>
+                <Route path="" element={<DiagramDishboard/>}/>
                 <Route path="Users" element={<UserPage/>}/>
                 <Route path="Candidates" element={<TabelCandidates/>}/>
                 <Route path="Candidates/:id" element={<PageExam />} />
                 <Route path="Repositories" element={<Repositore/>}/>    
                 <Route path="Questionnaire" element={<DisassembleByCateegoriy/>}/>
-                <Route path="" element={<DiagramDishboard/>}/>
             </Route>
         </Route>
         <Route path="User" element={<ProtectedUserRoute/>}>
@@ -27,7 +27,6 @@ const Router = () => {
     </Routes>
     )
 }
-
 export default Router
 
 

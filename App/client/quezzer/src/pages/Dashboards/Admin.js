@@ -113,7 +113,7 @@ function Admin() {
     return (
         <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="fixed" open={open}>
+        <AppBar position="fixed" open={open} sx={{ width:'100%',padding:0,margin:0}}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -165,7 +165,7 @@ function Admin() {
           <Divider />
          
         </Drawer>
-        <Main open={open}>
+        <Main open={open} style={{overflowX: 'hidden',height: '100vh'}}>
           <DrawerHeader />
           <Outlet></Outlet>
         </Main>

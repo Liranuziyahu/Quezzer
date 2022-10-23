@@ -5,6 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FilledInput from '@mui/material/FilledInput';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 const currenciesList = [
   {
@@ -20,11 +22,15 @@ const currenciesList = [
     label: 'Email',
   }
 ];
+
 export default function SelectTextFields({setUserSearch}) {
 
   const [currency, setCurrency] = useState('userID');
   const [currencies, setCurrencies] = useState(currenciesList);
   const handleChange = event => setCurrency(event.target.value);
+
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
 
   useEffect(() =>{
     if(window.location.pathname == '/Administrator/Candidates')
@@ -33,7 +39,7 @@ export default function SelectTextFields({setUserSearch}) {
  
   return (
       <div style={{display:'flex', marginBottom:20}}>
-        <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '25ch' }}} noValidate autoComplete="off">
+        <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: isMobile? '30vw' : '25ch' }}} noValidate autoComplete="off">
           <TextField
             id="outlined-select-currency"
             select
@@ -49,8 +55,10 @@ export default function SelectTextFields({setUserSearch}) {
             </TextField>
         </Box>
         <FormControl variant="filled" style={{marginTop:'7px'}}>
-            <InputLabel htmlFor="component-filled"></InputLabel>
-            <FilledInput id="component-filled" onChange={(e) => setUserSearch({"search":e.target.value ,"catagorey":currency})}  />
+            <FilledInput
+             sx={{width: isMobile? '50vw' : '25ch'  }}
+             id="component-filled" 
+             onChange={(e) => setUserSearch({"search":e.target.value ,"catagorey":currency})} />
         </FormControl>         
     </div>
   )}

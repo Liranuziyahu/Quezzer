@@ -14,21 +14,27 @@ import InputSearch from '../Buttons/InputSearch';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
+
 const TabelCandidates = () => {
     const {exams} = useContext(ContextFromServer)
     const [userSearch ,setUserSearch] = useState({search:"" , catagorey:""})
-    exams?.sort?.((exam1 , exam2)=>{
-      return exam1.userID - exam2.userID
-    })
-    const [page, setPage] = React.useState(1);
+    const [page, setPage] = useState(1);
+
+    // exams?.sort?.((exam1 , exam2)=>{
+    //   return exam1.userID - exam2.userID
+    // })
+
     const handleChange = (event, value) => {
       setPage(value);
     };
+
+
+
     return (
-      <>
+      <div style={{overflowX: 'hidden'}}>
         <InputSearch setUserSearch = {setUserSearch}></InputSearch>
-        <TableContainer component={Paper}>  
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer component={Paper} style={{overflowY: 'scroll',width: '100%'}}>  
+          <Table sx={{ minWidth: 200 }} aria-label="simple table">
             <TableHead>
               <TableRow>
               <TableCell align="center">User ID</TableCell>
@@ -60,7 +66,7 @@ const TabelCandidates = () => {
               onChange={handleChange}
             />
       </Stack>
-    </>
+    </div>
   )
 }
 export default TabelCandidates

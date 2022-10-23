@@ -21,7 +21,7 @@ const TableUsers = ({props}) => {
       setPage(value);
     };
   return (
-    <>
+    <div style={{overflowX: 'hidden'}}>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650}} aria-label="simple table">
           <TableHead>
@@ -59,7 +59,7 @@ const TableUsers = ({props}) => {
             />
       </Stack>
 
-    </>
+    </div>
   )
 }
 

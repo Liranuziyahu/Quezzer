@@ -6,8 +6,7 @@ import AlertDialog from './Actions/AlertDialog'
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-
+import { makeStyles } from '@mui/styles';
 
 
 const User = ({props}) => {
@@ -18,6 +17,16 @@ const User = ({props}) => {
     await deleteUser(userID)
     .then(res => setUpdateContext(!updateContext))
   }
+
+
+  const useStyles = makeStyles( () => ({
+    list: {
+        maxWidth:300,
+        textAlign:"center",
+    },
+  }));
+  const styles= useStyles()
+
   
   return (
     <>
@@ -27,11 +36,11 @@ const User = ({props}) => {
               key={props?.user.userID}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell sx={{maxWidth:10}} align="center" component="th" scope="row">{props?.user.userID}</TableCell>
-              <TableCell sx={{maxWidth:10}} align="center">{props?.user.userEmail}</TableCell>
-              <TableCell sx={{maxWidth:10}} align="center">{props?.user.userName}</TableCell>
-              <TableCell sx={{maxWidth:10}} align="center">{props?.user.roleName}</TableCell>
-              <TableCell sx={{maxWidth:10}} align="center">
+              <TableCell className={styles.list} component="th" scope="row">{props?.user.userID}</TableCell>
+              <TableCell className={styles.list}>{props?.user.userEmail}</TableCell>
+              <TableCell className={styles.list}>{props?.user.userName}</TableCell>
+              <TableCell className={styles.list}>{props?.user.roleName}</TableCell>
+              <TableCell className={styles.list}>
                 <EditIcon onClick={() => {props.setUserToChange(props.user); return props.setEditCompUser(!props.editUser)}}/>
                 <AlertDialog props={{DeleteUser ,"user": props?.user }}/>
               </TableCell>

@@ -2,10 +2,11 @@ import React ,{useState , useEffect} from 'react'
 import { Bar } from 'react-chartjs-2';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'
-import { Chart }            from 'react-chartjs-2'
+import { Chart } from 'react-chartjs-2'
 
 
-const Diagrama = ({props}) => {
+
+const Diagram = ({props}) => {
 const [score_notStart , setScore_notStart] = useState()
 const [score_0_55, setScore_0_55] = useState()    
 const [score_56_75, setScore_56_75] = useState()
@@ -14,7 +15,10 @@ const [score_85_100, setScore_85_100] = useState()
 const categoryName = props.name
 const controlDiagram = props?.type
 
+const isMobile = props.isMobile
+console.log(isMobile)
 useEffect(()=>{
+
         let scoreNot_Start = props.value?.filter?.(exam => exam.done == 0 )
         setScore_notStart(scoreNot_Start)
 
@@ -29,11 +33,11 @@ useEffect(()=>{
 
        let score85_100 = props.value?.filter?.(exam => exam.score >= 85 && exam.score <=100  )
        setScore_85_100(score85_100)
-
-},[props.value])
+     
+},[props.value , isMobile])
 
   return (
-    <div style={{width: '100%', height: '100%', raduisBoreder:30}}>
+    <div>
        {
         controlDiagram == 'Line' ?
            <Bar
@@ -67,21 +71,16 @@ useEffect(()=>{
                             legend: {
                                 labels: {
                                     font: {
-                                        size: 17
+                                        size: isMobile ? '16px' : '20px'
                                     }
                                 }
                             }
-                        },
-                        layout: {
-                            padding: {
-                                right: 50
-                            }
                         }
                     }}
-                height={100}
-           ></Bar>
+                >    
+            </Bar>
         :
-        <Doughnut
+        <Doughnut 
             data = {
                 {
                     labels: ['JS','React','Angular'],
@@ -105,18 +104,17 @@ useEffect(()=>{
                         legend: {
                             labels: {
                                 font: {
-                                    size: 17
-                                }
+                                        size: isMobile ? '16px' : '20px'
+                                },
                             }
                         }
                     },
                     layout: {
                         padding: {
-                            left: 100
+                            top: 30
                         }
                     }
                 }}
-            height={100}
         >
 
    </Doughnut>
@@ -126,4 +124,4 @@ useEffect(()=>{
   )
 }
 
-export default Diagrama
+export default Diagram
