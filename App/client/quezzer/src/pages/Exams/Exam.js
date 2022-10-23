@@ -67,7 +67,10 @@ const Exam = ({userExams}) => {
    <>
    {
      (storageQuestions?.[theExmControl]?.questions?.length != theQuestionControl && storageQuestions.length != 0 )?
-      <Question  props = {{question:question,exam:exam , ChangeQuestion , setStorageAnswers ,userExams: userExams[theExmControl]}}/>
+     <div>
+       <input type='range' value={100*theQuestionControl/10}></input>
+       <Question  props = {{question:question,exam:exam , ChangeQuestion , setStorageAnswers ,userExams: userExams[theExmControl]}}/>
+     </div>
       :
       (
         <ChangeExam props = {{ exam ,theExmControl , changeExam , storageQuestions , theExmControl , finishedExam}}/>

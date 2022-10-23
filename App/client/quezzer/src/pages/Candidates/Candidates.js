@@ -8,12 +8,21 @@ import FileOpenIcon from '@mui/icons-material/FileOpen';
 import EmailIcon from '@mui/icons-material/Email';
 import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import axios from 'axios';
+import { makeStyles } from '@mui/styles';
 
 function Candidates({exam}) {
-    const {AnswersByExamID} = useContext(ContextFromServer)
 
+    const useStyles = makeStyles( () => ({
+        list: {
+            maxWidth:300,
+            textAlign:"center",
+        },
+      }));
+      const styles= useStyles()
+
+
+    const {AnswersByExamID} = useContext(ContextFromServer)
     const senderMail = async  (id ) => {
-        console.log(id)
         let answers = await AnswersByExamID(id)
         try{
             axios.post('http://localhost:8080/exams/send-exam',{"answers": answers ,"to": exam.userEmail})
@@ -22,16 +31,14 @@ function Candidates({exam}) {
     }
 
     return (
-        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-            <TableCell align="center" component="th" scope="row">
-            {exam?.userID}
-            </TableCell>
-            <TableCell align="center" sx={{maxWidth:10}}> {exam?.userName}</TableCell>
-            <TableCell align="center" sx={{maxWidth:10}}>{exam?.userEmail}</TableCell>
-            <TableCell align="center" sx={{maxWidth:10}}>{exam?.categoryExamsName}</TableCell>
-            <TableCell align="center" sx={{maxWidth:10}}>{exam?.score}</TableCell>
-            <TableCell align="center" sx={{maxWidth:10}} >
-                 <Link to ={`${exam?.examsID}`}  state={{ data: exam }}><FileOpenIcon color="action"/></Link>
+        <TableRow>
+            <TableCell className={styles.list}>{exam?.userID}</TableCell>
+            <TableCell className={styles.list}> {exam?.userName}</TableCell>
+            <TableCell className={styles.list}>{exam?.userEmail}</TableCell>
+            <TableCell className={styles.list}>{exam?.categoryExamsName}</TableCell>
+            <TableCell className={styles.list}>{exam?.score}</TableCell>
+            <TableCell  sx={{display:'flex',justifyContent: 'center'}}>
+                 <Link to ={`${exam?.examsID}`}  state={{ data: exam }}><FileOpenIcon  color="action"/></Link>
                  {
                     exam?.sent == 0 ? <EmailIcon onClick={() => senderMail(exam.examsID)} color="action"/> : <MarkEmailReadIcon color="action"/>
                  }

@@ -1,11 +1,17 @@
 import React,{useEffect,useState , useContext} from 'react'
 import axios from 'axios'
 import Diagram from './Diagram'
+import Grid from '@mui/material/Grid';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 const DiagramDishboard = () => {
 const [examJS , setExamJS] = useState([])     
 const [examRact , setExamRact] = useState([])
 const [examAngular , setExamAngular] = useState([])
+
+const theme = useTheme();
+const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
     useEffect(async () => {
         await axios.get(`http://localhost:8080/exams`)
@@ -20,16 +26,19 @@ const [examAngular , setExamAngular] = useState([])
         })
        },[])
   return (
-      <div style={{marginTop:30}}>
-        <div style={{width:'30vw',height:'28vh',float:'right'}}>
-            <Diagram props={{name:'JS',value:examJS,type:'Line'}}/>
-            <Diagram props={{name:'React',value:examRact,type:'Line'}}/>
-            <Diagram props={{name:'Angular',value:examAngular,type:'Line'}}/>
-        </div>
-        <div style={{width:'35vw',height:'28vh',marginLeft:40}}>
-            <Diagram props={{name:'Angular',value:examAngular,type:'Circle',exams:[examJS , examRact , examAngular]}}/>
-        </div>
-      </div>
+      <Grid container 
+        justifyContent="center"
+        alignItems="center"
+        spacing={isMobile ? 4 : 12} >
+        <Grid style={{marginRight: isMobile ? 0 : 100}} item xs={isMobile ? 12 : 4} >
+            <Diagram props={{name:'Angular',value:examAngular,type:'Circle',exams:[examJS , examRact , examAngular] , isMobile:isMobile}}/>
+        </Grid>
+            <Grid item xs={isMobile ? 12 : 4} >
+                <Diagram  props={{name:'JS',value:examJS,type:'Line' , isMobile:isMobile}} />
+                <Diagram  props={{name:'React',value:examRact,type:'Line' , isMobile:isMobile}}/>
+                <Diagram  props={{name:'Angular',value:examAngular,type:'Line', isMobile:isMobile}}/>
+             </Grid>
+      </Grid>
 
   )
 }

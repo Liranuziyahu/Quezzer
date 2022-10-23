@@ -35,7 +35,7 @@ const Question = ({props}) => {
   
   return (
     <>
-      <FormControl  style={{margin:'180px 10px'}} onSubmit = {(e) => {
+      <FormControl  onSubmit = {(e) => {
           e.preventDefault();
           let userAnswer = CheckTheRadio(e?.target)
           CheckAnswer(props.question , userAnswer)
